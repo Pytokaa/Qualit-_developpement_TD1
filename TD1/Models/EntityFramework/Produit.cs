@@ -47,6 +47,7 @@ public class Produit
         return NomProduit == other.NomProduit;
     }
 
+    
     public override bool Equals(object? obj)
     {
         if (obj is null) return false;
