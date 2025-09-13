@@ -98,6 +98,18 @@ public class ProduitController : ControllerBase
         await _productManager.AddAsync(produit);
         return CreatedAtAction( nameof(GetById), new { id = produit.IdProduit }, produit);
     }
+    // PUT: api/Produits/id/{id}
+    /// <summary>
+    /// Updates an existing product by its identifier.
+    /// </summary>
+    /// <param name="id">The identifier of the product to update.</param>
+    /// <param name="produit">The new data for the product.</param>
+    /// <returns>An HTTP response indicating the result of the operation.</returns>
+    /// <response code="204">The product was successfully updated.</response>
+    /// <response code="400">The provided data is invalid or the identifier does not match the product.</response>
+    /// <response code="404">No product was found with the specified identifier.</response>
+    /// <response code="500">An internal server error occurred.</response>
+
     [HttpPut("id/{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

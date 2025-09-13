@@ -207,11 +207,10 @@ public class ProductControllerTest
     public void ShouldNotUpdateProductBecauseProductDoesNotExist()
     {
         // Given : Un produit qui n'existe pas en base
-        Produit produitToEdit = _defaultProduct1;
         int nonExistentId = 0;
         
         // When : tentative de modification d'un produit qui n'existe pas
-        IActionResult action = _productController.PutProduit(nonExistentId, produitToEdit).GetAwaiter().GetResult();
+        IActionResult action = _productController.PutProduit(nonExistentId, _defaultProduct1).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);

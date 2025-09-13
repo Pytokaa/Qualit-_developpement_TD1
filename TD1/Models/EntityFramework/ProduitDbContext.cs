@@ -8,6 +8,9 @@ namespace TD1.Models.EntityFramework;
 public partial class ProduitDbContext : DbContext
 {
     public DbSet<Produit> Produits { get; set; }
+    public DbSet<TypeProduit> TypeProduits { get; set; }
+    public DbSet<Marque> Marques { get; set; }
+    
     
     public ProduitDbContext()
     {

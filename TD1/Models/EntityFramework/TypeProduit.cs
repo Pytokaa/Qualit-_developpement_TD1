@@ -19,6 +19,6 @@ public partial class TypeProduit
     //relation avec les autres tables 
     
     [InverseProperty(nameof(Produit.TypeProduitNavigation))]
-    public ICollection<Produit> Produits { get; set; } = new List<Produit>();
+    public ICollection<Produit>? Produits { get; set; } = new List<Produit>();
     
 }
