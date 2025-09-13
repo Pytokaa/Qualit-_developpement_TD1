@@ -88,6 +88,18 @@ public class TypeProduitControllerTest
     }
 
     [TestMethod]
+    public void ShouldNotDeleteProductTypeBecauseItDoesNotExist()
+    {
+        //Given : 
+        int nonExistentId = 9999;
+        //When : 
+        IActionResult action = _typeProductController.DeleteProductType(nonExistentId).GetAwaiter().GetResult();
+        //Then : 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NotFoundResult));
+    }
+
+    [TestMethod]
     public void ShouldGetAllProductTypes()
     {
         //Given : 
@@ -116,6 +128,102 @@ public class TypeProduitControllerTest
         Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
         Assert.IsNull(action.Value, "Le type produit n'est paas null");
     }
+
+    [TestMethod]
+    public void ShouldCreateProductType()
+    {
+        //Given : 
+        TypeProduit productType = _defaultTypeProduit1;
+        //When : 
+        ActionResult<TypeProduit> action = _typeProductController.AddProductType(productType).GetAwaiter().GetResult();
+        //Then : 
+        TypeProduit productTypeInDb = _context.TypeProduits.Find(productType.IdTypeProduit);
+        Assert.IsNotNull(productTypeInDb);
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action.Result, typeof(CreatedAtActionResult));
+    }
+    
+
+    [TestMethod]
+    public void ShouldUpdateProductType()
+    {
+        //Given : 
+        _context.TypeProduits.Add(_defaultTypeProduit1);
+        _context.SaveChanges();
+        //changement de données
+        _defaultTypeProduit1.NomTypeProduit = "modifiedNameProductType";
+        
+        //When : 
+        IActionResult action = _typeProductController.PutProductType(_defaultTypeProduit1.IdTypeProduit, _defaultTypeProduit1).GetAwaiter().GetResult();
+        
+        //Then : 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NoContentResult));
+
+        TypeProduit editedProductInDb = _context.TypeProduits.Find(_defaultTypeProduit1.IdTypeProduit);
+        
+        Assert.IsNotNull(editedProductInDb);
+        Assert.AreEqual("modifiedNameProductType", editedProductInDb.NomTypeProduit);
+    }
+
+    [TestMethod]
+    public void ShouldNotUpdateProductTypeBecauseIdInUrlIsDifferent()
+    {
+        //Given : 
+        _context.TypeProduits.Add(_defaultTypeProduit1);
+        _context.SaveChanges();
+        //changement de données 
+        _defaultTypeProduit1.NomTypeProduit = "modifiedNameProductType";
+        
+        //When : 
+        IActionResult action = _typeProductController.PutProductType(0, _defaultTypeProduit1).GetAwaiter().GetResult();
+        
+        //Then : 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(BadRequestResult));
+    }
+
+    [TestMethod]
+    public void ShouldNotUpdateProductTypeBecauseProductTypeDoesNotExist()
+    {
+        //Given 
+        int  nonExistentId = 0;
+        //When : 
+        IActionResult action = _typeProductController.PutProductType(nonExistentId, _defaultTypeProduit1).GetAwaiter().GetResult();
+        
+        //Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NotFoundResult));
+    }
+
+    [TestMethod]
+    public void ShouldGetProductTypeByString()
+    {
+        //Given : 
+        _context.TypeProduits.Add(_defaultTypeProduit1);
+        _context.SaveChanges();
+        //When : 
+        ActionResult<TypeProduit> action = _typeProductController.GetByName(_defaultTypeProduit1.NomTypeProduit).GetAwaiter().GetResult();
+        //Then : 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action.Value, typeof(TypeProduit));
+        TypeProduit returnProductTypeInDb = action.Value;
+        Assert.AreEqual(_defaultTypeProduit1.NomTypeProduit, returnProductTypeInDb.NomTypeProduit);
+    }
+
+    [TestMethod]
+    public void ShouldNotGetProductTypeByStringBecauseProductTypeDoesNotExist()
+    {
+        //Given : 
+        string nonExistentString = "";
+        //When :
+        ActionResult<TypeProduit> action = _typeProductController.GetByName(nonExistentString).GetAwaiter().GetResult();
+        //Then : 
+        Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
+        Assert.IsNull(action.Value);
+        
+    }
+    
     
 
     [TestCleanup]

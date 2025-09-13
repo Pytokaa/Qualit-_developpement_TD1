@@ -193,6 +193,35 @@ public class MarqueControllerTest
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
     }
+
+    [TestMethod]
+    public void ShouldGetBrandByName()
+    {
+        //Given : 
+        _context.Marques.Add(_defaultBrand1);
+        _context.SaveChanges();
+        //When : 
+        ActionResult<Marque> action = _brandController.GetByName(_defaultBrand1.NomMarque).GetAwaiter().GetResult();
+        //Then : 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action.Value, typeof(Marque));
+        Marque returnBrandInDb = action.Value;
+        Assert.AreEqual(_defaultBrand1.NomMarque, returnBrandInDb.NomMarque);
+    }
+
+    [TestMethod]
+    public void ShouldNotGetByNameBecauseBrandDoesNotExist()
+    {
+        //Given : 
+        string nonExistentBrandName = "";
+        //When : 
+        ActionResult<Marque> action = _brandController.GetByName(_defaultBrand1.NomMarque).GetAwaiter().GetResult();
+        //Then : 
+        Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
+        Assert.IsNull(action.Value);
+    }
+    
+    
     [TestCleanup]
     public void Cleanup()
     {

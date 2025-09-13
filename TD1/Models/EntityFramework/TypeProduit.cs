@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices.JavaScript;
 
 
 namespace TD1.Models;
@@ -12,7 +13,8 @@ public partial class TypeProduit
     [Column("id_type_produit")]
     public int IdTypeProduit { get; set; }
     
-    
+    [Required(ErrorMessage ="This property must be filled")]
+    [StringLength(50, MinimumLength = 2, ErrorMessage = "The string length must be between 2 and 50 characters")]
     [Column("nom_type_produit")]
     public string NomTypeProduit { get; set; }
     

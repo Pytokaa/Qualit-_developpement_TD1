@@ -217,6 +217,33 @@ public class ProductControllerTest
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
     }
 
+    [TestMethod]
+    public void ShouldGetProductByName()
+    {
+        //Given : 
+        _context.Produits.Add(_defaultProduct1);
+        _context.SaveChanges();
+        //When : 
+        ActionResult<Produit> action = _productController.GetByName(_defaultProduct1.NomProduit).GetAwaiter().GetResult();
+        //Then : 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action.Value, typeof(Produit));
+        Produit returnProductInDb = action.Value;
+        Assert.AreEqual(_defaultProduct1.NomProduit, returnProductInDb.NomProduit);
+    }
+
+    [TestMethod]
+    public void ShouldNotGetProductByNameBecauseItDoesNotExist()
+    {
+        //Given :
+        string nonExistentString = "";
+        //When : 
+        ActionResult<Produit> action = _productController.GetByName(nonExistentString).GetAwaiter().GetResult();
+        //Then : 
+        Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
+        Assert.IsNull(action.Value);
+    }
+
     [TestCleanup]
     public void Cleanup()
     {
