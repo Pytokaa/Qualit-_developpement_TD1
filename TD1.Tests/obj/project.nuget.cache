@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Qhb3Blem1F4=",
+  "dgSpecHash": "B+p61TzERFk=",
   "success": true,
   "projectFilePath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/TD1.Tests.csproj",
   "expectedPackageFiles": [
+    "/home/elioth/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/home/elioth/.nuget/packages/jetbrains.annotations/2025.2.2/jetbrains.annotations.2025.2.2.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.applicationinsights/2.23.0/microsoft.applicationinsights.2.23.0.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.codecoverage/17.14.1/microsoft.codecoverage.17.14.1.nupkg.sha512",
@@ -32,6 +33,7 @@
     "/home/elioth/.nuget/packages/microsoft.testplatform.adapterutilities/17.13.0/microsoft.testplatform.adapterutilities.17.13.0.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.testplatform.objectmodel/17.14.1/microsoft.testplatform.objectmodel.17.14.1.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.testplatform.testhost/17.14.1/microsoft.testplatform.testhost.17.14.1.nupkg.sha512",
+    "/home/elioth/.nuget/packages/moq/4.20.72/moq.4.20.72.nupkg.sha512",
     "/home/elioth/.nuget/packages/mstest.analyzers/3.10.4/mstest.analyzers.3.10.4.nupkg.sha512",
     "/home/elioth/.nuget/packages/mstest.testadapter/3.10.4/mstest.testadapter.3.10.4.nupkg.sha512",
     "/home/elioth/.nuget/packages/mstest.testframework/3.10.4/mstest.testframework.3.10.4.nupkg.sha512",
@@ -45,6 +47,7 @@
     "/home/elioth/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.6.2/swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512",
     "/home/elioth/.nuget/packages/system.collections.immutable/8.0.0/system.collections.immutable.8.0.0.nupkg.sha512",
     "/home/elioth/.nuget/packages/system.diagnostics.diagnosticsource/5.0.0/system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
+    "/home/elioth/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "/home/elioth/.nuget/packages/system.reflection.metadata/8.0.0/system.reflection.metadata.8.0.0.nupkg.sha512"
   ],
   "logs": []

@@ -16,252 +16,229 @@ namespace TD1.Tests.Controllers;
 [TestClass]
 [TestSubject(typeof(ProduitController))]
 [TestCategory("integration")]
-public class ProduitControllerTest
+public class ProductControllerTest
 {
     private ProduitDbContext _context;
-    private ProduitController _produitController;
-    private ProduitManager _manager;
+    private ProduitController _productController;
+    
+    // Produits de base pour les tests
+    private Produit _defaultProduct1;
+    private Produit _defaultProduct2;
 
-    public  ProduitControllerTest()
+    [TestInitialize]
+    public void Setup()
     {
-        var builder = new DbContextOptionsBuilder<ProduitDbContext>().UseNpgsql("Server=localhost;Port=5432;Database=produit_db;Username=postgres;Password=postgres");
+        // Créer un nouveau contexte pour chaque test
+        var builder = new DbContextOptionsBuilder<ProduitDbContext>()
+            .UseNpgsql("Server=localhost;Port=5432;Database=produit_db;Username=postgres;Password=postgres");
+        
         _context = new ProduitDbContext(builder.Options);
-        _manager = new ProduitManager(_context);
-        _produitController = new ProduitController(_manager);
+        
+        CleanupDatabase();
+        
+        InitializeDefaultProducts();
+        
+        var manager = new ProduitManager(_context);
+        _productController = new ProduitController(manager);
     }
 
-
-    [TestMethod]
-    public void ShouldGetAllProduits()
+    //creation de produits par défauts pour effectuer les tests
+    private void InitializeDefaultProducts()
     {
-        //given
-        IEnumerable<Produit> produits = [
-            new Produit()
-            {
-                NomProduit = "chaise",
-                Description = "en bien",
-                NomPhoto = "Photo de chaise",
-                UriPhoto = "text"
-            },
-            new Produit()
-            {
-                NomProduit = "table",
-                Description = "en bien",
-                NomPhoto = "Photo de table",
-                UriPhoto = "text"
-            }
-        ];
-        _context.Produits.AddRange(produits);
-        _context.SaveChanges();
-        
-        //when
-
-        var products = _produitController.GetAll().GetAwaiter().GetResult();
-        
-        //then
-        
-        Assert.IsNotNull(products);
-        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<Produit>>));
-
-
-
-
-
-    }
-
-    [TestMethod]
-    public void ShouldGetProduit()
-    {
-        
-        
-        //given : un produit en base de donnnées
-        Produit produitInDb = new Produit()
+        _defaultProduct1 = new Produit
         {
-            NomProduit = "chaise",
-            Description = "en bien",
-            NomPhoto = "Photo de chaise",
-            UriPhoto = "text"
+            NomProduit = "Chaise par défaut",
+            Description = "Une chaise de test",
+            NomPhoto = "chaise-test.jpg",
+            UriPhoto = "https://example.com/chaise-test.jpg"
         };
 
-        _context.Produits.Add(produitInDb);
-        _context.SaveChanges();
+        _defaultProduct2 = new Produit
+        {
+            NomProduit = "Table par défaut",
+            Description = "Une table de test",
+            NomPhoto = "table-test.jpg",
+            UriPhoto = "https://example.com/table-test.jpg"
+        };
+    }
 
-        //when : j'appelle la méthode get de mon api pour récuperer le produit
+    [TestMethod]
+    public void ShouldGetProduct()
+    {
+        // Given :
+        _context.Produits.Add(_defaultProduct1);
+        _context.SaveChanges();
         
-        ActionResult<Produit> action = _produitController.GetById(produitInDb.IdProduit).GetAwaiter().GetResult();
+        // When : appelle du produit avec getbyid
+        ActionResult<Produit> action = _productController.GetById(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
         
-        
-        //then : On recupère le produit et le code de retour est 200
+        // Then :
         Assert.IsNotNull(action);
-        //Assert.IsInstanceOfType(action.Result, typeof(OkObjectResult));
         Assert.IsInstanceOfType(action.Value, typeof(Produit));
         
-        //Ici on regarde si le nom du produit est celui dans la base de données
-        Produit returnProduit = action.Value;
-        Assert.AreEqual(produitInDb.NomProduit, returnProduit.NomProduit);
-    }
-    [TestMethod]
-    public void ShouldGetProduitNotFoundResult()
-    {
-        
-        
-        //given : un produit en base de donnnées
-        Produit produitInDb = new Produit()
-        {
-            NomProduit = "chaise",
-            Description = "en bien",
-            NomPhoto = "Photo de chaise",
-            UriPhoto = "text"
-        };
-
-        _context.Produits.Add(produitInDb);
-        _context.SaveChanges();
-
-        //when : j'appelle la méthode get de mon api pour récuperer le produit
-        
-        ActionResult<Produit> action = _produitController.GetById(9999).GetAwaiter().GetResult();
-        
-        //then : On recupère le produit et le code de retour est 200
-        Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
-        
+        Produit returnProduct = action.Value;
+        Assert.AreEqual(_defaultProduct1.NomProduit, returnProduct.NomProduit);
     }
 
     [TestMethod]
-    public void ShouldCreateProduit()
+    public void ShouldDeleteProduct()
     {
-        //given : un produit en base de donnnées
-        Produit produitToInsert = new Produit()
-        {
-            NomProduit = "CreatedProduit",
-            Description = "en bien",
-            NomPhoto = "Photo de chaise",
-            UriPhoto = "text"
-        };
-        
-
-        //when : j'appelle la méthode get de mon api pour récuperer le produit
-        
-       ActionResult<Produit> action = _produitController.AddProduit(produitToInsert).GetAwaiter().GetResult();
-       
-       var produitInDb = _context.Produits.Find(produitToInsert.IdProduit);
-       
-       
-       //then 
-       Assert.IsNotNull(produitInDb);
-       Assert.IsNotNull(action);
-       Assert.IsInstanceOfType(action.Result, typeof(CreatedAtActionResult));
-        
-    }
-
-    [TestMethod]
-    public void ShouldUpdateProduit()
-    {
-        
-        //given : un produit en base de donnnées
-        Produit produitToUpdateInDb = new Produit()
-        {
-            NomProduit = "ProduitToUpdate",
-            Description = "en bien",
-            NomPhoto = "Photo de chaise",
-            UriPhoto = "text"
-        };
-        
-
-        _context.Produits.Add(produitToUpdateInDb);
+        // Given :
+        _context.Produits.Add(_defaultProduct1);
         _context.SaveChanges();
         
-        //when 
-        produitToUpdateInDb.NomProduit = "UpdatedProduit";
-        IActionResult action = _produitController.PutProduit(produitToUpdateInDb.IdProduit,  produitToUpdateInDb).GetAwaiter().GetResult();
+        // When : Suppression depuis l'API du produit
+        IActionResult action = _productController.DeleteProduit(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
         
-        
-        var produitInDb =  _context.Produits.Find(produitToUpdateInDb.IdProduit);
-        
-        //then
+        // Then : Test sur le type de retour (NoContentResult)
+        Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NoContentResult));
-        Assert.IsNotNull(produitInDb);
-        Assert.IsInstanceOfType(produitInDb, typeof(Produit));
+        Assert.IsNull(_context.Produits.Find(_defaultProduct1.IdProduit));
     }
     
     [TestMethod]
-    public void ShouldNotUpdateProduit()
+    public void ShouldNotDeleteProductBecauseProductDoesNotExist()
     {
-        //given : un produit en base de donnnées
-        Produit produitToUpdateInDb = new Produit()
-        {
-            NomProduit = "ProduitToUpdate",
-            Description = "en bien",
-            NomPhoto = "Photo de chaise",
-            UriPhoto = "text"
-        };
-        Produit produitUpdatedInDb = new Produit()
-        {
-            NomProduit = "ProduitUpdated",
-            Description = "en bien",
-            NomPhoto = "Photo de chaise",
-            UriPhoto = "text"
-        };
-
-        _context.Produits.Add(produitToUpdateInDb);
-        _context.SaveChanges();
+        // Given : 
+        int nonExistentId = 99999;
         
-        //when 
+        // When : Suppression depuis l'API d'un produit qui n'existe pas
+        IActionResult action = _productController.DeleteProduit(nonExistentId).GetAwaiter().GetResult();
         
-        IActionResult action = _produitController.PutProduit(0,  produitUpdatedInDb).GetAwaiter().GetResult();
-        
-        //then 
+        // Then : Test sur le type de action.result (NotFound)
+        Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
+    }
+
+    [TestMethod]
+    public void ShouldGetAllProducts()
+    {
+        // Given : Ajout de deux produits dans la base de données
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2 });
+        _context.SaveChanges();
         
+        // When : Récupération des produits via l'API
+        var products = _productController.GetAll().GetAwaiter().GetResult();
+
+        // Then : Tests sur le type de retour et des données renvoyées
+        Assert.IsNotNull(products);
+        Assert.IsInstanceOfType(products.Value, typeof(IEnumerable<Produit>));
         
+        var productList = (products.Value as IEnumerable<Produit>)?.ToList();
+        Assert.IsTrue(productList?.Count >= 2, "Au moins 2 produits devraient être retournés");
     }
     
     [TestMethod]
-    public void ShouldDeleteProduit()
+    public void GetProductShouldReturnNotFound()
     {
-        //given : un produit en base de donnnées
-        Produit produitInDb = new Produit()
-        {
-            NomProduit = "ProduitToDelete",
-            Description = "en bien",
-            NomPhoto = "Photo de chaise",
-            UriPhoto = "text"
-        };
-
-        _context.Produits.Add(produitInDb);
-        _context.SaveChanges();
-
-        //when : j'appelle la méthode get de mon api pour récuperer le produit
+        // Given : 
+        int nonExistentId = 0;
         
-        IActionResult action = _produitController.DeleteProduit(produitInDb.IdProduit).GetAwaiter().GetResult();
-       
-        //then
-        Assert.IsInstanceOfType(action, typeof(NoContentResult));
-        Assert.IsNull(_context.Produits.Find(produitInDb.IdProduit));
+        // When : Recuperation du produit inexistant via l'API
+        ActionResult<Produit> action = _productController.GetById(nonExistentId).GetAwaiter().GetResult();
+        
+        // Then : Test sur le type de retour (NotFound)
+        Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult), "Ne renvoie pas 404");
+        Assert.IsNull(action.Value, "Le produit n'est pas null");
+    }
+    
+    [TestMethod]
+    public void ShouldCreateProduct()
+    {
+        // Given : Un nouveau produit à créer
+        Produit productToInsert = _defaultProduct1;
+        
+        // When : ajout de ce produit via l'API
+        ActionResult<Produit> action = _productController.AddProduit(productToInsert).GetAwaiter().GetResult();
+        
+        // Then : tests sur le type de action et sur le produit inséré en base de données 
+        Produit productInDb = _context.Produits.Find(productToInsert.IdProduit);
+        
+        Assert.IsNotNull(productInDb);
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action.Result, typeof(CreatedAtActionResult));
     }
 
     [TestMethod]
-    public void ShouldNotDeleteProductBecauseItDoesntExist()
+    public void ShouldUpdateProduct()
     {
-        //given : aucun produit en base de données
-        //when 
+        // Given : ajout d'un produit dans la base de données
+        _context.Produits.Add(_defaultProduct1);
+        _context.SaveChanges();
         
-        var action = _produitController.DeleteProduit(0).GetAwaiter().GetResult();
+        // changement de certaines propriétés
+        _defaultProduct1.NomProduit = "Produit modifié";
+        _defaultProduct1.Description = "Description modifiée";
+
+        // When : modification de ces propriétés via l'API
+        IActionResult action = _productController.PutProduit(_defaultProduct1.IdProduit, _defaultProduct1).GetAwaiter().GetResult();
         
-        //then
+        // Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NoContentResult));
         
+        Produit editedProductInDb = _context.Produits.Find(_defaultProduct1.IdProduit);
+        
+        Assert.IsNotNull(editedProductInDb);
+        Assert.AreEqual("Produit modifié", editedProductInDb.NomProduit);
+        Assert.AreEqual("Description modifiée", editedProductInDb.Description);
+    }
+    
+    [TestMethod]
+    public void ShouldNotUpdateProductBecauseIdInUrlIsDifferent()
+    {
+        // Given : ajout d'un produit dans la base de données
+        _context.Produits.Add(_defaultProduct1);
+        _context.SaveChanges();
+        
+        // changement de certaines propriétés
+        _defaultProduct1.NomProduit = "Produit modifié";
+        _defaultProduct1.Description = "Description modifiée";
+
+        // When : Utiliser un ID différent dans l'URL
+        IActionResult action = _productController.PutProduit(0, _defaultProduct1).GetAwaiter().GetResult();
+        
+        // Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(BadRequestResult));
+    }
+    
+    [TestMethod]
+    public void ShouldNotUpdateProductBecauseProductDoesNotExist()
+    {
+        // Given : Un produit qui n'existe pas en base
+        Produit produitToEdit = _defaultProduct1;
+        int nonExistentId = 0;
+        
+        // When : tentative de modification d'un produit qui n'existe pas
+        IActionResult action = _productController.PutProduit(nonExistentId, produitToEdit).GetAwaiter().GetResult();
+        
+        // Then
+        Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
     }
 
     [TestCleanup]
-    public void Cleanup() //obligé de faire ainsi a votre demande sinon le cleanup interfere avec le reste des tests 
+    public void Cleanup()
     {
-        var builder = new DbContextOptionsBuilder<ProduitDbContext>()
-            .UseNpgsql("Server=localhost;Port=5432;Database=produit_db;Username=postgres;Password=postgres");
-
-        using var cleanupContext = new ProduitDbContext(builder.Options);
-        cleanupContext.Produits.RemoveRange(cleanupContext.Produits.ToList());
-        cleanupContext.SaveChanges();
+        CleanupDatabase();
+        _context?.Dispose();
     }
-    
-    
+
+    private void CleanupDatabase()
+    {
+        if (_context != null)
+        {
+            try
+            {
+                var allProducts = _context.Produits.ToList();
+                _context.Produits.RemoveRange(allProducts);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur lors du nettoyage : {ex.Message}");
+            }
+        }
+    }
 }

@@ -6,19 +6,15 @@ namespace TD1.Controllers;
 
 
 [Microsoft.AspNetCore.Components.Route("api/[controller")]
-
-
 [ApiController]
 [Route("api/[controller]")]
 public class ProduitController : ControllerBase
 {
-    private readonly ProduitManager _productManager;
-    
-    public ProduitController(ProduitManager manager)
+    private readonly IDataRepository<Produit> _productManager;
+    public ProduitController(IDataRepository<Produit> manager)
     {
         _productManager = manager;
     }
-
     // GET: api/Produits
     /// <summary>
     /// Get the list of products
@@ -26,7 +22,6 @@ public class ProduitController : ControllerBase
     /// <returns>An HTTP response containing the list of products.</returns>
     /// <response code="200">The request was successful and returned a list of products</response>
     /// <response code="500">An internal server error occurred.</response>
-    /// 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<Produit>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -80,8 +75,6 @@ public class ProduitController : ControllerBase
 
         return produit;
     }
-
-    
     // POST: api/Produits
     /// <summary>
     /// Adds a new product to the database.
@@ -105,22 +98,25 @@ public class ProduitController : ControllerBase
         await _productManager.AddAsync(produit);
         return CreatedAtAction( nameof(GetById), new { id = produit.IdProduit }, produit);
     }
-
     [HttpPut("id/{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> PutProduit(int id, Produit produit)
+    public async Task<IActionResult> PutProduit(int id, [FromBody] Produit produit)
     {
-        var produitToUpdate =  await _productManager.GetByIdAsync(id);
-        if (produitToUpdate.Value == null)
+        if (id != produit.IdProduit)
+        {
+            return BadRequest();
+        }
+        ActionResult<Produit?> prodToUpdate = await _productManager.GetByIdAsync(id);
+
+        if (prodToUpdate.Value == null)
         {
             return NotFound();
         }
-        _productManager.UpdateAsync(produitToUpdate.Value, produit);
+        await _productManager.UpdateAsync(prodToUpdate.Value, produit);
         return NoContent();
     }
-
     // DELETE: api/Produits/{id}
     /// <summary>
     /// Deletes an existing product by its identifier.
@@ -130,12 +126,10 @@ public class ProduitController : ControllerBase
     /// <response code="204">The product was successfully deleted.</response>
     /// <response code="404">No product was found with the specified identifier.</response>
     /// <response code="500">An internal server error occurred.</response>
-
     [HttpDelete("id/{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    
     public async Task<IActionResult> DeleteProduit(int id) //y'a un truc qui va pas ici, a revoir
     {
         ActionResult<Produit?> produitToDelete = await _productManager.GetByIdAsync(id);
