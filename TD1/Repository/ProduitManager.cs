@@ -27,6 +27,11 @@ public class ProduitManager : IDataRepository<Produit>
         return produit;
     }
 
+    public async Task<ActionResult<Produit>> GetByStringAsync(string str)
+    {
+        return await dbContext.Produits.FirstOrDefaultAsync(u => u.NomProduit.ToUpper() == str.ToUpper());
+    }
+
     public async Task AddAsync(Produit entity)
     {
         await dbContext.Produits.AddAsync(entity);
@@ -35,15 +40,8 @@ public class ProduitManager : IDataRepository<Produit>
 
     public async Task UpdateAsync(Produit entityToUpdate, Produit entity)
     {
-        dbContext.Entry(entityToUpdate).State = EntityState.Modified;
-        
-        entityToUpdate.Description = entity.Description;
-        entityToUpdate.NomPhoto = entity.NomPhoto;
-        entityToUpdate.StockMax = entity.StockMax;
-        entityToUpdate.StockMin = entity.StockMin;
-        entityToUpdate.StockReel = entity.StockReel;
-        entityToUpdate.NomProduit = entity.NomProduit;
-        entityToUpdate.UriPhoto = entity.UriPhoto;
+        dbContext.Produits.Attach(entityToUpdate);
+        dbContext.Entry(entityToUpdate).CurrentValues.SetValues(entity);
         await dbContext.SaveChangesAsync();
     }
 
@@ -51,6 +49,5 @@ public class ProduitManager : IDataRepository<Produit>
     {
         dbContext.Produits.Remove(entity);
         await dbContext.SaveChangesAsync();
-        
     }
 }
