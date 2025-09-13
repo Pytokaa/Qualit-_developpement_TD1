@@ -89,7 +89,7 @@ public class TypeProduitController : ControllerBase
     [ProducesResponseType(typeof(TypeProduit), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<TypeProduit>> AddMarque(TypeProduit productType)
+    public async Task<ActionResult<TypeProduit>> AddProductType(TypeProduit productType)
     {
         if (!ModelState.IsValid)
         {
@@ -116,7 +116,7 @@ public class TypeProduitController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> PutMarque(int id, [FromBody] TypeProduit productType)
+    public async Task<IActionResult> PutProductType(int id, [FromBody] TypeProduit productType)
     {
         if (id != productType.IdTypeProduit)
         {
@@ -144,7 +144,7 @@ public class TypeProduitController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> DeleteMarque(int id) //y'a un truc qui va pas ici, a revoir
+    public async Task<IActionResult> DeleteProductType(int id) //y'a un truc qui va pas ici, a revoir
     {
         ActionResult<TypeProduit?> productTypeToDelete = await _productTypeManager.GetByIdAsync(id);
         if (productTypeToDelete.Value == null)

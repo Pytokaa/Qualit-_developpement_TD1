@@ -8,7 +8,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="" />
+    <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Controllers/TypeProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/TypeProduitController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,6 +124,8 @@
       <workItem from="1757675090873" duration="12120000" />
       <workItem from="1757751544697" duration="4144000" />
       <workItem from="1757755742996" duration="13272000" />
+      <workItem from="1757773164020" duration="1349000" />
+      <workItem from="1757787301383" duration="891000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -165,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757771245788</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Début des tests de la class TypeProduitController">
+      <option name="closed" value="true" />
+      <created>1757774512610</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1757774512610</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +227,8 @@
     <MESSAGE value="Avancement des tests unitaires et documentation des méthodes controller" />
     <MESSAGE value="Modification des dependances entre controller et manager. Ajout d'un initialize pour les tests unitaires" />
     <MESSAGE value="Ajout des Manager et controller de marque et typeProduit + tests unitaires de marque" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des Manager et controller de marque et typeProduit + tests unitaires de marque" />
+    <MESSAGE value="Début des tests de la class TypeProduitController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Début des tests de la class TypeProduitController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -226,6 +245,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerTest.cs</url>
+          <line>115</line>
+          <properties documentPath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerTest.cs" containingFunctionPresentation="Method 'GetProductTypesShouldReturnNotFound'">
+            <startOffsets>
+              <option value="3810" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3873" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

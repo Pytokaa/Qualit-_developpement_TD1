@@ -71,6 +71,51 @@ public class TypeProduitControllerTest
         TypeProduit returnProductType = action.Value;
         Assert.AreEqual(_defaultTypeProduit1.NomTypeProduit, returnProductType.NomTypeProduit);
     }
+
+    [TestMethod]
+    public void ShouldDeleteProductType()
+    {
+        //Given : 
+        _context.TypeProduits.Add(_defaultTypeProduit1);
+        _context.SaveChanges();
+        //When : 
+        IActionResult action = _typeProductController.DeleteProductType(_defaultTypeProduit1.IdTypeProduit).GetAwaiter().GetResult();
+        
+        //Then : 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NoContentResult));
+        Assert.IsNull(_context.TypeProduits.Find(_defaultTypeProduit1.IdTypeProduit));
+    }
+
+    [TestMethod]
+    public void ShouldGetAllProductTypes()
+    {
+        //Given : 
+        _context.TypeProduits.AddRange(new []{_defaultTypeProduit1, _defaultTypeProduit2});
+        _context.SaveChanges();
+        //When : 
+        var productTypes = _typeProductController.GetAll().GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(productTypes);
+        Assert.IsInstanceOfType(productTypes.Value, typeof(IEnumerable<TypeProduit>));
+        
+        var productTypesList = (productTypes.Value as IEnumerable<TypeProduit>).ToList();
+        Assert.IsTrue(productTypesList?.Count >= 2, "Au moins 2 types de produits doivent être présents");
+    }
+
+    [TestMethod]
+    public void GetProductTypesShouldReturnNotFound()
+    {
+        //Given : 
+        int nonExistentId = 0;
+        
+        //When : 
+        ActionResult<TypeProduit> action = _typeProductController.GetById(nonExistentId).GetAwaiter().GetResult();
+        
+        //Then : 
+        Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
+        Assert.IsNull(action.Value, "Le type produit n'est paas null");
+    }
     
 
     [TestCleanup]
