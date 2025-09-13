@@ -212,7 +212,7 @@ public class MarqueControllerTest
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Erreur lors du nettoyage des données : {ex}");
+                System.Diagnostics.Debug.WriteLine($"Erreur lors du nettoyage des données : {ex.Message}");
             }
         }
     }

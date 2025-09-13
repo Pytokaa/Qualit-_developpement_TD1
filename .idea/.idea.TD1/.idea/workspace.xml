@@ -8,42 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Controllers/MarqueController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Controllers/TypeProduitController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Models/Repository/MarqueManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Models/Repository/TypeProduitManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/EntityFramework/ProduitDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/ProduitDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/EntityFramework/TypeProduit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/TypeProduit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" afterDir="false" />
-    </list>
+    <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +115,7 @@
       <workItem from="1757354531041" duration="2632000" />
       <workItem from="1757675090873" duration="12120000" />
       <workItem from="1757751544697" duration="4144000" />
-      <workItem from="1757755742996" duration="11438000" />
+      <workItem from="1757755742996" duration="13272000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -192,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757760921288</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ajout des Manager et controller de marque et typeProduit + tests unitaires de marque">
+      <option name="closed" value="true" />
+      <created>1757771245788</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1757771245788</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +208,8 @@
     <MESSAGE value="test de push" />
     <MESSAGE value="Avancement des tests unitaires et documentation des méthodes controller" />
     <MESSAGE value="Modification des dependances entre controller et manager. Ajout d'un initialize pour les tests unitaires" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification des dependances entre controller et manager. Ajout d'un initialize pour les tests unitaires" />
+    <MESSAGE value="Ajout des Manager et controller de marque et typeProduit + tests unitaires de marque" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des Manager et controller de marque et typeProduit + tests unitaires de marque" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
