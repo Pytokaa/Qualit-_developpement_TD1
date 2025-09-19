@@ -1,5 +1,7 @@
 using TD1.Models.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using TD1.DTO;
+using TD1.Mapper;
 using TD1.Models;
 using TD1.Models.EntityFramework;
 using TD1.Repository;
@@ -23,6 +25,7 @@ builder.Services.AddScoped<TypeProduitManager>();
 builder.Services.AddScoped<IDataRepository<TypeProduit>, TypeProduitManager>();
 builder.Services.AddScoped<MarqueManager>();
 builder.Services.AddScoped<IDataRepository<Marque>, MarqueManager>();
+builder.Services.AddSingleton<IMapper<Produit, ProduitDTO>,  ProduitMapper>();
 
 
 

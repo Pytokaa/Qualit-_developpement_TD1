@@ -5,7 +5,7 @@ using TD1.Models;
 
 namespace TD1.Models.EntityFramework;
 
-public partial class ProduitDbContext : DbContext
+public partial class ProduitDbContext : DbContext //renommer en AppDbContext
 {
     public DbSet<Produit> Produits { get; set; }
     public DbSet<TypeProduit> TypeProduits { get; set; }
