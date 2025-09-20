@@ -10,6 +10,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TD1.Controllers;
 using TD1.Models;
 using TD1.Repository;
+using AutoMapper;
+using TD1.Mapper;
 
 namespace TD1.Tests.Controllers;
 
@@ -38,6 +40,7 @@ public class MarqueControllerTest
         InitializeDefaultBrands();
         
         var manager = new MarqueManager(_context);
+   
         _brandController = new MarqueController(manager);
     }
 

@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TD1.Models;
 using TD1.Repository;
-
+using AutoMapper;
+using TD1.DTO;
 
 namespace TD1.Controllers;
 
@@ -29,7 +30,7 @@ public class MarqueController :  ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<IEnumerable<Marque>>> GetAll()
     {
-        return await _brandManager.GetAllAsync();
+        return  await _brandManager.GetAllAsync();
     }
     // GET: api/Marques/id/5
     /// <summary>
@@ -46,8 +47,7 @@ public class MarqueController :  ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<Marque>> GetById(int id)
     {
-        ActionResult<Marque?> brand = await _brandManager.GetByIdAsync(id);
-        
+        var brand = await _brandManager.GetByIdAsync(id);
         if (brand.Value == null)
         {
             return NotFound();
@@ -69,12 +69,11 @@ public class MarqueController :  ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<Marque>> GetByName(string name)
     {
-        ActionResult<Marque?> brand = await _brandManager.GetByStringAsync(name);
+        var brand = await _brandManager.GetByStringAsync(name);
         if (brand.Value == null)
         {
             return NotFound();
         }
-
         return brand;
     }
     // POST: api/Marques

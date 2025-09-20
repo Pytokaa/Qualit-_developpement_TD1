@@ -1,3 +1,7 @@
+using System;
+using System.Linq;
+using System.Reflection;
+
 namespace TD1.DTO;
 
 public class ProduitDetailDTO
@@ -11,5 +15,30 @@ public class ProduitDetailDTO
     public string? UriPhoto { get; set; }
     public int? StockReel { get; set; }
     public bool? InSupply { get; set; }
+    public override bool Equals(object? obj)
+    {
+        if (obj == null || obj.GetType() != GetType())
+            return false;
+
+        var other = (ProduitDetailDTO)obj;
+        var properties = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+        foreach (var prop in properties)
+        {
+            var value1 = prop.GetValue(this);
+            var value2 = prop.GetValue(other);
+
+            if (value1 == null && value2 == null)
+                continue;
+
+            if (value1 == null || value2 == null)
+                return false;
+
+            if (!value1.Equals(value2))
+                return false;
+        }
+
+        return true;
+    }
     
 }

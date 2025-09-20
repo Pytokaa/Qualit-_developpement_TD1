@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using TD1.DTO;
-using TD1.Mapper;
 using TD1.Models;
 using TD1.Repository;
 using AutoMapper;
@@ -16,7 +15,7 @@ public class ProduitController : ControllerBase
     private readonly IMapper _mapper;
     private readonly IDataRepository<Produit> _productManager;
 
-    public ProduitController(ProduitManager manager, IMapper mapper)
+    public ProduitController(IDataRepository<Produit> manager, IMapper mapper)
     {
         _productManager = manager;
         _mapper = mapper;

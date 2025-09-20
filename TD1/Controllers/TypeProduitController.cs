@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TD1.Models;
 using TD1.Repository;
-
+using AutoMapper;
+using TD1.DTO;
 namespace TD1.Controllers;
 
 
@@ -29,6 +30,7 @@ public class TypeProduitController : ControllerBase
     public async Task<ActionResult<IEnumerable<TypeProduit>>> GetAll()
     {
         return await _productTypeManager.GetAllAsync();
+        
     }
     // GET: api/TYpeProduit/id/5
     /// <summary>
@@ -73,7 +75,6 @@ public class TypeProduitController : ControllerBase
         {
             return NotFound();
         }
-
         return typeProduct;
     }
     // POST: api/TypeProduit
