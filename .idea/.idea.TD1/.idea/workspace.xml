@@ -11,63 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TD1/DTO/MarqueDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDetailDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Mapper/GenericProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/DTO/ProduitDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/DTO/TypeProduitDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/DTO/TypeProduitDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Mapper/IMapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Mapper/ProduitMapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Mapper/TypeProduitMapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/TD1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/TD1.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/TD1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/TD1.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +158,7 @@
       <workItem from="1757797194924" duration="4810000" />
       <workItem from="1757935255303" duration="313000" />
       <workItem from="1758279409548" duration="13223000" />
-      <workItem from="1758371547331" duration="6687000" />
+      <workItem from="1758371547331" duration="7110000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -288,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758292410597</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Mapping des DTO et début des tests impliquants ces derniers">
+      <option name="closed" value="true" />
+      <created>1758378526709</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1758378526709</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,7 +310,8 @@
     <MESSAGE value="Début des tests de la class TypeProduitController" />
     <MESSAGE value="Ajout des tests de methodes par Nom" />
     <MESSAGE value="Creation du projet front. Début des tests mock et des DTO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creation du projet front. Début des tests mock et des DTO" />
+    <MESSAGE value="Mapping des DTO et début des tests impliquants ces derniers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mapping des DTO et début des tests impliquants ces derniers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

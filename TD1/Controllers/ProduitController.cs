@@ -33,24 +33,10 @@ public class ProduitController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<IEnumerable<ProduitDTO>>> GetAll()
     {
-        var result = await _productManager.GetAllAsync(); // ActionResult<IEnumerable<Produit>>
+        var produits = (await _productManager.GetAllAsync()).Value;
+        var productsDTO = _mapper.Map<IEnumerable<ProduitDTO>>(produits);
 
-        if (result.Value == null)
-            return NotFound();
-
-        // On crée une liste DTO vide
-        var productsDTO = new List<ProduitDTO>();
-
-        foreach (var produit in result.Value)
-        {
-            // Mapping élément par élément
-            productsDTO.Add(_mapper.Map<ProduitDTO>(produit));
-        }
-
-        // Retourne directement la liste DTO
-        return productsDTO;
-        
-        
+        return new ActionResult<IEnumerable<ProduitDTO>>(productsDTO);
     }
     // GET: api/Produits/id/5
     /// <summary>
