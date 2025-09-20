@@ -203,3 +203,5 @@
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Castle.Core.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Moq.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/AutoMapper.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

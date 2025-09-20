@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using TD1.DTO;
+using TD1.Mapper;
 using TD1.Models;
 using TD1.Repository;
+using AutoMapper;
 
 namespace TD1.Controllers;
 
@@ -10,10 +13,13 @@ namespace TD1.Controllers;
 [Route("api/[controller]")]
 public class ProduitController : ControllerBase
 {
+    private readonly IMapper _mapper;
     private readonly IDataRepository<Produit> _productManager;
-    public ProduitController(IDataRepository<Produit> manager)
+
+    public ProduitController(ProduitManager manager, IMapper mapper)
     {
         _productManager = manager;
+        _mapper = mapper;
     }
     // GET: api/Produits
     /// <summary>
@@ -23,11 +29,28 @@ public class ProduitController : ControllerBase
     /// <response code="200">The request was successful and returned a list of products</response>
     /// <response code="500">An internal server error occurred.</response>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<Produit>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<ProduitDTO>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<Produit>>> GetAll()
+    public async Task<ActionResult<IEnumerable<ProduitDTO>>> GetAll()
     {
-        return await _productManager.GetAllAsync();
+        var result = await _productManager.GetAllAsync(); // ActionResult<IEnumerable<Produit>>
+
+        if (result.Value == null)
+            return NotFound();
+
+        // On crée une liste DTO vide
+        var productsDTO = new List<ProduitDTO>();
+
+        foreach (var produit in result.Value)
+        {
+            // Mapping élément par élément
+            productsDTO.Add(_mapper.Map<ProduitDTO>(produit));
+        }
+
+        // Retourne directement la liste DTO
+        return productsDTO;
+        
+        
     }
     // GET: api/Produits/id/5
     /// <summary>
@@ -39,18 +62,17 @@ public class ProduitController : ControllerBase
     /// <response code="404">No product was found with the specified identifier.</response>
     /// <response code="500">An internal server error occurred.</response>
     [HttpGet("id/{id}")]
-    [ProducesResponseType(typeof(Produit),StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProduitDetailDTO),StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<Produit>> GetById(int id)
+    public async Task<ActionResult<ProduitDetailDTO>> GetById(int id)
     {
-        var produit = await _productManager.GetByIdAsync(id);
-        
-        if (produit.Value == null)
-        {
+        var product = await _productManager.GetByIdAsync(id);
+        if (product.Value == null)
             return NotFound();
-        }
-        return produit;
+        
+        var productDTO = _mapper.Map<ProduitDetailDTO>(product.Value);
+        return productDTO;
     }
     // GET: api/Produits/id/{id}
     /// <summary>
@@ -62,18 +84,18 @@ public class ProduitController : ControllerBase
     /// <response code="404">No product was found with the specified name.</response>
     /// <response code="500">An internal server error occurred.</response>
     [HttpGet("name/{name}")]
-    [ProducesResponseType(typeof(Produit),StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProduitDetailDTO),StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<Produit>> GetByName(string name)
+    public async Task<ActionResult<ProduitDetailDTO>> GetByName(string name)
     {
         var produit = await _productManager.GetByStringAsync(name);
         if (produit.Value == null)
         {
             return NotFound();
         }
-
-        return produit;
+        ProduitDetailDTO productDTO = _mapper.Map<ProduitDetailDTO>(produit.Value);
+        return productDTO;
     }
     // POST: api/Produits
     /// <summary>

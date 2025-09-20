@@ -5,6 +5,7 @@ using TD1.Mapper;
 using TD1.Models;
 using TD1.Models.EntityFramework;
 using TD1.Repository;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<ProduitDbContext>();
 builder.Services.AddScoped<ProduitManager>();
 builder.Services.AddScoped<IDataRepository<Produit>, ProduitManager>();
@@ -25,8 +27,6 @@ builder.Services.AddScoped<TypeProduitManager>();
 builder.Services.AddScoped<IDataRepository<TypeProduit>, TypeProduitManager>();
 builder.Services.AddScoped<MarqueManager>();
 builder.Services.AddScoped<IDataRepository<Marque>, MarqueManager>();
-builder.Services.AddSingleton<IMapper<Produit, ProduitDTO>,  ProduitMapper>();
-
 
 
 var app = builder.Build();

@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "B+p61TzERFk=",
+  "dgSpecHash": "tzx8H8CGK3M=",
   "success": true,
   "projectFilePath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/TD1.Tests.csproj",
   "expectedPackageFiles": [
+    "/home/elioth/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/home/elioth/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/home/elioth/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/home/elioth/.nuget/packages/jetbrains.annotations/2025.2.2/jetbrains.annotations.2025.2.2.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.applicationinsights/2.23.0/microsoft.applicationinsights.2.23.0.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.codecoverage/17.14.1/microsoft.codecoverage.17.14.1.nupkg.sha512",
+    "/home/elioth/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.entityframeworkcore/8.0.4/microsoft.entityframeworkcore.8.0.4.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.4/microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512",
     "/home/elioth/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.4/microsoft.entityframeworkcore.analyzers.8.0.4.nupkg.sha512",

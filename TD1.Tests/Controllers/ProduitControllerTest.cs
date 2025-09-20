@@ -10,6 +10,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TD1.Controllers;
 using TD1.Models;
 using TD1.Repository;
+using AutoMapper;
+using TD1.DTO;
+using TD1.Mapper;
 
 namespace TD1.Tests.Controllers;
 
@@ -39,7 +42,15 @@ public class ProductControllerTest
         InitializeDefaultProducts();
         
         var manager = new ProduitManager(_context);
-        _productController = new ProduitController(manager);
+        
+        var config = new MapperConfiguration(cfg =>
+        {
+            cfg.AddProfile<GenericProfile>();
+        });
+        IMapper mapper = config.CreateMapper();
+        
+        
+        _productController = new ProduitController(manager, mapper);
     }
 
     //creation de produits par défauts pour effectuer les tests
@@ -70,13 +81,13 @@ public class ProductControllerTest
         _context.SaveChanges();
         
         // When : appelle du produit avec getbyid
-        ActionResult<Produit> action = _productController.GetById(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
+        ActionResult<ProduitDetailDTO> action = _productController.GetById(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
         
         // Then :
         Assert.IsNotNull(action);
-        Assert.IsInstanceOfType(action.Value, typeof(Produit));
+        Assert.IsInstanceOfType(action.Value, typeof(ProduitDetailDTO));
         
-        Produit returnProduct = action.Value;
+        ProduitDetailDTO returnProduct = action.Value;
         Assert.AreEqual(_defaultProduct1.NomProduit, returnProduct.NomProduit);
     }
 
@@ -122,9 +133,9 @@ public class ProductControllerTest
 
         // Then : Tests sur le type de retour et des données renvoyées
         Assert.IsNotNull(products);
-        Assert.IsInstanceOfType(products.Value, typeof(IEnumerable<Produit>));
+        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
         
-        var productList = (products.Value as IEnumerable<Produit>)?.ToList();
+        var productList = (products.Value as IEnumerable<ProduitDTO>)?.ToList();
         Assert.IsTrue(productList?.Count >= 2, "Au moins 2 produits devraient être retournés");
     }
     
@@ -135,7 +146,7 @@ public class ProductControllerTest
         int nonExistentId = 0;
         
         // When : Recuperation du produit inexistant via l'API
-        ActionResult<Produit> action = _productController.GetById(nonExistentId).GetAwaiter().GetResult();
+        ActionResult<ProduitDetailDTO> action = _productController.GetById(nonExistentId).GetAwaiter().GetResult();
         
         // Then : Test sur le type de retour (NotFound)
         Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult), "Ne renvoie pas 404");
@@ -224,11 +235,11 @@ public class ProductControllerTest
         _context.Produits.Add(_defaultProduct1);
         _context.SaveChanges();
         //When : 
-        ActionResult<Produit> action = _productController.GetByName(_defaultProduct1.NomProduit).GetAwaiter().GetResult();
+        ActionResult<ProduitDetailDTO> action = _productController.GetByName(_defaultProduct1.NomProduit).GetAwaiter().GetResult();
         //Then : 
         Assert.IsNotNull(action);
-        Assert.IsInstanceOfType(action.Value, typeof(Produit));
-        Produit returnProductInDb = action.Value;
+        Assert.IsInstanceOfType(action.Value, typeof(ProduitDetailDTO));
+        ProduitDetailDTO returnProductInDb = action.Value;
         Assert.AreEqual(_defaultProduct1.NomProduit, returnProductInDb.NomProduit);
     }
 
@@ -238,7 +249,7 @@ public class ProductControllerTest
         //Given :
         string nonExistentString = "";
         //When : 
-        ActionResult<Produit> action = _productController.GetByName(nonExistentString).GetAwaiter().GetResult();
+        ActionResult<ProduitDetailDTO> action = _productController.GetByName(nonExistentString).GetAwaiter().GetResult();
         //Then : 
         Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
         Assert.IsNull(action.Value);

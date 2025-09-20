@@ -1,13 +1,14 @@
 @using Application.Models
+@using Application.Services
 @page "/products"
 @attribute [StreamRendering]
-
+@inject IService<Product> _WebService
 <PageTitle>Products</PageTitle>
 
 @if (products == null)
 {
     <p>
-        <em>Loading.......</em>
+        <em>Loading...</em>
     </p>   
 }
 else{
@@ -21,15 +22,23 @@ else{
         </tr>
         </thead>
         <tbody>
-        @foreach (var product in products)
+        @if (products.Count == 0)
         {
-            <tr>
-                <td>@product.IdProduit</td>
-                <td>@product.NomProduit</td>
-                <td>@product.Description</td>
-                <td>@product.NomPhoto</td>
-            </tr>
+            <p>Y'a rien frr</p>
         }
+        else
+        {
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.IdProduit</td>
+                    <td>@product.NomProduit</td>
+                    <td>@product.Description</td>
+                    <td>@product.NomPhoto</td>
+                </tr>
+            }
+        }
+        
         </tbody>
     </table>
 }
@@ -37,8 +46,14 @@ else{
 @code{
 
     private List<Product>? products;
-    
-    //products = await Http.GetFromJsonAsync<Product>();
+
+
+    protected override Task OnInitializedAsync()
+    {
+        products = _WebService.GetAllAsync().GetAwaiter().GetResult();
+        
+        return base.OnInitializedAsync();
+    }
 
 
 }

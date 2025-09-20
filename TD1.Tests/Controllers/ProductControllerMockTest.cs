@@ -23,7 +23,7 @@ public class ProductControllerMockTest
     public ProductControllerMockTest()
     {
         var manager = new Mock<IDataRepository<Produit>>();
-        _produitController = new ProduitController(manager.Object);
+        //_produitController = new ProduitController(manager.Object);
         _productManager = new Mock<IDataRepository<Produit>>();
     }
 

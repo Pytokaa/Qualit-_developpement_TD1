@@ -11,33 +11,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Models/Product.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Services/IService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Services/WSService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/DTO/TypeProduitDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Mapper/IMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Mapper/ProduitMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Mapper/TypeProduitMapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TD1/DTO/MarqueDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDetailDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TD1/Mapper/GenericProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.sln" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/EntityFramework/Produit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/Produit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/EntityFramework/ProduitDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/ProduitDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/Repository/IDataRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/Repository/IDataRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/DTO/ProduitDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/DTO/TypeProduitDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/DTO/TypeProduitDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Mapper/IMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Mapper/ProduitMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Mapper/TypeProduitMapper.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/TD1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/TD1.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/TD1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/TD1.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +112,7 @@
   "keyToString": {
     ".NET Launch Settings Profile.Application: http.executor": "Run",
     ".NET Launch Settings Profile.TD1: http.executor": "Run",
+    "0dc36a53-0614-4541-8787-3d2ea406f4c0.executor": "Debug",
     "33f2e0fe-5ba3-437c-84c6-d36315c0ad41.executor": "Debug",
     "58c56b00-f81e-48fd-a74f-c8e84271fcf4.executor": "Debug",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -102,7 +133,7 @@
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Application: http">
     <configuration name="Application: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Application/Application.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/TD1/TD1.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="http" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -182,7 +213,8 @@
       <workItem from="1757787301383" duration="891000" />
       <workItem from="1757797194924" duration="4810000" />
       <workItem from="1757935255303" duration="313000" />
-      <workItem from="1758279409548" duration="12179000" />
+      <workItem from="1758279409548" duration="13223000" />
+      <workItem from="1758371547331" duration="6687000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -248,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757801719306</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Creation du projet front. Début des tests mock et des DTO">
+      <option name="closed" value="true" />
+      <created>1758292410597</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1758292410597</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,22 +303,22 @@
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 66% 304/900" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 65% 315/911" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 66% 304/900" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 65% 315/911" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="TD1 56% 200/457" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 66% 304/900" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 65% 315/911" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="TD1 56% 200/457" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="TD1 59% 177/434" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 66% 304/900" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 65% 315/911" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="TD1 56% 200/457" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="TD1 59% 177/434" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="Models 56% 38/87" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
@@ -317,7 +357,8 @@
     <MESSAGE value="Ajout des Manager et controller de marque et typeProduit + tests unitaires de marque" />
     <MESSAGE value="Début des tests de la class TypeProduitController" />
     <MESSAGE value="Ajout des tests de methodes par Nom" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des tests de methodes par Nom" />
+    <MESSAGE value="Creation du projet front. Début des tests mock et des DTO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creation du projet front. Début des tests mock et des DTO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -349,18 +390,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs</url>
-          <line>212</line>
-          <properties documentPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" containingFunctionPresentation="Method 'ShouldNotUpdateProductBecauseProductDoesNotExist'">
+          <line>134</line>
+          <properties documentPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" containingFunctionPresentation="Method 'ShouldGetAllProducts'">
             <startOffsets>
-              <option value="7584" />
+              <option value="4362" />
             </startOffsets>
             <endOffsets>
-              <option value="7695" />
+              <option value="4389" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#Microsoft.AspNetCore.Mvc.ActionResult`1" memberName="Value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

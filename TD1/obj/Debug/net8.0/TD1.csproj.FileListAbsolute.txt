@@ -105,3 +105,5 @@
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1/obj/Debug/net8.0/TD1.genruntimeconfig.cache
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1/obj/Debug/net8.0/ref/TD1.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1/obj/Debug/net8.0/TD1.sourcelink.json
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1/bin/Debug/net8.0/AutoMapper.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
