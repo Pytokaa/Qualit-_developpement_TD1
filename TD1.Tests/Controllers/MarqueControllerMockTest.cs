@@ -56,6 +56,7 @@ public class MarqueControllerMockTest
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action.Value, typeof(Marque));
         Assert.AreEqual(_defaultBrand1, action.Value);
+        _brandManager.Verify(manager => manager.GetByIdAsync(_defaultBrand1.IdMarque), Times.Once);
     }
 
     [TestMethod]
@@ -89,6 +90,7 @@ public class MarqueControllerMockTest
         
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action.Value, typeof(IEnumerable<Marque>));
+        Assert.AreEqual(brandsInDb, action.Value);
         _brandManager.Verify(manager => manager.GetAllAsync(), Times.Once);
     }
 
@@ -154,5 +156,70 @@ public class MarqueControllerMockTest
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
         
         _brandManager.Verify(manager => manager.GetByIdAsync(_defaultBrand1.IdMarque), Times.Once);
+    }
+
+    [TestMethod]
+    public void ShouldDeleteBrand()
+    {
+        //Given
+        _brandManager
+            .Setup(manager => manager.GetByIdAsync(_defaultBrand1.IdMarque))
+            .ReturnsAsync(_defaultBrand1);
+        
+        //When
+        var action = _brandController.DeleteMarque(_defaultBrand1.IdMarque).GetAwaiter().GetResult();
+        
+        //Then
+        
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NoContentResult));
+        _brandManager.Verify(manager => manager.DeleteAsync(_defaultBrand1), Times.Once);
+    }
+
+    [TestMethod]
+    public void ShouldNotDeleteBrandBecauseItDoesNotExist()
+    {
+        //Given
+        _brandManager
+            .Setup(manager => manager.GetByIdAsync(30))
+            .ReturnsAsync(new ActionResult<Marque>((Marque)null));
+        
+        //When
+        var action = _brandController.DeleteMarque(30).GetAwaiter().GetResult();
+        
+        //Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NotFoundResult));
+        _brandManager.Verify(manager => manager.GetByIdAsync(30), Times.Once);
+    }
+
+    [TestMethod]
+    public void ShouldGetBrandByName()
+    {
+        //Given
+        _brandManager
+            .Setup(manager => manager.GetByStringAsync(_defaultBrand1.NomMarque))
+            .ReturnsAsync(_defaultBrand1);
+        //When
+        var action = _brandController.GetByName(_defaultBrand1.NomMarque).GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action.Value, typeof(Marque));
+        Assert.AreEqual(action.Value, _defaultBrand1);
+        _brandManager.Verify(manager => manager.GetByStringAsync(_defaultBrand1.NomMarque), Times.Once);
+    }
+
+    [TestMethod]
+    public void ShouldNotGetBrandByNameBecauseItDoesntExist()
+    {
+        //Given
+        _brandManager
+            .Setup(manager => manager.GetByStringAsync(_defaultBrand1.NomMarque))
+            .ReturnsAsync(new ActionResult<Marque>((Marque)null));
+        //When
+        var action = _brandController.GetByName(_defaultBrand1.NomMarque).GetAwaiter().GetResult();
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
+        _brandManager.Verify(manager => manager.GetByStringAsync(_defaultBrand1.NomMarque), Times.Once);
     }
 }
