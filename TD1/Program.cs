@@ -12,10 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProduitDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ProduitDb")));
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -29,7 +27,19 @@ builder.Services.AddScoped<MarqueManager>();
 builder.Services.AddScoped<IDataRepository<Marque>, MarqueManager>();
 
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazorDev", policy =>
+        policy.WithOrigins("http://localhost:7074")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
+
+
 var app = builder.Build();
+app.UseCors("AllowBlazorDev");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -38,10 +48,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
+
+
+//app.UseHttpsRedirection();
 app.UseAuthorization();
-
 app.MapControllers();
+
+
 
 app.Run();

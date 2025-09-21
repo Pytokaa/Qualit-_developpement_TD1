@@ -4,34 +4,37 @@ namespace Application.Services;
 
 public class WSService : IService<Product>
 {
-    private readonly HttpClient httpClient = new() 
-    { 
-        BaseAddress = new Uri("http://localhost:5011/api/") 
-    };
+    private readonly HttpClient  _httpClient;
+
+    public WSService(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
 
     public async Task AddAsync(Product produit)
     {
-        await httpClient.PostAsJsonAsync<Product>("produits", produit);
+        await _httpClient.PostAsJsonAsync<Product>("Produit", produit);
     }
 
     public async Task DeleteAsync(int id)
     {
-        await httpClient.DeleteAsync($"produits/{id}");
+        await _httpClient.DeleteAsync($"Produit/{id}");
     }
 
     public async Task<List<Product>?> GetAllAsync()
     {
-        return await httpClient.GetFromJsonAsync<List<Product>?>("produits");
+        return await _httpClient.GetFromJsonAsync<List<Product>>("Produit");
+        
     }
 
     public async Task<Product?> GetByIdAsync(int id)
     {
-        return await httpClient.GetFromJsonAsync<Product?>($"produits/{id}");
+        return await _httpClient.GetFromJsonAsync<Product?>($"Produit/{id}");
     }
 
     public async Task<Product?> GetByNameAsync(string name)
     {
-        var response = await httpClient.PostAsJsonAsync("produits/search", name);
+        var response = await _httpClient.PostAsJsonAsync("Produit/", name);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<Product>();
@@ -39,6 +42,6 @@ public class WSService : IService<Product>
 
     public async Task UpdateAsync(Product updatedEntity)
     {
-        await httpClient.PutAsJsonAsync<Product>($"produits/{updatedEntity.IdProduit}", updatedEntity);
+        await _httpClient.PutAsJsonAsync<Product>($"Produit/{updatedEntity.IdProduit}", updatedEntity);
     }
 }

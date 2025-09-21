@@ -12,7 +12,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Models/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/WSService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/WSService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
@@ -26,10 +29,9 @@
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/MarqueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/MarqueController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/TypeProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/TypeProduitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/DTO/ProduitDetailDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDetailDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
@@ -39,6 +41,7 @@
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/ref/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/refint/TD1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,8 +85,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.Application: http.executor": "Run",
+    ".NET Launch Settings Profile.Application: https.executor": "Run",
     ".NET Launch Settings Profile.TD1: http.executor": "Run",
     "0dc36a53-0614-4541-8787-3d2ea406f4c0.executor": "Debug",
+    "16eca0b5-e2f6-439f-9c42-4b7b5dc8d546.executor": "Debug",
     "33f2e0fe-5ba3-437c-84c6-d36315c0ad41.executor": "Debug",
     "58c56b00-f81e-48fd-a74f-c8e84271fcf4.executor": "Debug",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -102,7 +107,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Application: http">
+  <component name="RunManager" selected="Multi-Launch.Multi-Launch: TD1">
     <configuration name="Application: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/TD1/TD1.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -163,6 +168,35 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Multi-Launch: TD1" type="com.intellij.execution.configurations.multilaunch" factoryName="MultiLaunchConfiguration">
+      <rows>
+        <ExecutableRowSnapshot>
+          <option name="condition">
+            <ConditionSnapshot>
+              <option name="type" value="immediately" />
+            </ConditionSnapshot>
+          </option>
+          <option name="executable">
+            <ExecutableSnapshot>
+              <option name="id" value="runConfig:.NET Launch Settings Profile.Application: https" />
+            </ExecutableSnapshot>
+          </option>
+        </ExecutableRowSnapshot>
+        <ExecutableRowSnapshot>
+          <option name="condition">
+            <ConditionSnapshot>
+              <option name="type" value="immediately" />
+            </ConditionSnapshot>
+          </option>
+          <option name="executable">
+            <ExecutableSnapshot>
+              <option name="id" value="runConfig:.NET Launch Settings Profile.Application: http" />
+            </ExecutableSnapshot>
+          </option>
+        </ExecutableRowSnapshot>
+      </rows>
+      <method v="2" />
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -186,6 +220,9 @@
       <workItem from="1757935255303" duration="313000" />
       <workItem from="1758279409548" duration="13223000" />
       <workItem from="1758371547331" duration="11750000" />
+      <workItem from="1758390537258" duration="3009000" />
+      <workItem from="1758470553560" duration="1653000" />
+      <workItem from="1758477531124" duration="2385000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -389,6 +426,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs</url>
+          <line>153</line>
+          <properties documentPath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs" containingFunctionPresentation="Method 'ShouldNotUpdateBrandBecauseBrandDoesNotExist'">
+            <startOffsets>
+              <option value="4808" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4866" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

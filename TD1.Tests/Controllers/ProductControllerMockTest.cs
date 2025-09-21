@@ -41,7 +41,7 @@ public class ProductControllerMockTest
     public void ShouldGetProduct()
     {
         // Given : Un produit en enregistré
-        Produit produitInDb = new()
+        Produit produitInDb = new Produit()
         {
             IdProduit = 30,
             NomProduit = "Chaise",

@@ -48,11 +48,9 @@ else{
     private List<Product>? products;
 
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        products = _WebService.GetAllAsync().GetAwaiter().GetResult();
-        
-        return base.OnInitializedAsync();
+        products = await _WebService.GetAllAsync();
     }
 
 
