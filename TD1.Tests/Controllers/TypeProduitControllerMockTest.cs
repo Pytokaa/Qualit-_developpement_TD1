@@ -102,4 +102,86 @@ public class TypeProduitControllerMockTest
         Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
         _productTypeManager.Verify(manager => manager.GetByStringAsync(_defaultProductType1.NomTypeProduit),  Times.Once);
     }
+
+    [TestMethod]
+    public void ShouldUpdateProductType()
+    {
+        //Given
+        TypeProduit productTypeToUpdate = _defaultProductType1;
+        TypeProduit productTypeUpdated = _defaultProductType1;
+        productTypeUpdated.NomTypeProduit = "productTypeModified";
+        _productTypeManager
+            .Setup(manager => manager.GetByIdAsync(productTypeToUpdate.IdTypeProduit))
+            .ReturnsAsync(productTypeToUpdate);
+        productTypeToUpdate.NomTypeProduit = "productType1Modified";
+
+        _productTypeManager
+            .Setup(manager => manager.UpdateAsync(productTypeToUpdate, productTypeToUpdate));
+        
+        //When
+
+        IActionResult action =
+            _productTypeController.PutProductType(productTypeToUpdate.IdTypeProduit, productTypeUpdated).GetAwaiter().GetResult();
+        
+        //Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NoContentResult));
+        
+        _productTypeManager.Verify(manager => manager.GetByIdAsync(productTypeToUpdate.IdTypeProduit), Times.Once);
+        _productTypeManager.Verify(manager => manager.UpdateAsync(productTypeToUpdate,It.IsAny<TypeProduit>()), Times.Once);
+    }
+
+    [TestMethod]
+    public void ShouldNotUpdateProductTypeBecauseItDoesNotExist()
+    {
+        //Given
+        _productTypeManager
+            .Setup(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit))
+            .ReturnsAsync(new ActionResult<TypeProduit>((TypeProduit)null));
+        //When
+        IActionResult action =  _productTypeController.PutProductType(_defaultProductType1.IdTypeProduit, _defaultProductType1).GetAwaiter().GetResult();
+        //Then 
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NotFoundResult));
+        
+        _productTypeManager.Verify(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit), Times.Once);
+        _productTypeManager.Verify(manager => manager.UpdateAsync(It.IsAny<TypeProduit>(), _defaultProductType1), Times.Never);
+    }
+
+    [TestMethod]
+    public void ShouldDeleteProductType()
+    {
+        //Given
+        _productTypeManager
+            .Setup(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit))
+            .ReturnsAsync(_defaultProductType1);
+
+        _productTypeManager
+            .Setup(manager => manager.DeleteAsync(_defaultProductType1));
+        
+        //When
+        IActionResult action = _productTypeController.DeleteProductType(_defaultProductType1.IdTypeProduit).GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NoContentResult));
+        
+        _productTypeManager.Verify(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit), Times.Once);
+        _productTypeManager.Verify(manager => manager.DeleteAsync(_defaultProductType1), Times.Once);
+    }
+
+    [TestMethod]
+    public void ShouldNotDeleteProductTypeBecauseItDoesNotExist()
+    {
+        //Given
+        _productTypeManager
+            .Setup(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit))
+            .ReturnsAsync(new ActionResult<TypeProduit>((TypeProduit)null));
+        //When
+        IActionResult action =  _productTypeController.DeleteProductType(_defaultProductType1.IdTypeProduit).GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(action);
+        Assert.IsInstanceOfType(action, typeof(NotFoundResult));
+        
+        _productTypeManager.Verify(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit), Times.Once);
+    }
 }

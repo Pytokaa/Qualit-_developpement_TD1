@@ -11,9 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerMockTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerMockTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" afterDir="false" />
@@ -27,6 +27,8 @@
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Mapper/GenericProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Mapper/GenericProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
@@ -61,6 +63,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c1f5b7d48954a608a607b29d36507c2c2ea00/7a/888d654e/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aa5b129637a63acbcc2b18ad837c80fef9d36a89bb5f187570e965229e51f6/Assert.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TD1/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -217,7 +220,10 @@
       <workItem from="1758390537258" duration="3009000" />
       <workItem from="1758470553560" duration="1653000" />
       <workItem from="1758477531124" duration="2521000" />
-      <workItem from="1758488492383" duration="1234000" />
+      <workItem from="1758488492383" duration="1848000" />
+      <workItem from="1758530707209" duration="613000" />
+      <workItem from="1758540411034" duration="3192000" />
+      <workItem from="1758550395765" duration="208000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -315,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758480024038</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fin des tests mock de marque et début pour type Produit">
+      <option name="closed" value="true" />
+      <created>1758490333219</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1758490333219</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +402,8 @@
     <MESSAGE value="Mapping des DTO et début des tests impliquants ces derniers" />
     <MESSAGE value="Correction de getallProduct" />
     <MESSAGE value="début de l'implementation des tests mock pour marque" />
-    <option name="LAST_COMMIT_MESSAGE" value="début de l'implementation des tests mock pour marque" />
+    <MESSAGE value="Fin des tests mock de marque et début pour type Produit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fin des tests mock de marque et début pour type Produit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -417,19 +432,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs</url>
-          <line>134</line>
-          <properties documentPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" containingFunctionPresentation="Method 'ShouldGetAllProducts'">
-            <startOffsets>
-              <option value="4362" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4389" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

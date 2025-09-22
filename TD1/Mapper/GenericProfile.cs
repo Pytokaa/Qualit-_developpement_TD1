@@ -15,12 +15,6 @@ public class GenericProfile : Profile
         CreateMap<Produit, ProduitDetailDTO>();
         CreateMap<ProduitDetailDTO, Produit>();
         
-        //creation des mappings pour Marque
-        CreateMap<Marque, MarqueDTO>();
-        CreateMap<MarqueDTO, Marque>();
         
-        //mappings pour TypeProduit
-        CreateMap<TypeProduit, TypeProduitDTO>();
-        CreateMap<TypeProduitDTO, TypeProduit>();
     }
 }

@@ -31,7 +31,7 @@ builder.Services.AddScoped<IDataRepository<Marque>, MarqueManager>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorDev", policy =>
-        policy.WithOrigins("http://localhost:7074")
+        policy.AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod());
 });

@@ -23,6 +23,7 @@ public class ProductControllerMockTest
     private readonly ProduitController _productController;
     private readonly Mock<IDataRepository<Produit>>  _produitManager;
     private readonly IMapper _mapper;
+    private Produit _defaultProduit1, _defaultProduit2;
     
     public ProductControllerMockTest()
     {
@@ -35,13 +36,12 @@ public class ProductControllerMockTest
         _produitManager = new Mock<IDataRepository<Produit>>();
         _productController = new ProduitController(_produitManager.Object, mapper);
     }
+
     
-    
-    [TestMethod]
-    public void ShouldGetProduct()
+    [TestInitialize]
+    public void Setup()
     {
-        // Given : Un produit en enregistré
-        Produit produitInDb = new Produit()
+        _defaultProduit1 = new Produit()
         {
             IdProduit = 30,
             NomProduit = "Chaise",
@@ -49,22 +49,35 @@ public class ProductControllerMockTest
             NomPhoto = "Une superbe chaise bleu",
             UriPhoto = "https://ikea.fr/chaise.jpg"
         };
+        _defaultProduit2 = new Produit()
+        {
+            NomProduit = "Armoir",
+            Description = "Une superbe armoire",
+            NomPhoto = "Une superbe armoire jaune",
+            UriPhoto = "https://ikea.fr/armoire-jaune.jpg"
+        };
 
+    }
+    
+    [TestMethod]
+    public void ShouldGetProduct()
+    {
+        // Given : Un produit en enregistré
         _produitManager
-            .Setup(manager =>  manager.GetByIdAsync(produitInDb.IdProduit))
-            .ReturnsAsync(produitInDb);
+            .Setup(manager =>  manager.GetByIdAsync(_defaultProduit1.IdProduit))
+            .ReturnsAsync(_defaultProduit1);
         
         // When : On appelle la méthode GET de l'API pour récupérer le produit
-        ActionResult<ProduitDetailDTO> action = _productController.GetById(produitInDb.IdProduit).GetAwaiter().GetResult();
+        ActionResult<ProduitDetailDTO> action = _productController.GetById(_defaultProduit1.IdProduit).GetAwaiter().GetResult();
         
         // Then : On récupère le produit et le code de retour est 200
-        _produitManager.Verify(manager => manager.GetByIdAsync(produitInDb.IdProduit), Times.Once);
+        _produitManager.Verify(manager => manager.GetByIdAsync(_defaultProduit1.IdProduit), Times.Once);
         
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action.Value, typeof(ProduitDetailDTO));
         
         ProduitDetailDTO returnProduct = action.Value;
-        ProduitDetailDTO productDTO = _mapper.Map<ProduitDetailDTO>(produitInDb);
+        ProduitDetailDTO productDTO = _mapper.Map<ProduitDetailDTO>(_defaultProduit1);
         Assert.AreEqual(productDTO, returnProduct);
     }
 
@@ -72,31 +85,22 @@ public class ProductControllerMockTest
     public void ShouldDeleteProduct()
     {
         // Given : Un produit enregistré
-        Produit produitInDb = new()
-        {
-            IdProduit = 20,
-            NomProduit = "Chaise",
-            Description = "Une superbe chaise",
-            NomPhoto = "Une superbe chaise bleu",
-            UriPhoto = "https://ikea.fr/chaise.jpg"
-        };
+        _produitManager
+            .Setup(manager => manager.GetByIdAsync(_defaultProduit1.IdProduit))
+            .ReturnsAsync(_defaultProduit1);
 
         _produitManager
-            .Setup(manager => manager.GetByIdAsync(produitInDb.IdProduit))
-            .ReturnsAsync(produitInDb);
-
-        _produitManager
-            .Setup(manager => manager.DeleteAsync(produitInDb));
+            .Setup(manager => manager.DeleteAsync(_defaultProduit1));
 
         // When : On souhaite supprimer un produit depuis l'API
-        IActionResult action = _productController.DeleteProduit(produitInDb.IdProduit).GetAwaiter().GetResult();
+        IActionResult action = _productController.DeleteProduit(_defaultProduit1.IdProduit).GetAwaiter().GetResult();
         
         // Then : Le produit a bien été supprimé et le code HTTP est NO_CONTENT (204)
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NoContentResult));
         
-        _produitManager.Verify(manager => manager.GetByIdAsync(produitInDb.IdProduit), Times.Once);
-        _produitManager.Verify(manager => manager.DeleteAsync(produitInDb), Times.Once);
+        _produitManager.Verify(manager => manager.GetByIdAsync(_defaultProduit1.IdProduit), Times.Once);
+        _produitManager.Verify(manager => manager.DeleteAsync(_defaultProduit1), Times.Once);
     }
     
     [TestMethod]
