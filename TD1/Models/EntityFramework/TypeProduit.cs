@@ -1,13 +1,14 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices.JavaScript;
+using TD1.Models.EntityFramework;
 
 
 namespace TD1.Models;
 
 
 [Table("t_e_typeproduit_typ")]
-public partial class TypeProduit
+public class TypeProduit : IEntity
 {
     [Key]
     [Column("id_type_produit")]
@@ -22,5 +23,9 @@ public partial class TypeProduit
     
     [InverseProperty(nameof(Produit.TypeProduitNavigation))]
     public ICollection<Produit>? Produits { get; set; } = new List<Produit>();
-    
+
+
+    public int GetId() => IdTypeProduit;
+    public string GetName() => NomTypeProduit;
+
 }

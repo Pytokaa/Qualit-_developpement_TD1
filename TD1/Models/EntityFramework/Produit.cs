@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TD1.Models.EntityFramework;
 
 namespace TD1.Models;
 
 [Table(("t_e_produit_pro"))]
-public class Produit
+public class Produit : IEntity
 {
     [Key]
     [Column("id_produit")]
@@ -55,4 +56,7 @@ public class Produit
         if (obj.GetType() != GetType()) return false;
         return Equals((Produit)obj);
     }
+    
+    public int GetId() => IdProduit;
+    public string GetName() => NomProduit;
 }
