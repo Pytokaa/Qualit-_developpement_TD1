@@ -71,7 +71,7 @@ public abstract class GenericController<T> : ControllerBase where T : class, IEn
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Put(int id, [FromBody] T entity)
     {
-        if (id != entity.GetId())
+        if (id != entity.GetId() && entity.GetId() != null)
         {
             return BadRequest();
         }

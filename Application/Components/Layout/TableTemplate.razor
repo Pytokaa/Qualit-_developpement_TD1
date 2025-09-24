@@ -1,0 +1,50 @@
+@using System.Reflection
+@typeparam TItem
+
+<h3>@Title</h3>
+
+@if (Items == null)
+{
+    <p>Loading...</p>
+}
+else if (!Items.Any())
+{
+    <p>Pas de données</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            @foreach (var prop in _properties)
+            {
+                <th>@prop.Name</th>
+            }
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Items)
+        {
+            <tr @onclick="() => OnRowClick?.Invoke(item)" style="cursor:pointer">
+                @foreach (var prop in _properties)
+                {
+                    <td>@(prop.GetValue(item))</td>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter] public string Title { get; set; } = string.Empty;
+    [Parameter] public List<TItem>? Items { get; set; } = new();
+    [Parameter] public Action<TItem>? OnRowClick { get; set; }
+   
+    private PropertyInfo[] _properties = Array.Empty<PropertyInfo>();
+
+    protected override void OnInitialized()
+    {
+        _properties = typeof(TItem).GetProperties();
+    }
+}   

@@ -1,0 +1,24 @@
+@page "/productTypes"
+@using Application.Models
+@using Application.Services
+@inject ProductTypeWSService _ProductTypeWsService
+@inject NavigationManager Navigation
+
+<TableTemplate TItem="TypeProduit"
+             Title="Product Types"
+             Items="productTypes"
+             OnRowClick="NavigateToDetail" />
+
+@code {
+    private List<TypeProduit>? productTypes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
+    }
+
+    private void NavigateToDetail(TypeProduit pt)
+    {
+        Navigation.NavigateTo($"/productTypeDetail/{pt.IdTypeProduit}");
+    }
+}

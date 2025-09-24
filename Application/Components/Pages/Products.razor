@@ -2,7 +2,9 @@
 @using Application.Services
 @page "/products"
 @attribute [StreamRendering]
-@inject IService<Product> _WebService
+@inject ProductWSService _WebService
+
+
 <PageTitle>Products</PageTitle>
 
 @if (products == null)
@@ -30,7 +32,7 @@ else{
         {
             @foreach (var product in products)
             {
-                <tr>
+                <tr style="cursor:pointer" @onclick="() => NavigateToDetail(product.IdProduit)">
                     <td>@product.IdProduit</td>
                     <td>@product.NomProduit</td>
                     <td>@product.Description</td>
@@ -52,6 +54,11 @@ else{
     {
         products = await _WebService.GetAllAsync();
     }
+    [Inject] private NavigationManager Navigation { get; set; } = null!;
 
+    private void NavigateToDetail(int id)
+    {
+        Navigation.NavigateTo($"/product/{id}");
+    }
 
 }

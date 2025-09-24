@@ -32,7 +32,11 @@ public class GenericManager<T>(ProduitDbContext context) : IDataRepository<T> wh
 
     public async Task<ActionResult<T>> GetByIdAsync(int id)
     {
-        return await context.Set<T>().IncludeNavigationPropertiesIfNeeded().FirstOrDefaultAsync(e => e.GetId() == id);
+        return context.Set<T>()
+            .IncludeNavigationPropertiesIfNeeded()
+            .AsEnumerable()          // <-- switch du côté client
+            .FirstOrDefault(e => e.GetId() == id);
+
     }
 
     public async Task AddAsync(T entity)
@@ -43,6 +47,7 @@ public class GenericManager<T>(ProduitDbContext context) : IDataRepository<T> wh
 
     public async Task UpdateAsync(T entityToUpdate, T entity)
     {
+        context.Set<T>().Attach(entityToUpdate);
         context.Entry(entityToUpdate).CurrentValues.SetValues(entity);
         await context.SaveChangesAsync();
     }

@@ -11,19 +11,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TD1/Attributes/NavigationPropertyAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Controllers/GenericDTOController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/DTO/IDtoEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Extensions/EntityExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/IEntityWithNavigation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Components/Layout/TableTemplate.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Components/Pages/Brands.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductDetail.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductTypeDetail.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductTypes.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Models/IEntity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Models/Marque.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Models/TypeProduit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Services/BrandWSService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Services/GenericWSService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Services/ProductTypeWSService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Services/ProductWSService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/WSService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/WSService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerMockTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/MarqueControllerTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProductControllerMockTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/ProduitControllerTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerMockTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerMockTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/Controllers/TypeProduitControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Models/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/IService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/IService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/WSService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" afterDir="false" />
@@ -37,20 +41,12 @@
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/DTOController.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/Controllers/GenericController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/GenericController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/MarqueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/MarqueController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/ProduitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Controllers/TypeProduitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Controllers/TypeProduitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/DTO/ProduitDetailDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDetailDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Mapper/GenericProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Mapper/GenericProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/EntityFramework/Produit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/Produit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/Models/Repository/GenericManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/Repository/GenericManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" afterDir="false" />
@@ -82,6 +78,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c1f5b7d48954a608a607b29d36507c2c2ea00/7a/888d654e/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c1f5b7d48954a608a607b29d36507c2c2ea00/ef/1806f1d6/IValueTaskSource`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/829d6ac6e62b9bee9ef8e79e827d87d0c31a7c2eefbc354135d9a8f2c4deb/Mapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aa5b129637a63acbcc2b18ad837c80fef9d36a89bb5f187570e965229e51f6/Assert.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TD1/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
@@ -123,7 +120,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.TD1: http">
+  <component name="RunManager" selected="Multi-Launch.Multi-Launch: TD1">
     <configuration name="Application: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/TD1/TD1.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -246,7 +243,7 @@
       <workItem from="1758554193568" duration="806000" />
       <workItem from="1758561848006" duration="27000" />
       <workItem from="1758634231091" duration="13205000" />
-      <workItem from="1758730774898" duration="5411000" />
+      <workItem from="1758730774898" duration="19431000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -368,7 +365,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758638899680</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="controller et manager génériques">
+      <option name="closed" value="true" />
+      <created>1758736995941</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1758736995941</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +449,8 @@
     <MESSAGE value="Fin des tests mock de marque et début pour type Produit" />
     <MESSAGE value="Ajout de methods de test mock" />
     <MESSAGE value="Ajout de manager generic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de manager generic" />
+    <MESSAGE value="controller et manager génériques" />
+    <option name="LAST_COMMIT_MESSAGE" value="controller et manager génériques" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

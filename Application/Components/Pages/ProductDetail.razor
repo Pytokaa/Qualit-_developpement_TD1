@@ -1,0 +1,33 @@
+@page "/product/{Id:int}"
+@using Application.Models
+@using Application.Services
+@inject IService<Product> _WebService
+<PageTitle>Products Detail</PageTitle>
+
+
+<h3>Détail du produit</h3>
+
+@if (product == null)
+{
+    <p>Chargement…</p>
+}
+else
+{
+    <div>
+        <p><b>Id:</b> @product.IdProduit</p>
+        <p><b>Nom:</b> @product.NomProduit</p>
+        <p><b>Description:</b> @product.Description</p>
+        <p><b>Photo:</b> @product.NomPhoto</p>
+    </div>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Product? product;
+
+    protected override async Task OnInitializedAsync()
+    {
+        product = await _WebService.GetByIdAsync(Id);
+    }
+}

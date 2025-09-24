@@ -1,0 +1,66 @@
+@using Application.Models
+@using Application.Services
+@page "/brands"
+@attribute [StreamRendering]
+@inject BrandWSService _BrandWsService
+
+<PageTitle>Brands</PageTitle>
+
+@if (brandList == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom Marque</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (brandList.Count == 0)
+        {
+            <p>Y'a rien frr</p>
+        }
+        else
+        {
+            @foreach (var brand in brandList)
+            {
+                <tr style="cursor:pointer" @onclick="() => NavigateToDetail((int)brand.IdMarque)">
+                    <td>@brand.IdMarque</td>
+                    <td>@brand.NomMarque</td>
+                </tr>
+            }
+        }
+        
+        </tbody>
+    </table>
+}
+
+
+
+
+
+@code{
+
+    private List<Marque>? brandList;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        brandList = await _BrandWsService.GetAllAsync();
+    }
+    [Inject] private NavigationManager Navigation { get; set; } = null!;
+
+    private void NavigateToDetail(int id)
+    {
+        Navigation.NavigateTo($"/brand/{id}");
+    }
+
+}
+
