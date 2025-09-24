@@ -6,7 +6,7 @@ using TD1.DTO;
 
 namespace TD1.Controllers;
 
-
+/*
 [Microsoft.AspNetCore.Components.Route("api/[controller")]
 [ApiController]
 [Route("api/[controller]")]
@@ -153,4 +153,11 @@ public class MarqueController :  ControllerBase
         await _brandManager.DeleteAsync(brandToDelete.Value);
         return NoContent();
     }
+}
+
+*/
+
+public class MarqueController : GenericController<Marque>
+{
+    public MarqueController(IDataRepository<Marque> manager) : base(manager){}
 }

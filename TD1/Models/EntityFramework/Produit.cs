@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TD1.Models.EntityFramework;
+using TD1.Attributes;
+using TD1.Extensions;
 
 namespace TD1.Models;
 
 [Table(("t_e_produit_pro"))]
-public class Produit : IEntity
+public class Produit : IEntityWithNavigation
 {
     [Key]
     [Column("id_produit")]
@@ -37,10 +39,12 @@ public class Produit : IEntity
 
     [ForeignKey(nameof(IdMarque))]
     [InverseProperty(nameof(Marque.Produits))]
+    [NavigationProperty]
     public virtual Marque? MarqueNavigation { get; set; } = null!;
     
     [ForeignKey(nameof(IdTypeProduit))]
     [InverseProperty(nameof(TypeProduit.Produits))]
+    [NavigationProperty]
     public virtual TypeProduit? TypeProduitNavigation { get; set; } = null!;
 
     protected bool Equals(Produit other)

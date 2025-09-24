@@ -79,7 +79,7 @@ public class TypeProduitControllerTest
         _context.TypeProduits.Add(_defaultTypeProduit1);
         _context.SaveChanges();
         //When : 
-        IActionResult action = _typeProductController.DeleteProductType(_defaultTypeProduit1.IdTypeProduit).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.Delete(_defaultTypeProduit1.IdTypeProduit).GetAwaiter().GetResult();
         
         //Then : 
         Assert.IsNotNull(action);
@@ -93,7 +93,7 @@ public class TypeProduitControllerTest
         //Given : 
         int nonExistentId = 9999;
         //When : 
-        IActionResult action = _typeProductController.DeleteProductType(nonExistentId).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.Delete(nonExistentId).GetAwaiter().GetResult();
         //Then : 
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
@@ -135,7 +135,7 @@ public class TypeProduitControllerTest
         //Given : 
         TypeProduit productType = _defaultTypeProduit1;
         //When : 
-        ActionResult<TypeProduit> action = _typeProductController.AddProductType(productType).GetAwaiter().GetResult();
+        ActionResult<TypeProduit> action = _typeProductController.Add(productType).GetAwaiter().GetResult();
         //Then : 
         TypeProduit productTypeInDb = _context.TypeProduits.Find(productType.IdTypeProduit);
         Assert.IsNotNull(productTypeInDb);
@@ -154,7 +154,7 @@ public class TypeProduitControllerTest
         _defaultTypeProduit1.NomTypeProduit = "modifiedNameProductType";
         
         //When : 
-        IActionResult action = _typeProductController.PutProductType(_defaultTypeProduit1.IdTypeProduit, _defaultTypeProduit1).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.Put(_defaultTypeProduit1.IdTypeProduit, _defaultTypeProduit1).GetAwaiter().GetResult();
         
         //Then : 
         Assert.IsNotNull(action);
@@ -176,7 +176,7 @@ public class TypeProduitControllerTest
         _defaultTypeProduit1.NomTypeProduit = "modifiedNameProductType";
         
         //When : 
-        IActionResult action = _typeProductController.PutProductType(0, _defaultTypeProduit1).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.Put(0, _defaultTypeProduit1).GetAwaiter().GetResult();
         
         //Then : 
         Assert.IsNotNull(action);
@@ -189,7 +189,7 @@ public class TypeProduitControllerTest
         //Given 
         int  nonExistentId = 0;
         //When : 
-        IActionResult action = _typeProductController.PutProductType(nonExistentId, _defaultTypeProduit1).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.Put(nonExistentId, _defaultTypeProduit1).GetAwaiter().GetResult();
         
         //Then
         Assert.IsNotNull(action);

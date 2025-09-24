@@ -17,12 +17,13 @@ using TD1.Mapper;
 namespace TD1.Tests.Controllers;
 
 [TestClass]
-[TestSubject(typeof(ProduitController))]
+[TestSubject(typeof(ProductController))]
 [TestCategory("integration")]
 public class ProductControllerTest
 {
     private ProduitDbContext _context;
-    private ProduitController _productController;
+    private ProductController _productController;
+    private IMapper _mapper;
     
     // Produits de base pour les tests
     private Produit _defaultProduct1;
@@ -48,9 +49,9 @@ public class ProductControllerTest
             cfg.AddProfile<GenericProfile>();
         });
         IMapper mapper = config.CreateMapper();
+        _mapper = config.CreateMapper();
         
-        
-        _productController = new ProduitController(manager, mapper);
+        _productController = new ProductController(manager, mapper);
     }
 
     //creation de produits par défauts pour effectuer les tests
@@ -99,7 +100,7 @@ public class ProductControllerTest
         _context.SaveChanges();
         
         // When : Suppression depuis l'API du produit
-        IActionResult action = _productController.DeleteProduit(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
+        IActionResult action = _productController.Delete(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
         
         // Then : Test sur le type de retour (NoContentResult)
         Assert.IsNotNull(action);
@@ -114,7 +115,7 @@ public class ProductControllerTest
         int nonExistentId = 99999;
         
         // When : Suppression depuis l'API d'un produit qui n'existe pas
-        IActionResult action = _productController.DeleteProduit(nonExistentId).GetAwaiter().GetResult();
+        IActionResult action = _productController.Delete(nonExistentId).GetAwaiter().GetResult();
         
         // Then : Test sur le type de action.result (NotFound)
         Assert.IsNotNull(action);
@@ -157,14 +158,24 @@ public class ProductControllerTest
     public void ShouldCreateProduct()
     {
         // Given : Un nouveau produit à créer
-        Produit productToInsert = _defaultProduct1;
+        ProduitDetailDTO productToInsert = _mapper.Map<ProduitDetailDTO>(_defaultProduct1);
+        
         
         // When : ajout de ce produit via l'API
-        ActionResult<Produit> action = _productController.AddProduit(productToInsert).GetAwaiter().GetResult();
+        ActionResult<ProduitDetailDTO> action = _productController.Add(productToInsert).GetAwaiter().GetResult();
         
         // Then : tests sur le type de action et sur le produit inséré en base de données 
-        Produit productInDb = _context.Produits.Find(productToInsert.IdProduit);
+        var createdResult = action.Result as CreatedAtActionResult;
+        Assert.IsNotNull(createdResult);
+
+        var returnedDto = createdResult.Value as ProduitDetailDTO;
+        Assert.IsNotNull(returnedDto);
         
+        //recuperation de l'id a l'aide du retour et non de la class en elle meme à cause des DTO (donc non présent sur les autres class)
+        int generatedId = (int)returnedDto.IdProduit;
+
+
+        var productInDb = _context.Produits.Find(generatedId);
         Assert.IsNotNull(productInDb);
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action.Result, typeof(CreatedAtActionResult));
@@ -176,13 +187,13 @@ public class ProductControllerTest
         // Given : ajout d'un produit dans la base de données
         _context.Produits.Add(_defaultProduct1);
         _context.SaveChanges();
-        
+        int assignedId = _defaultProduct1.IdProduit;
+        ProduitDetailDTO updatedProduct = _mapper.Map<ProduitDetailDTO>(_defaultProduct1);
         // changement de certaines propriétés
-        _defaultProduct1.NomProduit = "Produit modifié";
-        _defaultProduct1.Description = "Description modifiée";
+        updatedProduct.NomProduit = "ModifiedName";
 
         // When : modification de ces propriétés via l'API
-        IActionResult action = _productController.PutProduit(_defaultProduct1.IdProduit, _defaultProduct1).GetAwaiter().GetResult();
+        IActionResult action = _productController.Put(assignedId, updatedProduct).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);
@@ -191,23 +202,24 @@ public class ProductControllerTest
         Produit editedProductInDb = _context.Produits.Find(_defaultProduct1.IdProduit);
         
         Assert.IsNotNull(editedProductInDb);
-        Assert.AreEqual("Produit modifié", editedProductInDb.NomProduit);
-        Assert.AreEqual("Description modifiée", editedProductInDb.Description);
+        Assert.AreEqual("ModifiedName", editedProductInDb.NomProduit);
     }
     
     [TestMethod]
     public void ShouldNotUpdateProductBecauseIdInUrlIsDifferent()
     {
         // Given : ajout d'un produit dans la base de données
+        
         _context.Produits.Add(_defaultProduct1);
         _context.SaveChanges();
-        
+        ProduitDetailDTO productToUpdate = _mapper.Map<ProduitDetailDTO>(_defaultProduct1);
+        int productToUpdateId = _defaultProduct1.IdProduit;
         // changement de certaines propriétés
         _defaultProduct1.NomProduit = "Produit modifié";
         _defaultProduct1.Description = "Description modifiée";
 
         // When : Utiliser un ID différent dans l'URL
-        IActionResult action = _productController.PutProduit(0, _defaultProduct1).GetAwaiter().GetResult();
+        IActionResult action = _productController.Put(0, productToUpdate).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);
@@ -218,10 +230,11 @@ public class ProductControllerTest
     public void ShouldNotUpdateProductBecauseProductDoesNotExist()
     {
         // Given : Un produit qui n'existe pas en base
+        ProduitDetailDTO productToUpdate = _mapper.Map<ProduitDetailDTO>(_defaultProduct1);
         int nonExistentId = 0;
         
         // When : tentative de modification d'un produit qui n'existe pas
-        IActionResult action = _productController.PutProduit(nonExistentId, _defaultProduct1).GetAwaiter().GetResult();
+        IActionResult action = _productController.Put(nonExistentId, productToUpdate).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);

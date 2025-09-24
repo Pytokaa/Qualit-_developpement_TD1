@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using TD1.DTO;
 using TD1.Models.EntityFramework;
 using TD1.Repository;
 
@@ -7,80 +9,106 @@ namespace TD1.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public abstract class GenericController<T> : ControllerBase where T : class, IEntity
+public abstract class GenericDTOController<T, TDto, TDetailDto> : ControllerBase where T : class, IEntity where TDto : class
+    where TDetailDto : class,  IDtoEntity
 {
     protected readonly IDataRepository<T> _manager;
+    protected readonly IMapper _mapper;
 
-    public GenericController(IDataRepository<T> manager)
+    public GenericDTOController(IDataRepository<T> manager, IMapper mapper)
     {
         _manager = manager;
+        _mapper = mapper;
     }
-
-
+    
+    
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType( StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<T>>> GetAll()
+    public async Task<ActionResult<IEnumerable<TDto>>> GetAll()
     {
-        return await _manager.GetAllAsync();
+        var entities = (await _manager.GetAllAsync()).Value;
+        var entitiesDTO = _mapper.Map<IEnumerable<TDto>>(entities);
+
+        return new ActionResult<IEnumerable<TDto>>(entitiesDTO);
     }
     
     [HttpGet("id/{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public virtual async Task<ActionResult<T>> GetById(int id)
+    public new async Task<ActionResult<TDetailDto>> GetById(int id)
     {
         var entity = await _manager.GetByIdAsync(id);
         if (entity.Value == null)
-        {
             return NotFound();
-        }
-        return entity;
+        
+        var entityDTO = _mapper.Map<TDetailDto>(entity.Value);
+        return entityDTO;
     }
     [HttpGet("name/{name}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<T>> GetByName(string name)
+    public async Task<ActionResult<TDetailDto>> GetByName(string name)
     {
         var entity = await _manager.GetByStringAsync(name);
         if (entity.Value == null)
         {
             return NotFound();
         }
-        return entity;
+        var entityDTO = _mapper.Map<TDetailDto>(entity.Value);
+        return entityDTO;
     }
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<T>> Add(T entity)
+    public async Task<ActionResult<TDetailDto>> Add([FromBody]TDetailDto entityDto)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
+
+        if (entityDto.GetId() != null)
+        {
+            entityDto.SetId();
+        }
         
+        var entity = _mapper.Map<T>(entityDto);
         await _manager.AddAsync(entity);
-        return CreatedAtAction( nameof(GetById), new { id = entity.GetId() }, entity);
+        
+        
+        var resultDto = _mapper.Map<TDetailDto>(entity);
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = entity.GetId() },
+            resultDto
+        );
     }
+    
+        
+    
     [HttpPut("id/{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Put(int id, [FromBody] T entity)
+    public async Task<IActionResult> Put(int id, [FromBody] TDetailDto  entityDto)
     {
-        if (id != entity.GetId())
+        if (entityDto.GetId() != null)
         {
-            return BadRequest();
+            if (id != entityDto.GetId())
+            {
+                return BadRequest();
+            }
         }
+        
         ActionResult<T?> entityToUpdate = await _manager.GetByIdAsync(id);
 
         if (entityToUpdate.Value == null)
         {
             return NotFound();
         }
+        var entity = _mapper.Map<T>(entityDto);
         await _manager.UpdateAsync(entityToUpdate.Value, entity);
         return NoContent();
     }
@@ -90,12 +118,12 @@ public abstract class GenericController<T> : ControllerBase where T : class, IEn
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Delete(int id) //y'a un truc qui va pas ici, a revoir
     {
-        ActionResult<T?> entityToDelete = await _manager.GetByIdAsync(id);
-        if (entityToDelete.Value == null)
+        ActionResult<T?> produitToDelete = await _manager.GetByIdAsync(id);
+        if (produitToDelete.Value == null)
         {
             return NotFound();
         }
-        await _manager.DeleteAsync(entityToDelete.Value);
+        await _manager.DeleteAsync(produitToDelete.Value);
         return NoContent();
     }
 }

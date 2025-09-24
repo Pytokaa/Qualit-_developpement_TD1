@@ -5,7 +5,7 @@ using AutoMapper;
 using TD1.DTO;
 namespace TD1.Controllers;
 
-
+/*
 [Microsoft.AspNetCore.Components.Route("api/[controller]")]
 [ApiController]
 [Route("api/[controller]")]
@@ -155,4 +155,9 @@ public class TypeProduitController : ControllerBase
         await _productTypeManager.DeleteAsync(productTypeToDelete.Value);
         return NoContent();
     }
+}*/
+
+public class TypeProduitController : GenericController<TypeProduit>
+{
+    public TypeProduitController(IDataRepository<TypeProduit> manager) : base(manager){}
 }

@@ -2,7 +2,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using TD1.Models.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TD1.Attributes;
 using TD1.Models;
+using TD1.Extensions;
 
 namespace TD1.Repository;
 
@@ -10,7 +12,7 @@ public class GenericManager<T>(ProduitDbContext context) : IDataRepository<T> wh
 {
     public async Task<ActionResult<IEnumerable<T>>> GetAllAsync()
     {
-        return await context.Set<T>().ToListAsync();
+        return await context.Set<T>().IncludeNavigationPropertiesIfNeeded().ToListAsync();
     }
 
     public async Task<ActionResult<T>> GetByStringAsync(string str)
@@ -25,12 +27,12 @@ public class GenericManager<T>(ProduitDbContext context) : IDataRepository<T> wh
         {
             throw new NotSupportedException($"{typeof(T).Name} is not supported");
         }
-        return await context.Set<T>().Where(e => EF.Property<string>(e, propertyName).ToLower() == str.ToLower()).FirstOrDefaultAsync();
+        return await context.Set<T>().Where(e => EF.Property<string>(e, propertyName).ToLower() == str.ToLower()).IncludeNavigationPropertiesIfNeeded().FirstOrDefaultAsync();
     }
 
     public async Task<ActionResult<T>> GetByIdAsync(int id)
     {
-        return await context.Set<T>().FindAsync(id);
+        return await context.Set<T>().IncludeNavigationPropertiesIfNeeded().FirstOrDefaultAsync(e => e.GetId() == id);
     }
 
     public async Task AddAsync(T entity)

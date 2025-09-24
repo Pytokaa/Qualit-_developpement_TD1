@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace TD1.Controllers;
 
-
+/*
 [Microsoft.AspNetCore.Components.Route("api/[controller")]
 [ApiController]
 [Route("api/[controller]")]
@@ -160,3 +160,11 @@ public class ProduitController : ControllerBase
         return NoContent();
     }
 }
+*/
+
+
+public class ProductController : GenericDTOController<Produit,ProduitDTO, ProduitDetailDTO>
+{
+    public ProductController(IDataRepository<Produit> manager, IMapper mapper) : base(manager, mapper) {}
+}
+
