@@ -5,16 +5,42 @@
 @inject NavigationManager Navigation
 
 <TableTemplate TItem="TypeProduit"
-             Title="Product Types"
-             Items="productTypes"/>
+               Title="Product Types"
+               Items="productTypes"
+               selectedItem="selectedProductType"
+               OnItemSelected="LoadSelectedTypeProduit"
+               OnPutFormSubmit="PutSelectedProductType"
+               OnDeleteButtonSubmit="DeleteSelectedProductType"/>
+
 @code {
     private List<TypeProduit>? productTypes;
+    private TypeProduit? selectedProductType;
 
     protected override async Task OnInitializedAsync()
     {
         productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
+        
+        if (productTypes.Any())
+        {
+            selectedProductType = productTypes.First();
+        }
     }
 
+    private async Task LoadSelectedTypeProduit(string name)
+    {
+        selectedProductType = await _ProductTypeWsService.GetByNameAsync(name);
+        StateHasChanged();
+    }
+
+    private async Task PutSelectedProductType(TypeProduit typeproductToUpdate)
+    {
+        await _ProductTypeWsService.UpdateAsync(typeproductToUpdate);
+        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+    }
+
+    private async Task DeleteSelectedProductType(TypeProduit productTypeToDelete)
+    {
+        await _ProductTypeWsService.DeleteAsync(productTypeToDelete.IdTypeProduit);
+        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+    }
 }
-
-

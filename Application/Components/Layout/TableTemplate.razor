@@ -1,9 +1,6 @@
 @using System.Reflection
-@using Application.Services
+@using Application.Attributes
 @typeparam TItem where TItem : class, Application.Models.IEntity
-@inject NavigationManager Navigation
-
-<link href="css/GenericTable.css" rel="stylesheet" />
 
 <h3>@Title</h3>
 
@@ -17,43 +14,85 @@ else if (!Items.Any())
 }
 else
 {
-    <table class="table">
-        <thead>
-        <tr>
-            @foreach (var prop in _properties)
-            {
-                <th>@prop.Name</th>
-            }
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Items)
-        {
-            <tr @onclick="() => NavigateToItem((int)item.GetId())" style="cursor:pointer">
-                @foreach (var prop in _properties)
+    <div id="content">
+        <div id="divSelect">
+            <select @onchange="OnSelectChanged" value="@selectedItem?.GetName()">
+                @foreach (var entity in Items)
                 {
-                    <td>@(prop.GetValue(item))</td>
+                    <option value="@entity.GetName()">@entity.GetName()</option>
                 }
-            </tr>
-        }
-        </tbody>
-    </table>
+            </select>
+        </div>
+        <div id="divForm">
+            @if (selectedItem != null)
+            {
+                <EditForm Model="selectedItem" OnValidSubmit="SubmitForm">
+                    @foreach (var prop in typeof(TItem).GetProperties()
+                                  .Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
+                    {
+                        <div class="form-group">
+                            <label>@prop.Name</label>
+                            
+                            @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
+                            {
+                                <input type="number"
+                                       value="@prop.GetValue(selectedItem)"
+                                       @onchange="e => prop.SetValue(selectedItem, Convert.ToInt32(e.Value))" />
+                            }
+                            else
+                            {
+                                <input type="text"
+                                       value="@prop.GetValue(selectedItem)"
+                                       @onchange="e => prop.SetValue(selectedItem, e.Value?.ToString())" />
+                            }
+                        </div>
+                    }
+                    <button type="submit">Update</button>
+                </EditForm>
+                <div id="deleteItemdiv" @onclick="DeleteSubmit">
+                    Delete
+                </div>
+            }
+        </div>
+    </div>
 }
 
 @code {
     [Parameter] public string Title { get; set; } = string.Empty;
     [Parameter] public List<TItem>? Items { get; set; }
+    [Parameter] public TItem? selectedItem { get; set; }
+    [Parameter] public EventCallback<string> OnItemSelected { get; set; }
+    [Parameter] public EventCallback<TItem> OnPutFormSubmit { get; set; }
+    [Parameter] public EventCallback<TItem> OnDeleteButtonSubmit { get; set; }
 
-    private PropertyInfo[] _properties = Array.Empty<PropertyInfo>();
-
-    protected override void OnInitialized()
+    private async Task OnSelectChanged(ChangeEventArgs e)
     {
-        _properties = typeof(TItem).GetProperties();
+        var selectedName = e.Value?.ToString();
+        if (!string.IsNullOrEmpty(selectedName))
+        {
+            await OnItemSelected.InvokeAsync(selectedName);
+        }
     }
 
-    private void NavigateToItem(int id)
+    private async Task SubmitForm()
     {
-        // Navigue vers une page dédiée par type + id
-        Navigation.NavigateTo($"/{typeof(TItem).Name.ToLower()}/{id}");
+        if (selectedItem != null)
+            await OnPutFormSubmit.InvokeAsync(selectedItem);
+    }
+
+    private async Task DeleteSubmit()
+    {
+        if (selectedItem != null)
+        {
+            await OnDeleteButtonSubmit.InvokeAsync(selectedItem);
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && selectedItem != null)
+        {
+            await OnItemSelected.InvokeAsync(selectedItem.GetName());
+        }
     }
 }

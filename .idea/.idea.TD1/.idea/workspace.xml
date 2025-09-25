@@ -11,40 +11,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Components/Pages/BrandDetail.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductCreate.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Models/StateService/ProductStateService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/wwwroot/css/GenericTable.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/wwwroot/css/productCreate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/wwwroot/css/productsTable.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Attributes/IgnoreInTemplateAttribute.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Components/Layout/TableTemplate.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Layout/TableTemplate.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/Brands.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/Brands.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/BrandDetail.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/ProductCreate.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductCreate.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Components/Pages/ProductDetail.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductDetail.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/ProductTypeDetail.razor" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Components/Pages/ProductTypes.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductTypes.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Models/IEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Models/IEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Models/Marque.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Models/Marque.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Models/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/DTO/ProduitDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/DTO/ProduitDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Migrations/ProduitDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Migrations/ProduitDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/EntityFramework/Marque.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/Marque.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/Models/EntityFramework/Produit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/Models/EntityFramework/Produit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Models/TypeProduit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Models/TypeProduit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/GenericWSService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/GenericWSService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/IService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/IService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/bin/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1/obj/Debug/net8.0/TD1.sourcelink.json" afterDir="false" />
@@ -250,7 +234,7 @@
       <workItem from="1758561848006" duration="27000" />
       <workItem from="1758634231091" duration="13205000" />
       <workItem from="1758730774898" duration="19611000" />
-      <workItem from="1758801053769" duration="10498000" />
+      <workItem from="1758801053769" duration="18560000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -388,7 +372,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758750358998</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Ajout de la fonction ajout de produit sur l'application et amélioration de l'affichage produit. &#10;Affichage des marque et types produit générique">
+      <option name="closed" value="true" />
+      <created>1758811829690</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1758811829691</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,7 +458,8 @@
     <MESSAGE value="Ajout de manager generic" />
     <MESSAGE value="controller et manager génériques" />
     <MESSAGE value="Avancées sur l'api ainsi que creation d'un template générique pour afficher les données" />
-    <option name="LAST_COMMIT_MESSAGE" value="Avancées sur l'api ainsi que creation d'un template générique pour afficher les données" />
+    <MESSAGE value="Ajout de la fonction ajout de produit sur l'application et amélioration de l'affichage produit. &#10;Affichage des marque et types produit générique" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout de la fonction ajout de produit sur l'application et amélioration de l'affichage produit. &#10;Affichage des marque et types produit générique" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

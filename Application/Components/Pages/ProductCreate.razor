@@ -72,9 +72,9 @@ else
             ProductState.CurrentProduct = new Product();
         }
     }
-    private void SaveProduct()
+    private async void SaveProduct()
     {
-        _ProductWsService.AddAsync(ProductState.CurrentProduct);
+       await _ProductWsService.AddAsync(ProductState.CurrentProduct);
     }
 
 }

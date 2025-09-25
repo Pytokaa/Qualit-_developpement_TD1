@@ -25,9 +25,9 @@ public abstract class GenericWSService<T> : IService<T> where T : class,  IEntit
         await _httpClient.PostAsJsonAsync($"{typeof(T).Name}/Add", entity);
     }
 
-    public async Task UpdateAsync(T updatedEntity)
+    public async Task UpdateAsync( T updatedEntity)
     {
-        await _httpClient.PutAsJsonAsync<T>($"{typeof(T).Name}/{updatedEntity.GetId()}", updatedEntity);
+        await _httpClient.PutAsJsonAsync<T>($"{typeof(T).Name}/Put/id/{updatedEntity.GetId()}", updatedEntity);
     }
 
     public async Task DeleteAsync(int id)
@@ -35,8 +35,8 @@ public abstract class GenericWSService<T> : IService<T> where T : class,  IEntit
         await _httpClient.DeleteAsync($"{typeof(T).Name}/Delete/id/{id}");
     }
 
-    public async Task<Product?> GetByNameAsync(string name)
+    public async Task<T?> GetByNameAsync(string name)
     {
-        return await _httpClient.GetFromJsonAsync<Product>($"{typeof(T).Name}/GetByName/name/{name}");
+        return await _httpClient.GetFromJsonAsync<T>($"{typeof(T).Name}/GetByName/name/{name}");
     }
 }
