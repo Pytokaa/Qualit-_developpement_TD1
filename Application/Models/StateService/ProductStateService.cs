@@ -1,6 +1,6 @@
 namespace Application.Models.StateService;
 
-public class ProductStateService
+public class ProductStateService : IStateService<Product>
 {
-    public Product CurrentProduct { get; set; } = new Product();
+    public Product CurrentEntity { get; set; } = new Product();
 }

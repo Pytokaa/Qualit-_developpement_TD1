@@ -1,22 +1,17 @@
 @using Application.Models
+@using Application.Models.StateService
 @using Application.Services
 @page "/brands"
-@attribute [StreamRendering]
-@inject BrandWSService _BrandWSService
-@inject NavigationManager Navigation
+@inject IStateService<Marque> _brandToAdd
+@inject IService<Marque> _brandWsService
+
 
 <PageTitle>Brands</PageTitle>
 
 <TableTemplate TItem="Marque"
                Title="Brands"
-               Items="brands"/>
+               ItemToAdd="_brandToAdd"
+               _WsService="_brandWsService"/>
 
-@code{
-    private List<Marque>? brands;
 
-    protected override async Task OnInitializedAsync()
-    {
-        brands = await _BrandWSService.GetAllAsync() ?? new List<Marque>();
-    }
-}
 

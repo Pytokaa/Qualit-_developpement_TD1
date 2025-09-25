@@ -1,6 +1,13 @@
 @using System.Reflection
 @using Application.Attributes
+@using Application.Models.StateService
+@using Application.Services
 @typeparam TItem where TItem : class, Application.Models.IEntity
+<link href="css/tableTemplate.css" rel="stylesheet" />
+
+
+
+
 
 <h3>@Title</h3>
 
@@ -54,45 +61,75 @@ else
                 </div>
             }
         </div>
+        <div id="adddiv">
+            <h3>Add a @Title</h3>
+            <EditForm Model="ItemToAdd.CurrentEntity" OnValidSubmit="SubmitAddForm">
+                @foreach (var prop in typeof(TItem).GetProperties()
+                              .Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
+                {
+                    <div class="form-group">
+                        <label>@prop.Name</label>
+
+                        @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
+                        {
+                            <input type="number"
+                                   value="@prop.GetValue(ItemToAdd.CurrentEntity)"
+                                   @onchange="e => prop.SetValue(ItemToAdd.CurrentEntity, Convert.ToInt32(e.Value))"/>
+                        }
+                        else
+                        {
+                            <input type="text"
+                                   value="@prop.GetValue(ItemToAdd.CurrentEntity)"
+                                   @onchange="e => prop.SetValue(ItemToAdd.CurrentEntity, e.Value?.ToString())"/>
+                        }
+                    </div>
+                }
+                <button type="submit">Add</button>
+            </EditForm>
+        </div>
     </div>
 }
 
 @code {
     [Parameter] public string Title { get; set; } = string.Empty;
-    [Parameter] public List<TItem>? Items { get; set; }
-    [Parameter] public TItem? selectedItem { get; set; }
-    [Parameter] public EventCallback<string> OnItemSelected { get; set; }
-    [Parameter] public EventCallback<TItem> OnPutFormSubmit { get; set; }
-    [Parameter] public EventCallback<TItem> OnDeleteButtonSubmit { get; set; }
+    public List<TItem>? Items { get; set; }
+    public TItem? selectedItem { get; set; }
+    [Parameter] public IStateService<TItem> ItemToAdd { get; set; }
+    [Parameter] public IService<TItem> _WsService { get; set; }
 
     private async Task OnSelectChanged(ChangeEventArgs e)
     {
         var selectedName = e.Value?.ToString();
         if (!string.IsNullOrEmpty(selectedName))
         {
-            await OnItemSelected.InvokeAsync(selectedName);
+            selectedItem = Items?.FirstOrDefault(i => i.GetName() == selectedName);
+        }
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        Items = await _WsService.GetAllAsync() ?? new List<TItem>();
+        if (Items.Any())
+        {
+            selectedItem = Items.First(); 
         }
     }
 
+    private async Task SubmitAddForm()
+    {
+        await _WsService.AddAsync(ItemToAdd.CurrentEntity);
+        StateHasChanged();
+    }
     private async Task SubmitForm()
     {
         if (selectedItem != null)
-            await OnPutFormSubmit.InvokeAsync(selectedItem);
+            await _WsService.UpdateAsync(selectedItem);
     }
 
     private async Task DeleteSubmit()
     {
         if (selectedItem != null)
         {
-            await OnDeleteButtonSubmit.InvokeAsync(selectedItem);
-        }
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender && selectedItem != null)
-        {
-            await OnItemSelected.InvokeAsync(selectedItem.GetName());
+            await _WsService.DeleteAsync((int)selectedItem.GetId());
         }
     }
 }

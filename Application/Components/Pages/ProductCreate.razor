@@ -22,9 +22,9 @@
 else
 {
     <form @onsubmit="SaveProduct">
-        <input type="text" @bind="ProductState.CurrentProduct.NomProduit" placeholder="Product name" />
+        <input type="text" @bind="ProductState.CurrentEntity.NomProduit" placeholder="Product name" />
 
-        <select @bind="ProductState.CurrentProduct.IdMarque">
+        <select @bind="ProductState.CurrentEntity.IdMarque">
             <option value="">-- Select brand --</option>
             @foreach (var brand in _brands)
             {
@@ -32,7 +32,7 @@ else
             }
         </select>
 
-        <select @bind="ProductState.CurrentProduct.IdTypeProduit">
+        <select @bind="ProductState.CurrentEntity.IdTypeProduit">
             <option value="">-- Select product type --</option>
             @foreach (var type in _productTypes)
             {
@@ -40,17 +40,17 @@ else
             }
         </select>
 
-        <textarea @bind="ProductState.CurrentProduct.Description" placeholder="Description"></textarea>
+        <textarea @bind="ProductState.CurrentEntity.Description" placeholder="Description"></textarea>
 
-        <input type="text" @bind="ProductState.CurrentProduct.NomPhoto" placeholder="Photo name" />
+        <input type="text" @bind="ProductState.CurrentEntity.NomPhoto" placeholder="Photo name" />
 
-        <input type="text" @bind="ProductState.CurrentProduct.UriPhoto" placeholder="Photo URI" />
+        <input type="text" @bind="ProductState.CurrentEntity.UriPhoto" placeholder="Photo URI" />
         
-        @if (!string.IsNullOrWhiteSpace(ProductState.CurrentProduct.UriPhoto))
+        @if (!string.IsNullOrWhiteSpace(ProductState.CurrentEntity.UriPhoto))
         {
             <div style="margin-top:1rem;">
                 <p>Preview:</p>
-                <img src="@ProductState.CurrentProduct.UriPhoto" alt="Preview" style="max-width:200px; max-height:200px; object-fit:cover; border:1px solid #ccc;" />
+                <img src="@ProductState.CurrentEntity.UriPhoto" alt="Preview" style="max-width:200px; max-height:200px; object-fit:cover; border:1px solid #ccc;" />
             </div>
         }
 
@@ -67,14 +67,14 @@ else
     {
         _brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
         _productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
-        if (ProductState.CurrentProduct == null)
+        if (ProductState.CurrentEntity == null)
         {
-            ProductState.CurrentProduct = new Product();
+            ProductState.CurrentEntity = new Product();
         }
     }
     private async void SaveProduct()
     {
-       await _ProductWsService.AddAsync(ProductState.CurrentProduct);
+       await _ProductWsService.AddAsync(ProductState.CurrentEntity);
     }
 
 }

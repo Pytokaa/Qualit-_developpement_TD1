@@ -1,46 +1,12 @@
 @page "/productTypes"
 @using Application.Models
+@using Application.Models.StateService
 @using Application.Services
-@inject ProductTypeWSService _ProductTypeWsService
-@inject NavigationManager Navigation
+@inject IStateService<TypeProduit> _productTypeToAdd
+@inject IService<TypeProduit> _prodtypeWsService
 
 <TableTemplate TItem="TypeProduit"
                Title="Product Types"
-               Items="productTypes"
-               selectedItem="selectedProductType"
-               OnItemSelected="LoadSelectedTypeProduit"
-               OnPutFormSubmit="PutSelectedProductType"
-               OnDeleteButtonSubmit="DeleteSelectedProductType"/>
+               ItemToAdd="_productTypeToAdd"
+               _WsService="_prodtypeWsService"/>
 
-@code {
-    private List<TypeProduit>? productTypes;
-    private TypeProduit? selectedProductType;
-
-    protected override async Task OnInitializedAsync()
-    {
-        productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
-        
-        if (productTypes.Any())
-        {
-            selectedProductType = productTypes.First();
-        }
-    }
-
-    private async Task LoadSelectedTypeProduit(string name)
-    {
-        selectedProductType = await _ProductTypeWsService.GetByNameAsync(name);
-        StateHasChanged();
-    }
-
-    private async Task PutSelectedProductType(TypeProduit typeproductToUpdate)
-    {
-        await _ProductTypeWsService.UpdateAsync(typeproductToUpdate);
-        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
-    }
-
-    private async Task DeleteSelectedProductType(TypeProduit productTypeToDelete)
-    {
-        await _ProductTypeWsService.DeleteAsync(productTypeToDelete.IdTypeProduit);
-        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
-    }
-}

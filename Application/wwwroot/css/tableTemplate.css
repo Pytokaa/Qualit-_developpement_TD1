@@ -1,0 +1,81 @@
+#content {
+    display: flex;
+    gap: 20px; /* espace entre les colonnes */
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+/* Chaque colonne prend une largeur similaire */
+#divSelect, #divForm, #adddiv {
+    flex: 1; /* chaque div prend un tiers de l'espace disponible */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Titres des formulaires */
+#divForm h3, #adddiv h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+/* Form-group styling */
+.form-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 6px 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Boutons */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0078d4;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #005a9e;
+}
+
+/* Delete button */
+#deleteItemdiv {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#deleteItemdiv:hover {
+    background-color: #c9302c;
+}
+
+/* Select styling */
+#divSelect select {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+}
