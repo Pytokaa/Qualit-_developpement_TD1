@@ -1,4 +1,4 @@
-@page "/productTypeDetail/{Id:int}"
+@page "/typeproduit/{Id:int}"
 @using  Application.Models
 @using Application.Services
 
@@ -8,4 +8,12 @@
 
 <h3>Detail of product type</h3>
 
+
+
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+}
 

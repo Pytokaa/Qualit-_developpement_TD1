@@ -6,9 +6,7 @@
 
 <TableTemplate TItem="TypeProduit"
              Title="Product Types"
-             Items="productTypes"
-             OnRowClick="NavigateToDetail" />
-
+             Items="productTypes"/>
 @code {
     private List<TypeProduit>? productTypes;
 
@@ -17,8 +15,6 @@
         productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
     }
 
-    private void NavigateToDetail(TypeProduit pt)
-    {
-        Navigation.NavigateTo($"/productTypeDetail/{pt.IdTypeProduit}");
-    }
 }
+
+

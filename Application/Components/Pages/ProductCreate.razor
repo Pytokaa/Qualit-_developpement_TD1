@@ -1,0 +1,80 @@
+@using Application.Models
+@using Application.Models.StateService
+@using Application.Services
+@page "/product/create"
+@inject ProductWSService _ProductWsService
+@inject BrandWSService _BrandWsService
+@inject ProductTypeWSService _ProductTypeWsService
+@inject ProductStateService ProductState
+<link href="css/productCreate.css" rel="stylesheet" />
+
+
+<PageTitle>Product Create</PageTitle>
+
+<h3>Create a product</h3>
+
+
+
+@if (_brands.Count == 0 || _productTypes.Count == 0)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <form @onsubmit="SaveProduct">
+        <input type="text" @bind="ProductState.CurrentProduct.NomProduit" placeholder="Product name" />
+
+        <select @bind="ProductState.CurrentProduct.IdMarque">
+            <option value="">-- Select brand --</option>
+            @foreach (var brand in _brands)
+            {
+                <option value="@brand.IdMarque">@brand.NomMarque</option>
+            }
+        </select>
+
+        <select @bind="ProductState.CurrentProduct.IdTypeProduit">
+            <option value="">-- Select product type --</option>
+            @foreach (var type in _productTypes)
+            {
+                <option value="@type.IdTypeProduit">@type.NomTypeProduit</option>
+            }
+        </select>
+
+        <textarea @bind="ProductState.CurrentProduct.Description" placeholder="Description"></textarea>
+
+        <input type="text" @bind="ProductState.CurrentProduct.NomPhoto" placeholder="Photo name" />
+
+        <input type="text" @bind="ProductState.CurrentProduct.UriPhoto" placeholder="Photo URI" />
+        
+        @if (!string.IsNullOrWhiteSpace(ProductState.CurrentProduct.UriPhoto))
+        {
+            <div style="margin-top:1rem;">
+                <p>Preview:</p>
+                <img src="@ProductState.CurrentProduct.UriPhoto" alt="Preview" style="max-width:200px; max-height:200px; object-fit:cover; border:1px solid #ccc;" />
+            </div>
+        }
+
+        <button type="submit">Save</button>
+    </form>
+
+}
+
+@code{
+    private List<Marque>? _brands = new();
+    private List<TypeProduit>? _productTypes = new();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
+        _productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
+        if (ProductState.CurrentProduct == null)
+        {
+            ProductState.CurrentProduct = new Product();
+        }
+    }
+    private void SaveProduct()
+    {
+        _ProductWsService.AddAsync(ProductState.CurrentProduct);
+    }
+
+}

@@ -1,64 +1,63 @@
 @using Application.Models
 @using Application.Services
 @page "/products"
-@attribute [StreamRendering]
-@inject ProductWSService _WebService
+@inject ProductWSService _ProductWsService
 
+<link href="css/productsTable.css" rel="stylesheet" />
 
 <PageTitle>Products</PageTitle>
 
+<h3>Products</h3>
+
+<div id="addProduct" @onclick='() => NavigateToPage("/product/create")'>
+    <p>Add a product</p>
+</div>
+
 @if (products == null)
 {
-    <p>
-        <em>Loading...</em>
-    </p>   
+    <p>Loading...</p>
 }
-else{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Description</th>
-            <th>NomPhoto</th>
-        </tr>
-        </thead>
-        <tbody>
-        @if (products.Count == 0)
+else if (!products.Any())
+{
+    <p>There is no product</p>
+}
+else
+{
+    <div id="divProducts">
+        @foreach (var product in products)
         {
-            <p>Y'a rien frr</p>
+            <div class="divProduct" @onclick="() => NavigateToProduct(product.IdProduit)">
+                <img src="@GetPhoto(product.UriPhoto)" alt="@product.NomPhoto">
+                <h4>@product.NomProduit</h4>
+            </div>
         }
-        else
-        {
-            @foreach (var product in products)
-            {
-                <tr style="cursor:pointer" @onclick="() => NavigateToDetail(product.IdProduit)">
-                    <td>@product.IdProduit</td>
-                    <td>@product.NomProduit</td>
-                    <td>@product.Description</td>
-                    <td>@product.NomPhoto</td>
-                </tr>
-            }
-        }
-        
-        </tbody>
-    </table>
+    </div>
 }
 
-@code{
-
+@code {
     private List<Product>? products;
 
+    [Inject] NavigationManager Navigation { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        products = await _WebService.GetAllAsync();
+        products = await _ProductWsService.GetAllAsync() ?? new List<Product>();
     }
-    [Inject] private NavigationManager Navigation { get; set; } = null!;
 
-    private void NavigateToDetail(int id)
+    private void NavigateToPage(string uri)
+    {
+        Navigation.NavigateTo(uri);
+    }
+
+    private void NavigateToProduct(int id)
     {
         Navigation.NavigateTo($"/product/{id}");
     }
 
+    private string GetPhoto(string? uri)
+    {
+        return string.IsNullOrWhiteSpace(uri)
+            ? "_content/YourApp/images/empty-square.png"
+            : uri;
+    }
 }

@@ -39,7 +39,7 @@ namespace TD1.Migrations
 
                     b.HasKey("IdMarque");
 
-                    b.ToTable("t_e_Marque_mar", "produit");
+                    b.ToTable("t_e_marque_mar", "produit");
                 });
 
             modelBuilder.Entity("TD1.Models.Produit", b =>
@@ -52,7 +52,6 @@ namespace TD1.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdProduit"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("description");
 
@@ -65,7 +64,6 @@ namespace TD1.Migrations
                         .HasColumnName("id_type_produit");
 
                     b.Property<string>("NomPhoto")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("nom_photo");
 
@@ -82,12 +80,11 @@ namespace TD1.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("stock_min");
 
-                    b.Property<int>("StockReel")
+                    b.Property<int?>("StockReel")
                         .HasColumnType("integer")
                         .HasColumnName("stock_reel");
 
                     b.Property<string>("UriPhoto")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("uri_photo");
 
@@ -111,7 +108,8 @@ namespace TD1.Migrations
 
                     b.Property<string>("NomTypeProduit")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("nom_type_produit");
 
                     b.HasKey("IdTypeProduit");

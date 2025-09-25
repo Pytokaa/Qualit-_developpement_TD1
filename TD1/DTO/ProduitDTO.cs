@@ -6,5 +6,7 @@ public class ProduitDTO
     public string? NomProduit { get; set; }
     public string? NomTypeProduit { get; set; }
     public string? NomMarque { get; set; }
+    public string? NomPhoto { get; set; }
+    public string? UriPhoto { get; set; }
     
 }

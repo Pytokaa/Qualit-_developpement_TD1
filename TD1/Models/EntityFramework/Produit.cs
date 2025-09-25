@@ -16,11 +16,11 @@ public class Produit : IEntityWithNavigation
     [Column("nom_produit")] 
     public string NomProduit { get; set; } = null!;
 
-    [Column("description")] public string Description { get; set; } = null!;
+    [Column("description")] public string? Description { get; set; }
 
-    [Column("nom_photo")] public string NomPhoto { get; set; } = null!;
+    [Column("nom_photo")] public string? NomPhoto { get; set; } 
 
-    [Column("uri_photo")] public string UriPhoto { get; set; } = null!;
+    [Column("uri_photo")] public string? UriPhoto { get; set; } 
 
     [Column("id_type_produit")]
     public int? IdTypeProduit { get; set; }

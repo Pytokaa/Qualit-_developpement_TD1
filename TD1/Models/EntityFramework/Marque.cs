@@ -5,7 +5,7 @@ using TD1.Models.EntityFramework;
 
 namespace TD1.Models;
 
-[Table("t_e_Marque_mar")]
+[Table("t_e_marque_mar")]
 public class Marque : IEntity
 {
     [Key]
