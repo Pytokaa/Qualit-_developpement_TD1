@@ -1,66 +1,136 @@
+/* Conteneur des cartes produits */
 #divProducts {
     display: flex;
     flex-wrap: wrap;
     gap: 2%;
+    column-gap: 2%;
+    row-gap: 2%;
     justify-content: flex-start;
     margin-top: 2%;
 }
 
-
+/* Cartes produits */
 #divProducts .divProduct {
+    flex: 1 1 calc(33.333% - 2%); /* 3 cartes par ligne */
+    max-width: calc(33.333% - 2%);
+    height: 350px; /* même hauteur pour toutes les cartes */
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 31%;
-    height: 300px;
     border: 1px solid #ccc;
+    border-radius: 10px;
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    padding: 1%;
+    overflow: hidden; /* contenu ne dépasse pas */
+    background-color: #fff;
+    padding: 10px;
 }
 
+/* Image des produits */
 #divProducts .divProduct img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-radius: 8px;
     background-color: #f0f0f0;
+    flex-shrink: 0;
 }
 
+/* Nom du produit */
+#divProducts .divProduct h4 {
+    margin: 10px 0 5px 0;
+    text-align: center;
+    color: #333;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* Marque et type du produit */
+#divProducts .divProduct h5 {
+    margin: 2px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* Effet hover sur les cartes */
 #divProducts .divProduct:hover {
     transform: translateY(-2%);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-#divProducts .divProduct h4 {
-    margin-top: 10px;
-    text-align: center;
-    color: #333;
+/* Contrôles des produits (filtres + add product) */
+#products-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
+/* Barre de recherche et filtres */
+#filter-and-search {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Conteneur des selects */
+#filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* les selects passent à la ligne si nécessaire */
+}
+
+/* Bouton ajouter un produit */
 #addProduct {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 70px;
-    background-color: #007bff;
+    background-color: #4CAF50;
     color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 10px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    border-radius: 5px;
     text-align: center;
-    margin: 10px;
+    height: fit-content;
+    align-self: center;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
+/* Hover bouton ajouter */
 #addProduct:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
     transform: translateY(-2px);
 }
 
-#addProduct p {
-    margin: 0;
-    pointer-events: none;
+/* Inputs et select */
+input[type="text"], select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive: 2 cartes par ligne sur medium screens */
+@media (max-width: 992px) {
+    #divProducts .divProduct {
+        flex: 1 1 calc(50% - 2%);
+        max-width: calc(50% - 2%);
+    }
+}
+
+/* Responsive: 1 carte par ligne sur petits écrans */
+@media (max-width: 600px) {
+    #divProducts .divProduct {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
 }

@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TD1.Controllers;
 using TD1.Models;
 using TD1.Repository;
+using TD1.Tests.Helpers;
 
 namespace TD1.Tests.Controllers;
 
@@ -18,7 +19,7 @@ namespace TD1.Tests.Controllers;
 [TestCategory("integration")]
 public class TypeProduitControllerTest
 {
-    private ProduitDbContext _context;
+    private AppDbContext _context;
     private TypeProduitController _typeProductController;
     
     //type produits de base pour les tests
@@ -28,11 +29,8 @@ public class TypeProduitControllerTest
     [TestInitialize]
     public void SetUp()
     {
-        // Créer un nouveau contexte pour chaque test
-        var builder = new DbContextOptionsBuilder<ProduitDbContext>()
-            .UseNpgsql("Server=localhost;Port=5432;Database=produit_db;Username=postgres;Password=postgres");
         
-        _context = new ProduitDbContext(builder.Options);
+        _context = DbContextHelper.CreateInMemoryContext();
         
         CleanupDatabase();
         
@@ -79,7 +77,7 @@ public class TypeProduitControllerTest
         _context.TypeProduits.Add(_defaultTypeProduit1);
         _context.SaveChanges();
         //When : 
-        IActionResult action = _typeProductController.Delete(_defaultTypeProduit1.IdTypeProduit).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.DeleteProductType(_defaultTypeProduit1.IdTypeProduit).GetAwaiter().GetResult();
         
         //Then : 
         Assert.IsNotNull(action);
@@ -93,7 +91,7 @@ public class TypeProduitControllerTest
         //Given : 
         int nonExistentId = 9999;
         //When : 
-        IActionResult action = _typeProductController.Delete(nonExistentId).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.DeleteProductType(nonExistentId).GetAwaiter().GetResult();
         //Then : 
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
@@ -135,7 +133,7 @@ public class TypeProduitControllerTest
         //Given : 
         TypeProduit productType = _defaultTypeProduit1;
         //When : 
-        ActionResult<TypeProduit> action = _typeProductController.Add(productType).GetAwaiter().GetResult();
+        ActionResult<TypeProduit> action = _typeProductController.AddProductType(productType).GetAwaiter().GetResult();
         //Then : 
         TypeProduit productTypeInDb = _context.TypeProduits.Find(productType.IdTypeProduit);
         Assert.IsNotNull(productTypeInDb);
@@ -154,7 +152,7 @@ public class TypeProduitControllerTest
         _defaultTypeProduit1.NomTypeProduit = "modifiedNameProductType";
         
         //When : 
-        IActionResult action = _typeProductController.Put(_defaultTypeProduit1.IdTypeProduit, _defaultTypeProduit1).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.PutProductType(_defaultTypeProduit1.IdTypeProduit, _defaultTypeProduit1).GetAwaiter().GetResult();
         
         //Then : 
         Assert.IsNotNull(action);
@@ -176,7 +174,7 @@ public class TypeProduitControllerTest
         _defaultTypeProduit1.NomTypeProduit = "modifiedNameProductType";
         
         //When : 
-        IActionResult action = _typeProductController.Put(0, _defaultTypeProduit1).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.PutProductType(0, _defaultTypeProduit1).GetAwaiter().GetResult();
         
         //Then : 
         Assert.IsNotNull(action);
@@ -189,7 +187,7 @@ public class TypeProduitControllerTest
         //Given 
         int  nonExistentId = 0;
         //When : 
-        IActionResult action = _typeProductController.Put(nonExistentId, _defaultTypeProduit1).GetAwaiter().GetResult();
+        IActionResult action = _typeProductController.PutProductType(nonExistentId, _defaultTypeProduit1).GetAwaiter().GetResult();
         
         //Then
         Assert.IsNotNull(action);

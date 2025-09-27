@@ -1,7 +1,15 @@
 @page "/product/{Id:int}"
+@using System.Security.Cryptography
+@using Application.Attributes
 @using Application.Models
 @using Application.Services
-@inject IService<Product> _WebService
+@inject ProductWSService _ProductWsService
+
+
+
+<link href="css/productCreate.css" rel="stylesheet" />
+
+
 <PageTitle>Products Detail</PageTitle>
 
 
@@ -13,11 +21,41 @@
 }
 else
 {
-    <div>
-        <p><b>Id:</b> @product.IdProduit</p>
-        <p><b>Nom:</b> @product.NomProduit</p>
-        <p><b>Description:</b> @product.Description</p>
-        <p><b>Photo:</b> @product.NomPhoto</p>
+    <div id="addDiv">
+        <EditForm Model="product" OnValidSubmit="UpdateProduct">
+            @foreach (var prop in typeof(Product).GetProperties().Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
+            {
+                <div>
+                    <label>@prop.Name</label>
+                            
+                    @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
+                    {
+                        <input type="number"
+                               value="@prop.GetValue(product)"
+                               @onchange="e => prop.SetValue(product, Convert.ToInt32(e.Value))" />
+                    }
+                    else
+                    {
+                        <input type="text"
+                               value="@prop.GetValue(product)"
+                               @onchange="e => prop.SetValue(product, e.Value?.ToString())" />
+                    }
+                </div>
+            }
+            <h4>Image : </h4>
+            @if (!string.IsNullOrWhiteSpace(product?.UriPhoto))
+            {
+                <img src="@product.UriPhoto" alt="@product.NomProduit"/>
+            }
+            else
+            {
+                <p>No image available</p>
+            }
+            <button type="submit">Update</button>
+        </EditForm>
+        <div id="imagediv">
+            
+        </div>
     </div>
 }
 
@@ -28,6 +66,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        product = await _WebService.GetByIdAsync(Id);
+        product = await _ProductWsService.GetByIdAsync(Id);
+    }
+
+    private async Task UpdateProduct()
+    {
+        await _ProductWsService.UpdateAsync(product);
     }
 }

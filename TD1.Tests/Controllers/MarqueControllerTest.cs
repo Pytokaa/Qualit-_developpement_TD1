@@ -12,6 +12,7 @@ using TD1.Models;
 using TD1.Repository;
 using AutoMapper;
 using TD1.Mapper;
+using TD1.Tests.Helpers;
 
 namespace TD1.Tests.Controllers;
 
@@ -21,7 +22,7 @@ namespace TD1.Tests.Controllers;
 [TestCategory("integration")]
 public class MarqueControllerTest
 {
-    private ProduitDbContext _context;
+    private AppDbContext _context;
     private MarqueController _brandController;
     
     //marques de base pour les tests
@@ -31,11 +32,8 @@ public class MarqueControllerTest
     [TestInitialize]
     public void SetUp()
     {
-        //pour chaque test => creer un nouveau context
-        var builder = new DbContextOptionsBuilder<ProduitDbContext>()
-            .UseNpgsql("Server=localhost;Port=5432;Database=produit_db;Username=postgres;Password=postgres");
         
-        _context = new ProduitDbContext(builder.Options);
+        _context = DbContextHelper.CreateInMemoryContext();
         CleanupDatabase();
         InitializeDefaultBrands();
         
@@ -81,7 +79,7 @@ public class MarqueControllerTest
         _context.Marques.Add(_defaultBrand1);
         _context.SaveChanges();
         //When  :
-        IActionResult action = _brandController.Delete(_defaultBrand1.IdMarque).GetAwaiter().GetResult();
+        IActionResult action = _brandController.DeleteMarque(_defaultBrand1.IdMarque).GetAwaiter().GetResult();
         //Then : 
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NoContentResult));
@@ -94,7 +92,7 @@ public class MarqueControllerTest
         //Given : 
         int nonExistentId = 9999;
         //When : 
-        IActionResult action = _brandController.Delete(nonExistentId).GetAwaiter().GetResult();
+        IActionResult action = _brandController.DeleteMarque(nonExistentId).GetAwaiter().GetResult();
         //Then : 
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
@@ -136,7 +134,7 @@ public class MarqueControllerTest
         Marque brandToInsert = _defaultBrand1;
         
         //When : 
-        ActionResult<Marque> action = _brandController.Add(brandToInsert).GetAwaiter().GetResult();
+        ActionResult<Marque> action = _brandController.AddMarque(brandToInsert).GetAwaiter().GetResult();
         
         //Then : 
         Marque brandInDb = _context.Marques.Find(brandToInsert.IdMarque);
@@ -155,7 +153,7 @@ public class MarqueControllerTest
         //changement d'une donnée
         _defaultBrand1.NomMarque = "modifiedBrand";
         //When : 
-        IActionResult action = _brandController.Put(_defaultBrand1.IdMarque, _defaultBrand1).GetAwaiter().GetResult();
+        IActionResult action = _brandController.PutMarque(_defaultBrand1.IdMarque, _defaultBrand1).GetAwaiter().GetResult();
         
         //Then : 
         Assert.IsNotNull(action);
@@ -177,7 +175,7 @@ public class MarqueControllerTest
         _defaultBrand1.NomMarque = "modifiedBrand";
         
         //When : 
-        IActionResult action = _brandController.Put(0, _defaultBrand1).GetAwaiter().GetResult();
+        IActionResult action = _brandController.PutMarque(0, _defaultBrand1).GetAwaiter().GetResult();
         
         //Then
         Assert.IsNotNull(action);
@@ -191,7 +189,7 @@ public class MarqueControllerTest
         //Given : 
         int nonExistentId = 0;
         //When : 
-        IActionResult action = _brandController.Put(nonExistentId, _defaultBrand1).GetAwaiter().GetResult();
+        IActionResult action = _brandController.PutMarque(nonExistentId, _defaultBrand1).GetAwaiter().GetResult();
         //Then
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));

@@ -1,3 +1,5 @@
+@using System.Text.Json
+@using Application.Attributes
 @using Application.Models
 @using Application.Models.StateService
 @using Application.Services
@@ -5,7 +7,10 @@
 @inject ProductWSService _ProductWsService
 @inject BrandWSService _BrandWsService
 @inject ProductTypeWSService _ProductTypeWsService
-@inject ProductStateService ProductState
+@inject IStateService<Product> ProductState
+@inject NavigationManager NavManager
+
+
 <link href="css/productCreate.css" rel="stylesheet" />
 
 
@@ -21,9 +26,12 @@
 }
 else
 {
-    <form @onsubmit="SaveProduct">
+    /*<form @onsubmit="SaveProduct">
         <input type="text" @bind="ProductState.CurrentEntity.NomProduit" placeholder="Product name" />
 
+        
+        
+        
         <select @bind="ProductState.CurrentEntity.IdMarque">
             <option value="">-- Select brand --</option>
             @foreach (var brand in _brands)
@@ -43,9 +51,7 @@ else
         <textarea @bind="ProductState.CurrentEntity.Description" placeholder="Description"></textarea>
 
         <input type="text" @bind="ProductState.CurrentEntity.NomPhoto" placeholder="Photo name" />
-
         <input type="text" @bind="ProductState.CurrentEntity.UriPhoto" placeholder="Photo URI" />
-        
         @if (!string.IsNullOrWhiteSpace(ProductState.CurrentEntity.UriPhoto))
         {
             <div style="margin-top:1rem;">
@@ -55,14 +61,37 @@ else
         }
 
         <button type="submit">Save</button>
-    </form>
+    </form>*/
+    
+    <EditForm Model="ProductState.CurrentEntity" OnValidSubmit="SaveProduct">
+        @foreach (var prop in typeof(Product).GetProperties().Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
+        {
+            <div>
+                <label>@prop.Name</label>
+                            
+                @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
+                {
+                    <input type="number"
+                           value="@prop.GetValue(ProductState.CurrentEntity)"
+                           @onchange="e => prop.SetValue(ProductState.CurrentEntity, Convert.ToInt32(e.Value))" />
+                }
+                else
+                {
+                    <input type="text"
+                           value="@prop.GetValue(ProductState.CurrentEntity)"
+                           @onchange="e => prop.SetValue(ProductState.CurrentEntity, e.Value?.ToString())" />
+                }
+            </div>
+        }
+        <button type="submit">Add</button>
+    </EditForm>
 
 }
 
 @code{
     private List<Marque>? _brands = new();
     private List<TypeProduit>? _productTypes = new();
-    
+    private IBrowserFile selectedFile;
     protected override async Task OnInitializedAsync()
     {
         _brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
@@ -72,9 +101,46 @@ else
             ProductState.CurrentEntity = new Product();
         }
     }
-    private async void SaveProduct()
+    private async Task SaveProduct()
     {
-       await _ProductWsService.AddAsync(ProductState.CurrentEntity);
+        try
+        {
+            var response = await _ProductWsService.AddAsync(ProductState.CurrentEntity);
+            if (response != null)
+            { 
+                NavManager.NavigateTo("/products");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erreur : {ex.Message}");
+        }
     }
+    /*
+    private async Task OnFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
 
+        if (file != null)
+        {
+            var folderPath = Path.Combine(Environment.CurrentDirectory, "images");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            var uniqueFileName = $"{Guid.NewGuid()}_{file.Name}";
+            var filePath = Path.Combine(folderPath, uniqueFileName);
+
+            using var stream = File.Create(filePath);
+            await file.OpenReadStream().CopyToAsync(stream);
+
+            ProductState.CurrentEntity.UriPhoto = $"images/{uniqueFileName}";
+            ProductState.CurrentEntity.NomPhoto = file.Name;
+            
+            Console.WriteLine(File.Exists(filePath));
+
+            StateHasChanged();
+        }
+    }*/
 }

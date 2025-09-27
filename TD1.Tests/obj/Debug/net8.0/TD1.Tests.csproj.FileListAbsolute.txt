@@ -1,10 +1,7 @@
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/.msCoverageSourceRootsMapping_TD1.Tests
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.AdapterUtilities.dll
-/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/TD1.deps.json
-/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/TD1.runtimeconfig.json
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/appsettings.Development.json
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/appsettings.json
-/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/TD1
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/TD1.Tests.deps.json
@@ -184,8 +181,6 @@
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/TD1.dll
-/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/TD1.pdb
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/obj/Debug/net8.0/TD1.Tests.GeneratedMSBuildEditorConfig.editorconfig
@@ -205,3 +200,15 @@
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Moq.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/AutoMapper.dll
 /home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/API.deps.json
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/API.runtimeconfig.json
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/API
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/API.dll
+/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/bin/Debug/net8.0/API.pdb

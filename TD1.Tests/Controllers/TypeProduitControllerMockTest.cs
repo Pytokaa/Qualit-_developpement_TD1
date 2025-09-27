@@ -121,7 +121,7 @@ public class TypeProduitControllerMockTest
         //When
 
         IActionResult action =
-            _productTypeController.Put(productTypeToUpdate.IdTypeProduit, productTypeUpdated).GetAwaiter().GetResult();
+            _productTypeController.PutProductType(productTypeToUpdate.IdTypeProduit, productTypeUpdated).GetAwaiter().GetResult();
         
         //Then
         Assert.IsNotNull(action);
@@ -139,7 +139,7 @@ public class TypeProduitControllerMockTest
             .Setup(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit))
             .ReturnsAsync(new ActionResult<TypeProduit>((TypeProduit)null));
         //When
-        IActionResult action =  _productTypeController.Put(_defaultProductType1.IdTypeProduit, _defaultProductType1).GetAwaiter().GetResult();
+        IActionResult action =  _productTypeController.PutProductType(_defaultProductType1.IdTypeProduit, _defaultProductType1).GetAwaiter().GetResult();
         //Then 
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
@@ -160,7 +160,7 @@ public class TypeProduitControllerMockTest
             .Setup(manager => manager.DeleteAsync(_defaultProductType1));
         
         //When
-        IActionResult action = _productTypeController.Delete(_defaultProductType1.IdTypeProduit).GetAwaiter().GetResult();
+        IActionResult action = _productTypeController.DeleteProductType(_defaultProductType1.IdTypeProduit).GetAwaiter().GetResult();
         //Then
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NoContentResult));
@@ -177,7 +177,7 @@ public class TypeProduitControllerMockTest
             .Setup(manager => manager.GetByIdAsync(_defaultProductType1.IdTypeProduit))
             .ReturnsAsync(new ActionResult<TypeProduit>((TypeProduit)null));
         //When
-        IActionResult action =  _productTypeController.Delete(_defaultProductType1.IdTypeProduit).GetAwaiter().GetResult();
+        IActionResult action =  _productTypeController.DeleteProductType(_defaultProductType1.IdTypeProduit).GetAwaiter().GetResult();
         //Then
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));

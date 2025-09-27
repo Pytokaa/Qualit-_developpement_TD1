@@ -102,7 +102,7 @@ public class MarqueControllerMockTest
         
         //When
         
-        ActionResult<Marque> action = _brandController.Add(_defaultBrand1).GetAwaiter().GetResult();
+        ActionResult<Marque> action = _brandController.AddMarque(_defaultBrand1).GetAwaiter().GetResult();
         
         //Then
         
@@ -127,7 +127,7 @@ public class MarqueControllerMockTest
             .Setup(manager => manager.UpdateAsync(brandToUpdate, brandUpdated));
 
         //When
-        IActionResult action = _brandController.Put(brandToUpdate.IdMarque, brandUpdated).GetAwaiter().GetResult();
+        IActionResult action = _brandController.PutMarque(brandToUpdate.IdMarque, brandUpdated).GetAwaiter().GetResult();
         
         //Then
 
@@ -148,7 +148,7 @@ public class MarqueControllerMockTest
         
         //When
         
-        IActionResult action =  _brandController.Put(_defaultBrand1.IdMarque, _defaultBrand1).GetAwaiter().GetResult();
+        IActionResult action =  _brandController.PutMarque(_defaultBrand1.IdMarque, _defaultBrand1).GetAwaiter().GetResult();
         
         //Then
         
@@ -167,7 +167,7 @@ public class MarqueControllerMockTest
             .ReturnsAsync(_defaultBrand1);
         
         //When
-        var action = _brandController.Delete(_defaultBrand1.IdMarque).GetAwaiter().GetResult();
+        var action = _brandController.DeleteMarque(_defaultBrand1.IdMarque).GetAwaiter().GetResult();
         
         //Then
         
@@ -185,7 +185,7 @@ public class MarqueControllerMockTest
             .ReturnsAsync(new ActionResult<Marque>((Marque)null));
         
         //When
-        var action = _brandController.Delete(30).GetAwaiter().GetResult();
+        var action = _brandController.DeleteMarque(30).GetAwaiter().GetResult();
         
         //Then
         Assert.IsNotNull(action);

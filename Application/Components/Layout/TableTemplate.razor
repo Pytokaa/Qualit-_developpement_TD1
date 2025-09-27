@@ -2,6 +2,7 @@
 @using Application.Attributes
 @using Application.Models.StateService
 @using Application.Services
+@inject NavigationManager NavManager
 @typeparam TItem where TItem : class, Application.Models.IEntity
 <link href="css/tableTemplate.css" rel="stylesheet" />
 
@@ -15,10 +16,7 @@
 {
     <p>Loading...</p>
 }
-else if (!Items.Any())
-{
-    <p>Pas de données</p>
-}
+
 else
 {
     <div id="content">
@@ -88,6 +86,7 @@ else
             </EditForm>
         </div>
     </div>
+  
 }
 
 @code {
@@ -96,7 +95,6 @@ else
     public TItem? selectedItem { get; set; }
     [Parameter] public IStateService<TItem> ItemToAdd { get; set; }
     [Parameter] public IService<TItem> _WsService { get; set; }
-
     private async Task OnSelectChanged(ChangeEventArgs e)
     {
         var selectedName = e.Value?.ToString();
@@ -116,20 +114,24 @@ else
 
     private async Task SubmitAddForm()
     {
+        if (ItemToAdd?.CurrentEntity == null) return;
+
         await _WsService.AddAsync(ItemToAdd.CurrentEntity);
-        StateHasChanged();
+
+        NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
     }
     private async Task SubmitForm()
     {
         if (selectedItem != null)
             await _WsService.UpdateAsync(selectedItem);
     }
-
     private async Task DeleteSubmit()
     {
         if (selectedItem != null)
         {
             await _WsService.DeleteAsync((int)selectedItem.GetId());
+            NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
         }
+        
     }
 }

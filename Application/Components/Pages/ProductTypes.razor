@@ -3,10 +3,13 @@
 @using Application.Models.StateService
 @using Application.Services
 @inject IStateService<TypeProduit> _productTypeToAdd
-@inject IService<TypeProduit> _prodtypeWsService
+@inject IService<TypeProduit> _producttypeWsService
+
+
+<PageTitle>Product Types</PageTitle>
 
 <TableTemplate TItem="TypeProduit"
                Title="Product Types"
                ItemToAdd="_productTypeToAdd"
-               _WsService="_prodtypeWsService"/>
+               _WsService="_producttypeWsService"/>
 

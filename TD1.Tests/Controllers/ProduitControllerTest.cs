@@ -13,6 +13,7 @@ using TD1.Repository;
 using AutoMapper;
 using TD1.DTO;
 using TD1.Mapper;
+using TD1.Tests.Helpers;
 
 namespace TD1.Tests.Controllers;
 
@@ -21,28 +22,25 @@ namespace TD1.Tests.Controllers;
 [TestCategory("integration")]
 public class ProductControllerTest
 {
-    private ProduitDbContext _context;
+    private AppDbContext _context;
     private ProductController _productController;
     private IMapper _mapper;
     
     // Produits de base pour les tests
-    private Produit _defaultProduct1;
-    private Produit _defaultProduct2;
+    private Product _defaultProduct1;
+    private Product _defaultProduct2;
 
     [TestInitialize]
     public void Setup()
     {
-        // Créer un nouveau contexte pour chaque test
-        var builder = new DbContextOptionsBuilder<ProduitDbContext>()
-            .UseNpgsql("Server=localhost;Port=5432;Database=produit_db;Username=postgres;Password=postgres");
+        _context = DbContextHelper.CreateInMemoryContext();
         
-        _context = new ProduitDbContext(builder.Options);
         
         CleanupDatabase();
         
         InitializeDefaultProducts();
         
-        var manager = new ProduitManager(_context);
+        var manager = new ProductManager(_context);
         
         var config = new MapperConfiguration(cfg =>
         {
@@ -57,7 +55,7 @@ public class ProductControllerTest
     //creation de produits par défauts pour effectuer les tests
     private void InitializeDefaultProducts()
     {
-        _defaultProduct1 = new Produit
+        _defaultProduct1 = new Product
         {
             NomProduit = "Chaise par défaut",
             Description = "Une chaise de test",
@@ -65,7 +63,7 @@ public class ProductControllerTest
             UriPhoto = "https://example.com/chaise-test.jpg"
         };
 
-        _defaultProduct2 = new Produit
+        _defaultProduct2 = new Product
         {
             NomProduit = "Table par défaut",
             Description = "Une table de test",
@@ -100,7 +98,7 @@ public class ProductControllerTest
         _context.SaveChanges();
         
         // When : Suppression depuis l'API du produit
-        IActionResult action = _productController.Delete(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
+        IActionResult action = _productController.DeleteProduit(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
         
         // Then : Test sur le type de retour (NoContentResult)
         Assert.IsNotNull(action);
@@ -115,7 +113,7 @@ public class ProductControllerTest
         int nonExistentId = 99999;
         
         // When : Suppression depuis l'API d'un produit qui n'existe pas
-        IActionResult action = _productController.Delete(nonExistentId).GetAwaiter().GetResult();
+        IActionResult action = _productController.DeleteProduit(nonExistentId).GetAwaiter().GetResult();
         
         // Then : Test sur le type de action.result (NotFound)
         Assert.IsNotNull(action);
@@ -162,7 +160,7 @@ public class ProductControllerTest
         
         
         // When : ajout de ce produit via l'API
-        ActionResult<ProduitDetailDTO> action = _productController.Add(productToInsert).GetAwaiter().GetResult();
+        var action = _productController.AddProduit(productToInsert).GetAwaiter().GetResult();
         
         // Then : tests sur le type de action et sur le produit inséré en base de données 
         var createdResult = action.Result as CreatedAtActionResult;
@@ -193,13 +191,13 @@ public class ProductControllerTest
         updatedProduct.NomProduit = "ModifiedName";
 
         // When : modification de ces propriétés via l'API
-        IActionResult action = _productController.Put(assignedId, updatedProduct).GetAwaiter().GetResult();
+        IActionResult action = _productController.PutProduit(assignedId, updatedProduct).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NoContentResult));
         
-        Produit editedProductInDb = _context.Produits.Find(_defaultProduct1.IdProduit);
+        Product editedProductInDb = _context.Produits.Find(_defaultProduct1.IdProduit);
         
         Assert.IsNotNull(editedProductInDb);
         Assert.AreEqual("ModifiedName", editedProductInDb.NomProduit);
@@ -219,7 +217,7 @@ public class ProductControllerTest
         _defaultProduct1.Description = "Description modifiée";
 
         // When : Utiliser un ID différent dans l'URL
-        IActionResult action = _productController.Put(0, productToUpdate).GetAwaiter().GetResult();
+        IActionResult action = _productController.PutProduit(0, productToUpdate).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);
@@ -234,7 +232,7 @@ public class ProductControllerTest
         int nonExistentId = 0;
         
         // When : tentative de modification d'un produit qui n'existe pas
-        IActionResult action = _productController.Put(nonExistentId, productToUpdate).GetAwaiter().GetResult();
+        IActionResult action = _productController.PutProduit(nonExistentId, productToUpdate).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);
