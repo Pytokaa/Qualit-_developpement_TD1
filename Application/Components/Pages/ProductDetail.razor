@@ -4,6 +4,8 @@
 @using Application.Models
 @using Application.Services
 @inject ProductWSService _ProductWsService
+@inject BrandWSService _BrandWsService
+@inject ProductTypeWSService _ProductTypeWsService
 
 
 
@@ -51,6 +53,21 @@ else
             {
                 <p>No image available</p>
             }
+            <select @bind="product.IdMarque">
+                <option value="">-- Select brand --</option>
+                @foreach (var brand in brands)
+                {
+                    <option value="@brand.IdMarque">@brand.NomMarque</option>
+                }
+            </select>
+
+            <select @bind="product.IdTypeProduit">
+                <option value="">-- Select product type --</option>
+                @foreach (var type in productTypes)
+                {
+                    <option value="@type.IdTypeProduit">@type.NomTypeProduit</option>
+                }
+            </select>
             <button type="submit">Update</button>
         </EditForm>
         <div id="imagediv">
@@ -63,10 +80,14 @@ else
     [Parameter] public int Id { get; set; }
 
     private Product? product;
+    private List<Marque>? brands;
+    private List<TypeProduit>? productTypes;
 
     protected override async Task OnInitializedAsync()
     {
         product = await _ProductWsService.GetByIdAsync(Id);
+        brands = await _BrandWsService.GetAllAsync();
+        productTypes = await _ProductTypeWsService.GetAllAsync();
     }
 
     private async Task UpdateProduct()

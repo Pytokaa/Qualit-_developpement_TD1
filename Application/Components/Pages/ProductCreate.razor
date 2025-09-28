@@ -82,7 +82,23 @@ else
                            @onchange="e => prop.SetValue(ProductState.CurrentEntity, e.Value?.ToString())" />
                 }
             </div>
+            
         }
+        <select @bind="ProductState.CurrentEntity.IdMarque">
+            <option value="">-- Select brand --</option>
+            @foreach (var brand in _brands)
+            {
+                <option value="@brand.IdMarque">@brand.NomMarque</option>
+            }
+        </select>
+
+        <select @bind="ProductState.CurrentEntity.IdTypeProduit">
+            <option value="">-- Select product type --</option>
+            @foreach (var type in _productTypes)
+            {
+                <option value="@type.IdTypeProduit">@type.NomTypeProduit</option>
+            }
+        </select>
         <button type="submit">Add</button>
     </EditForm>
 

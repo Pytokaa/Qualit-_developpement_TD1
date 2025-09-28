@@ -18,8 +18,8 @@ public class Product : IEntity
     public string? Description { get; set; } = null!;
     public string? NomPhoto { get; set; } = null!;
     public string? UriPhoto { get; set; } = null!;
-    public int? StockReel { get; set; }
-    public int? StockMin { get; set; }
+    public int StockReel { get; set; } = 0;
+    public int StockMin { get; set; } = 0;
     public int? StockMax { get; set; }
 
     public int? GetId() =>   IdProduit;

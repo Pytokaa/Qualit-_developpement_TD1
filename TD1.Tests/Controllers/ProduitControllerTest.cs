@@ -29,6 +29,7 @@ public class ProductControllerTest
     // Produits de base pour les tests
     private Product _defaultProduct1;
     private Product _defaultProduct2;
+    private Product _defaultProduct3;
 
     [TestInitialize]
     public void Setup()
@@ -55,12 +56,25 @@ public class ProductControllerTest
     //creation de produits par défauts pour effectuer les tests
     private void InitializeDefaultProducts()
     {
+        TypeProduit _defaultProductType = new TypeProduit
+        {
+            IdTypeProduit = 1,
+            NomTypeProduit = "assise"
+        };
+        Marque _defaultMarque = new Marque
+        {
+            IdMarque = 1,
+            NomMarque = "Ikea"
+        };
+        
         _defaultProduct1 = new Product
         {
             NomProduit = "Chaise par défaut",
             Description = "Une chaise de test",
             NomPhoto = "chaise-test.jpg",
-            UriPhoto = "https://example.com/chaise-test.jpg"
+            UriPhoto = "https://example.com/chaise-test.jpg",
+            MarqueNavigation = _defaultMarque,
+            TypeProduitNavigation = _defaultProductType
         };
 
         _defaultProduct2 = new Product
@@ -69,6 +83,15 @@ public class ProductControllerTest
             Description = "Une table de test",
             NomPhoto = "table-test.jpg",
             UriPhoto = "https://example.com/table-test.jpg"
+        };
+        _defaultProduct3 = new Product
+        {
+            NomProduit = "Tabouret par defaut",
+            Description = "Un tabouret de test",
+            NomPhoto = "table-test.jpg",
+            UriPhoto = "https://example.com/table-test.jpg",
+            MarqueNavigation = _defaultMarque,
+            TypeProduitNavigation = _defaultProductType
         };
     }
 
@@ -124,7 +147,7 @@ public class ProductControllerTest
     public void ShouldGetAllProducts()
     {
         // Given : Ajout de deux produits dans la base de données
-        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2 });
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
         _context.SaveChanges();
         
         // When : Récupération des produits via l'API
@@ -135,7 +158,7 @@ public class ProductControllerTest
         Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
         
         var productList = (products.Value as IEnumerable<ProduitDTO>)?.ToList();
-        Assert.IsTrue(productList?.Count >= 2, "Au moins 2 produits devraient être retournés");
+        Assert.IsTrue(productList?.Count >= 3, "Au moins 3 produits devraient être retournés");
     }
     
     [TestMethod]
@@ -264,6 +287,58 @@ public class ProductControllerTest
         //Then : 
         Assert.IsInstanceOfType(action.Result, typeof(NotFoundResult));
         Assert.IsNull(action.Value);
+    }
+
+    [TestMethod]
+    public void ShouldGetAllProductFiltredByBrand()
+    {
+        // Given : Ajout de deux produits dans la base de données
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        
+        //When : Recuperation des produits en fonction du nom de la marque (Ikea)
+        var products = _productController.GetAllProductFilterdByBrand("Ikea").GetAwaiter().GetResult();
+        
+        //Then
+        Assert.IsNotNull(products);
+        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        var productsList = (products.Value as IEnumerable<ProduitDTO>).ToList();
+        Assert.IsTrue(productsList?.Count == 2, "La liste doit contenir 2 elements");
+    }
+
+    [TestMethod]
+    public void ShouldGetAllProductFiltredByType()
+    {
+        // Given : Ajout de deux produits dans la base de données
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        
+        //When : Recuperation des produits en fonction de leur type (assise)
+        var products = _productController.GetAllProductFilterdByProductType("assise").GetAwaiter().GetResult();
+        
+        //Then : 
+        Assert.IsNotNull(products);
+        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        var productsList = (products.Value as IEnumerable<ProduitDTO>).ToList();
+        Assert.IsTrue(productsList?.Count == 2, "La liste doit contenir 2 elements");
+    }
+
+    [TestMethod]
+    public void ShouldGetAllProductByName()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        
+        //When : Recuperation des produits contenants "Ta"
+        var products = _productController.GetAllProductByName("Ta").GetAwaiter().GetResult();
+        
+        //Then : 
+        Assert.IsNotNull(products);
+        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        var productsList = (products.Value as IEnumerable<ProduitDTO>).ToList();
+        Assert.IsTrue(productsList?.Count == 2, "La liste doit contenir 2 elements");
+        
     }
 
     [TestCleanup]

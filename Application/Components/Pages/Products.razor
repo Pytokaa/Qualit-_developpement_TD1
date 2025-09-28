@@ -6,6 +6,9 @@
 @inject ProductTypeWSService _ProductTypeWsService
 
 <link href="css/productsTable.css" rel="stylesheet" />
+<link href="css/Loader.css" rel="stylesheet" />
+
+
 
 <PageTitle>Products</PageTitle>
 <h3>Products</h3>
@@ -52,7 +55,8 @@
 
 @if (products == null)
 {
-    <p>Loading...</p>
+    <div class="loader"></div>
+
 }
 else if (!products.Any())
 {
@@ -65,11 +69,18 @@ else
         @foreach (var product in products)
         {
             <div class="divProduct" @onclick="() => NavigateToProduct(product.IdProduit)">
-                <img src="@GetPhoto(product.UriPhoto)" alt="@product.NomPhoto">
-                <h4>@product.NomProduit</h4>
-                <h5>Brand : @product.NomMarque</h5>
-                <h5>Product type : @product.NomTypeProduit</h5>
+                <div class="product-content">
+                    <img src="@GetPhoto(product.UriPhoto)" alt="@product.NomPhoto">
+                    <h4>@product.NomProduit</h4>
+                    <h5>Brand : @product.NomMarque</h5>
+                    <h5>Product type : @product.NomTypeProduit</h5>
+                </div>
+                @if (product.StockReel < product.StockMin)
+                {
+                    <div class="ribbon">Out of stock</div>
+                }
             </div>
+
         }
     </div>
 }
@@ -116,6 +127,10 @@ else
     protected override async Task OnInitializedAsync()
     {
         products = await _ProductWsService.GetAllAsync() ?? new List<Product>();
+        foreach (var product in products)
+        {
+            Console.WriteLine(product.NomProduit + " " + product.StockMin + " " + product.StockReel + " " + (product.StockReel < product.StockMin));
+        }
         brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
         productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
     }
@@ -139,8 +154,6 @@ else
     private async Task OnSearchInput(ChangeEventArgs e)
     {
         searchTerm = e.Value?.ToString() ?? "";
-
-        // Annule la recherche précédente si elle n’est pas terminée
         searchCts?.Cancel();
         searchCts = new CancellationTokenSource();
         var token = searchCts.Token;

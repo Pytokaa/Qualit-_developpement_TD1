@@ -18,7 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDbContext<AppDbContext>();
+//builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddScoped<IDataRepository<Product>, ProductManager>();
 builder.Services.AddScoped<IDataRepository<Marque>, MarqueManager>();
 builder.Services.AddScoped<IDataRepository<TypeProduit>, TypeProduitManager>();

@@ -8,5 +8,7 @@ public class ProduitDTO
     public string? NomMarque { get; set; }
     public string? NomPhoto { get; set; }
     public string? UriPhoto { get; set; }
+    public int? StockReel { get; set; }
+    public int? StockMin { get; set; }
     
 }

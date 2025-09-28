@@ -18,7 +18,7 @@ public partial class AppDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("produit");
+        modelBuilder.HasDefaultSchema("elioth_qualite_dev");
         
         modelBuilder.Entity<Product>(e =>
         {

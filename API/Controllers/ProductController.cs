@@ -201,7 +201,15 @@ public class ProductController : ControllerBase
         return new ActionResult<IEnumerable<ProduitDTO>>(productsDTO);
     }
     
-    
+    // GET: api/Produits/productListByName/(name)
+    /// <summary>
+    /// Retrieves a list of products with the sting parameter in their name
+    /// </summary>
+    /// <param name="name">The name of the product type to retrieve.</param>
+    /// <returns>An HTTP response containing the products corresponding to the name.</returns>
+    /// <response code="200">The product list was found and is returned.</response>
+    /// <response code="404">No product list was found with the specified identifier.</response>
+    /// <response code="500">An internal server error occurred.</response>
     [HttpGet("productListByName/{name}")]
     [ProducesResponseType(typeof(IEnumerable<ProduitDTO>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
