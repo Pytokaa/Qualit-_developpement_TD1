@@ -86,12 +86,6 @@
     gap: 10px;
 }
 
-/* Conteneur des selects */
-#filters {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap; /* les selects passent à la ligne si nécessaire */
-}
 
 /* Bouton ajouter un produit */
 #addProduct {
@@ -143,11 +137,15 @@ input[type="text"], select {
     align-items: center;
 }
 
+.div-info-produit{
+    position: relative;
+}
+
 .ribbon {
     position: absolute;
-    top: 15px;
-    left: -20px;
-    width: 120px;
+    top: 30px;
+    left: -35px;
+    width: 170px;
     background: #e74c3c;
     color: white;
     text-align: center;
@@ -160,3 +158,52 @@ input[type="text"], select {
     will-change: transform;
     backface-visibility: hidden; /* force le navigateur à calculer le rendu */
 }
+
+
+
+#filters {
+    display: flex;
+    gap: 2rem; /* espace entre les colonnes */
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    max-width: fit-content;
+}
+
+#filters label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    display: block; /* pour forcer à être au-dessus */
+}
+
+#filters select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    min-width: 180px; /* pour qu'ils aient une largeur correcte */
+}
+
+#filters select:hover {
+    border-color: #666;
+}
+
+#filters select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.4);
+}
+
+/* Chaque filtre (label + select) dans une colonne */
+#filters > div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+

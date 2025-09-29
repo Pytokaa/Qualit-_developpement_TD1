@@ -290,56 +290,128 @@ public class ProductControllerTest
     }
 
     [TestMethod]
-    public void ShouldGetAllProductFiltredByBrand()
-    {
-        // Given : Ajout de deux produits dans la base de données
-        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
-        _context.SaveChanges();
-        
-        //When : Recuperation des produits en fonction du nom de la marque (Ikea)
-        var products = _productController.GetAllProductFilterdByBrand("Ikea").GetAwaiter().GetResult();
-        
-        //Then
-        Assert.IsNotNull(products);
-        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
-        var productsList = (products.Value as IEnumerable<ProduitDTO>).ToList();
-        Assert.IsTrue(productsList?.Count == 2, "La liste doit contenir 2 elements");
-    }
-
-    [TestMethod]
-    public void ShouldGetAllProductFiltredByType()
-    {
-        // Given : Ajout de deux produits dans la base de données
-        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
-        _context.SaveChanges();
-        
-        //When : Recuperation des produits en fonction de leur type (assise)
-        var products = _productController.GetAllProductFilterdByProductType("assise").GetAwaiter().GetResult();
-        
-        //Then : 
-        Assert.IsNotNull(products);
-        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
-        var productsList = (products.Value as IEnumerable<ProduitDTO>).ToList();
-        Assert.IsTrue(productsList?.Count == 2, "La liste doit contenir 2 elements");
-    }
-
-    [TestMethod]
-    public void ShouldGetAllProductByName()
+    public void ShouldGetAllProductsWhenNoFiltersProvided()
     {
         //Given
         _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
         _context.SaveChanges();
         
-        //When : Recuperation des produits contenants "Ta"
-        var products = _productController.GetAllProductByName("Ta").GetAwaiter().GetResult();
+        //When
+        var result = _productController.GetAllProductByFilter(null, null, null).GetAwaiter().GetResult();
         
-        //Then : 
-        Assert.IsNotNull(products);
-        Assert.IsInstanceOfType(products, typeof(ActionResult<IEnumerable<ProduitDTO>>));
-        var productsList = (products.Value as IEnumerable<ProduitDTO>).ToList();
-        Assert.IsTrue(productsList?.Count == 2, "La liste doit contenir 2 elements");
-        
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 3, "Le nombre de produits retournés doit être 3");
     }
+
+    [TestMethod]
+    public void ShouldGetProductsByBrandFilter()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        //When
+        var result = _productController.GetAllProductByFilter(null, "Ikea", null).GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 2, "Le nombre de produits  retournés doit être 2");
+        Assert.IsTrue(result.Value.All(p => p.NomMarque == "Ikea"));
+    }
+
+    [TestMethod]
+    public void ShouldGetProductsByProductTypeFilter()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        //When
+        var result = _productController.GetAllProductByFilter(null, null, "assise").GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 2, "Le nombre de produits  retournés doit être 2");
+        Assert.IsTrue(result.Value.All(p => p.NomTypeProduit == "assise"));
+    }
+    [TestMethod]
+    public void ShouldGetProductsByNameFilter()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        //When
+        var result = _productController.GetAllProductByFilter("ta", null, null).GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 2, "Le nombre de produits  retournés doit être 2");
+        Assert.IsTrue(result.Value.All(p => p.NomProduit.Contains("ta", StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [TestMethod]
+    public void ShouldGetProductsByBrandAndNameFilter()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        //When
+        var result = _productController.GetAllProductByFilter("ta", "Ikea", null).GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 1, "le nombre de produit doit être 1");
+        Assert.IsTrue(result.Value.All(p => p.NomMarque == "Ikea"));
+        Assert.IsTrue(result.Value.All(p => p.NomProduit.Contains("ta", StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [TestMethod]
+    public void ShouldGetAllProductByBrandAndTypeFilter()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        //When
+        var result = _productController.GetAllProductByFilter(null, "Ikea","assise").GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 2, "le nombre de produit doit être 2");
+        Assert.IsTrue(result.Value.All(p => p.NomMarque == "Ikea"));
+        Assert.IsTrue(result.Value.All(p => p.NomTypeProduit == "assise"));
+    }
+
+    [TestMethod]
+    public void ShouldGetAllProductByNameAndTypeFilter()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        //When
+        var result = _productController.GetAllProductByFilter("ta", null,"assise").GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 1, "le nombre de produit doit être 1");
+        Assert.IsTrue(result.Value.All(p => p.NomTypeProduit == "assise"));
+        Assert.IsTrue(result.Value.All(p => p.NomProduit.Contains("ta", StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [TestMethod]
+    public void ShouldNotGetProductsByFilterBecauseItDoesNotExist()
+    {
+        //Given
+        _context.Produits.AddRange(new[] { _defaultProduct1, _defaultProduct2, _defaultProduct3 });
+        _context.SaveChanges();
+        //When
+        var result = _productController.GetAllProductByFilter("product that doesn't exist", null, null).GetAwaiter().GetResult();
+        //Then
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(ActionResult<IEnumerable<ProduitDTO>>));
+        Assert.IsTrue(result.Value.Count() == 0, "le nombre de produit doit être 0");
+    }
+
+ 
 
     [TestCleanup]
     public void Cleanup()

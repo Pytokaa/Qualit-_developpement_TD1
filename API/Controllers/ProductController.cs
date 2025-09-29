@@ -162,60 +162,26 @@ public class ProductController : ControllerBase
         await _productManager.DeleteAsync(produitToDelete.Value);
         return NoContent();
     }
-    // GET: api/Produits/brand/brandname
+    // GET: api/Produits/id/name/brandName/productTypeName
     /// <summary>
-    /// Retrieves specifics products by there brand name
+    /// Retrieves a of products that correspond to the parameters
     /// </summary>
-    /// <param name="brand">The name of the brand of the product to retrieve.</param>
+    /// <param name="name">String to type in the research input, correspond to the name of the product.</param>
+    /// <param name="brandName">Name of the brand to return.</param>
+    /// <param name="productTypeName">Name of the product type to return.</param>
     /// <returns>An HTTP response containing the product corresponding to the identifier.</returns>
-    /// <response code="200">The product was found and is returned.</response>
-    /// <response code="404">No product was found with the specified brand name.</response>
-    /// <response code="500">An internal server error occurred.</response>
-    [HttpGet("brand/{brand}")]
-    [ProducesResponseType(typeof(IEnumerable<ProduitDTO>), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<ProduitDTO>>> GetAllProductFilterdByBrand(string brand)
-    {
-        var produits = (await _productManager.GetListByProperty(p => p.MarqueNavigation.NomMarque == brand)).Value;
-        var productsDTO = _mapper.Map<IEnumerable<ProduitDTO>>(produits);
-
-        return new ActionResult<IEnumerable<ProduitDTO>>(productsDTO);
-    }
-    // GET: api/Produits/productType/producttypename
-    /// <summary>
-    /// Retrieves a specific product by product type name
-    /// </summary>
-    /// <param name="productType">The name of the product type to retrieve.</param>
-    /// <returns>An HTTP response containing the product corresponding to the product type name.</returns>
     /// <response code="200">The product was found and is returned.</response>
     /// <response code="404">No product was found with the specified identifier.</response>
     /// <response code="500">An internal server error occurred.</response>
-    [HttpGet("productType/{productType}")]
+    [HttpGet("productByFilter")]
     [ProducesResponseType(typeof(IEnumerable<ProduitDTO>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<ProduitDTO>>> GetAllProductFilterdByProductType(string productType)
+    public async Task<ActionResult<IEnumerable<ProduitDTO>>> GetAllProductByFilter(
+        [FromQuery] string? name = null, 
+        [FromQuery] string? brandName = null, 
+        [FromQuery] string? productTypeName = null)
     {
-        var produits = (await _productManager.GetListByProperty(p => p.TypeProduitNavigation.NomTypeProduit == productType)).Value;
-        var productsDTO = _mapper.Map<IEnumerable<ProduitDTO>>(produits);
-
-        return new ActionResult<IEnumerable<ProduitDTO>>(productsDTO);
-    }
-    
-    // GET: api/Produits/productListByName/(name)
-    /// <summary>
-    /// Retrieves a list of products with the sting parameter in their name
-    /// </summary>
-    /// <param name="name">The name of the product type to retrieve.</param>
-    /// <returns>An HTTP response containing the products corresponding to the name.</returns>
-    /// <response code="200">The product list was found and is returned.</response>
-    /// <response code="404">No product list was found with the specified identifier.</response>
-    /// <response code="500">An internal server error occurred.</response>
-    [HttpGet("productListByName/{name}")]
-    [ProducesResponseType(typeof(IEnumerable<ProduitDTO>), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<ProduitDTO>>> GetAllProductByName(string name)
-    {
-        var produits = (await _productManager.GetListByProperty(p => p.NomProduit.Contains(name))).Value;
+        var produits = (await _productManager.FilterAsync(name, brandName, productTypeName)).Value;
         var productsDTO = _mapper.Map<IEnumerable<ProduitDTO>>(produits);
 
         return new ActionResult<IEnumerable<ProduitDTO>>(productsDTO);

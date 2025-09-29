@@ -8,8 +8,6 @@
 <link href="css/productsTable.css" rel="stylesheet" />
 <link href="css/Loader.css" rel="stylesheet" />
 
-
-
 <PageTitle>Products</PageTitle>
 <h3>Products</h3>
 
@@ -17,32 +15,34 @@
     <div id="filter-and-search">
         <label for="searchinput">Search for a product:</label>
         <input type="text" id="searchinput" @oninput="OnSearchInput" value="@searchTerm" placeholder="Type product name..." />
-
-
         <div id="filters">
-            <label for="selectbrand">Select Brand:</label>
-            <select name="selectbrand" id="selectbrand" @onchange="OnBrandChange">
-                <option value="">Select a brand</option>
-                @if (brands != null)
-                {
-                    @foreach (var brandName in brands)
+            <div>
+                <label for="selectbrand">Select Brand:</label>
+                <select name="selectbrand" id="selectbrand" @onchange="OnBrandChange" value="@selectedBrand">
+                    <option value="">Select a brand</option>
+                    @if (brands != null)
                     {
-                        <option value="@brandName.NomMarque">@brandName.NomMarque</option>
+                        @foreach (var brandName in brands)
+                        {
+                            <option value="@brandName.NomMarque">@brandName.NomMarque</option>
+                        }
                     }
-                }
-            </select>
+                </select>
+            </div>
 
-            <label for="selectproductType">Select Product Type:</label>
-            <select name="selectproductType" id="selectproductType" @onchange="OnProductTypeChange">
-                <option value="">Select a product type</option>
-                @if (productTypes != null)
-                {
-                    @foreach (var producttype in productTypes)
+            <div>
+                <label for="selectproductType">Select Product Type:</label>
+                <select name="selectproductType" id="selectproductType" @onchange="OnProductTypeChange" value="@selectedProductType">
+                    <option value="">Select a product type</option>
+                    @if (productTypes != null)
                     {
-                        <option value="@producttype.NomTypeProduit">@producttype.NomTypeProduit</option>
+                        @foreach (var producttype in productTypes)
+                        {
+                            <option value="@producttype.NomTypeProduit">@producttype.NomTypeProduit</option>
+                        }
                     }
-                }
-            </select>
+                </select>
+            </div>
         </div>
     </div>
 
@@ -51,12 +51,9 @@
     </div>
 </div>
 
-
-
 @if (products == null)
 {
     <div class="loader"></div>
-
 }
 else if (!products.Any())
 {
@@ -68,7 +65,7 @@ else
     <div id="divProducts">
         @foreach (var product in products)
         {
-            <div class="divProduct" @onclick="() => NavigateToProduct(product.IdProduit)">
+            <div class="divProduct div-info-produit" @onclick="() => NavigateToProduct(product.IdProduit)">
                 <div class="product-content">
                     <img src="@GetPhoto(product.UriPhoto)" alt="@product.NomPhoto">
                     <h4>@product.NomProduit</h4>
@@ -80,7 +77,6 @@ else
                     <div class="ribbon">Out of stock</div>
                 }
             </div>
-
         }
     </div>
 }
@@ -89,8 +85,8 @@ else
     private List<Product>? products;
     private List<Marque>? brands;
     private List<TypeProduit> productTypes;
-    private string selectedBrand;
-    private string selectedProductType;
+    private string selectedBrand = "";
+    private string selectedProductType = "";
     private string searchTerm = "";
     private CancellationTokenSource? searchCts;
 
@@ -98,39 +94,45 @@ else
 
     private async Task OnBrandChange(ChangeEventArgs e)
     {
-        selectedBrand = e.Value?.ToString();
-        if (selectedBrand != "")
-        {
-            products = await _ProductWsService.GetProductByBrandName(selectedBrand);
-        }
-        else
-        {
-            products = await _ProductWsService.GetAllAsync() ?? new List<Product>();
-        }
+        selectedBrand = e.Value?.ToString() ?? "";
+        await ApplyFilters();
     }
 
     private async Task OnProductTypeChange(ChangeEventArgs e)
     {
-        selectedProductType = e.Value?.ToString();
-        if (selectedProductType != "")
-        {   
-            products = await _ProductWsService.GetProductByType(selectedProductType);
-        }
-        else
-        {
-            products = await _ProductWsService.GetAllAsync() ?? new List<Product>();
-        }
+        selectedProductType = e.Value?.ToString() ?? "";
+        await ApplyFilters();
     }
-    
-    
-    
+
+    private async Task OnSearchInput(ChangeEventArgs e)
+    {
+        searchTerm = e.Value?.ToString() ?? "";
+        searchCts?.Cancel();
+        searchCts = new CancellationTokenSource();
+        var token = searchCts.Token;
+
+        try
+        {
+            await Task.Delay(500, token);
+            await ApplyFilters();
+        }
+        catch (TaskCanceledException) { }
+
+        StateHasChanged();
+    }
+
+    private async Task ApplyFilters()
+    {
+        string? name = string.IsNullOrEmpty(searchTerm) ? null : searchTerm;
+        string? brand = string.IsNullOrEmpty(selectedBrand) ? null : selectedBrand;
+        string? productType = string.IsNullOrEmpty(selectedProductType) ? null : selectedProductType;
+
+        products = await _ProductWsService.GetProductByFilter(name, brand, productType) ?? new List<Product>();
+    }
+
     protected override async Task OnInitializedAsync()
     {
         products = await _ProductWsService.GetAllAsync() ?? new List<Product>();
-        foreach (var product in products)
-        {
-            Console.WriteLine(product.NomProduit + " " + product.StockMin + " " + product.StockReel + " " + (product.StockReel < product.StockMin));
-        }
         brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
         productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
     }
@@ -150,30 +152,5 @@ else
         return string.IsNullOrWhiteSpace(uri)
             ? "_content/YourApp/images/empty-square.png"
             : uri;
-    }
-    private async Task OnSearchInput(ChangeEventArgs e)
-    {
-        searchTerm = e.Value?.ToString() ?? "";
-        searchCts?.Cancel();
-        searchCts = new CancellationTokenSource();
-        var token = searchCts.Token;
-
-        try
-        {
-            await Task.Delay(500, token);
-            if (searchTerm != "")
-            {
-                
-                products = await _ProductWsService.GetProductListByName(searchTerm) ?? new List<Product>();
-            }
-            else
-            {
-                products = await _ProductWsService.GetAllAsync() ?? new List<Product>();
-            }
-            
-        }
-        catch (TaskCanceledException) { }
-
-        StateHasChanged(); 
     }
 }

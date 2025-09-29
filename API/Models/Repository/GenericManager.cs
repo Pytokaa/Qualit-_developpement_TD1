@@ -64,10 +64,9 @@ public abstract class GenericManager<T> : IDataRepository<T> where T : class, IE
         await _context.SaveChangesAsync();
     }
 
-    public async Task<ActionResult<IEnumerable<T>>> GetListByProperty(Expression<Func<T, bool>> predicate)
+    //fonction uniquement utilisée dans produitmanager
+    public virtual async Task<ActionResult<IEnumerable<T>>> FilterAsync(string name, string brand, string productType)
     {
-        var query = _context.Set<T>().IncludeNavigationPropertiesIfNeeded(); // ⚡ inclure les navigations
-        var result = await query.Where(predicate).ToListAsync();
-        return result;
+        throw new NotImplementedException();
     }
 }

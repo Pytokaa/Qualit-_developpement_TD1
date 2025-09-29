@@ -11,5 +11,5 @@ public interface IDataRepository<TEntity>// revoir les choses ici, la signature 
     Task AddAsync(TEntity entity);
     Task UpdateAsync(TEntity entityToUpdate, TEntity entity);
     Task DeleteAsync(TEntity entity);
-    Task<ActionResult<IEnumerable<TEntity>>> GetListByProperty(Expression<Func<TEntity, bool>> predicate);
+    Task<ActionResult<IEnumerable<TEntity>>> FilterAsync(string name, string brand, string productType);
 }
