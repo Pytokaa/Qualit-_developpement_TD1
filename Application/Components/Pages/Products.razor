@@ -14,7 +14,8 @@
 <div id="products-controls">
     <div id="filter-and-search">
         <label for="searchinput">Search for a product:</label>
-        <input type="text" id="searchinput" @oninput="OnSearchInput" value="@searchTerm" placeholder="Type product name..." />
+        <input type="text" id="searchinput" @oninput="OnSearchInput" @bind="searchTerm" placeholder="Type product name..." />
+
         <div id="filters">
             <div>
                 <label for="selectbrand">Select Brand:</label>

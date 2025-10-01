@@ -1,117 +1,140 @@
-using System;
-using System.Net.Http;
-using System.Threading;
+using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Support.UI;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Microsoft.Playwright;
 
-namespace TD1.Tests.BlazorTests;
+namespace BlazorE2ETests;
 
+[Parallelizable(ParallelScope.Self)]
 [TestFixture]
-public class ProductsPageTest
+public class ProductsPageTests : PageTest
 {
-    private IWebDriver _driver;
-    // Mets http:// ou https:// selon ton app (vérifie launchSettings.json ou la console dotnet run)
-    private string BaseUrl = "https://localhost:7074/";
-
-    [SetUp]
-    public void Setup()
-    {
-        try
-        {
-            var browser = Environment.GetEnvironmentVariable("BROWSER") ?? "Chrome";
-
-            if (browser.Equals("firefox", StringComparison.OrdinalIgnoreCase))
-            {
-                var ffOpts = new OpenQA.Selenium.Firefox.FirefoxOptions
-                {
-                    AcceptInsecureCertificates = true
-                };
-                _driver = new FirefoxDriver(ffOpts);
-            }
-            else if (browser.Equals("edge", StringComparison.OrdinalIgnoreCase))
-            {
-                var edgeOptions = new EdgeOptions
-                {
-                    AcceptInsecureCertificates = true
-                };
-                _driver = new EdgeDriver(edgeOptions);
-            }
-            else // Chrome par défaut
-            {
-                var options = new ChromeOptions();
-                // <--- important fix pour certaines versions Chrome + Selenium
-                options.AddArgument("--remote-allow-origins=*");
-                // accepter les certifs auto-signés si besoin
-                options.AcceptInsecureCertificates = true;
-                options.AddArgument("--ignore-certificate-errors");
-                _driver = new ChromeDriver(options);
-            }
-
-            // on garde un timeout réduit car on utilise explicit wait ensuite
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erreur Setup: {ex}");
-            throw;
-        }
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        try { _driver?.Quit(); } catch { }
-    }
-    [Test]
-    public void Products_Page_Should_Load_And_Display_Title()
-    {
-        _driver.Navigate().GoToUrl("https://localhost:7074/products");
-
-        Console.WriteLine("[DEBUG] Current URL: " + _driver.Url);
-        Console.WriteLine("[DEBUG] Page title: " + _driver.Title);
-
-        var wait = new OpenQA.Selenium.Support.UI.WebDriverWait(_driver, TimeSpan.FromSeconds(5));
-        var h3 = wait.Until(d => d.FindElement(By.TagName("h3")));
-
-        Assert.That(h3.Text, Is.EqualTo("Products"));
-    }
-    [Test]
-    public void Products_Filter_By_Brand_Should_Work()
-    {
-        // 1️⃣ Naviguer vers la page Products
-        _driver.Navigate().GoToUrl($"{BaseUrl}products");
-
-        var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-
-        // 2️⃣ Attendre que le select et les produits soient chargés
-        var brandSelect = wait.Until(d => d.FindElement(By.Id("selectbrand")));
-        var productDivs = wait.Until(d => d.FindElements(By.CssSelector("#divProducts .divProduct")));
-
-        // 3️⃣ Sélectionner une marque
-        var selectElement = new OpenQA.Selenium.Support.UI.SelectElement(brandSelect);
-        string brandToSelect = "Starlabs"; // Remplace par une marque existante dans ta DB
-        selectElement.SelectByText(brandToSelect);
-
-        // 4️⃣ Attendre que la liste de produits se mette à jour (petit délai pour le debounce)
-        Thread.Sleep(600); // debounce de 500ms dans ton OnSearchInput/OnBrandChange
-        productDivs = _driver.FindElements(By.CssSelector("#divProducts .divProduct"));
-
-        // 5️⃣ Vérifier que tous les produits affichés ont bien la marque sélectionnée
-        foreach (var productDiv in productDivs)
-        {
-            var brandText = productDiv.FindElement(By.CssSelector("h5:nth-of-type(1)")).Text; 
-            // h5:nth-of-type(1) = "Brand : BrandName"
-            Assert.IsTrue(brandText.Contains(brandToSelect), $"Produit trouvé avec marque incorrecte : {brandText}");
-        }
-
-        // 6️⃣ Optionnel : vérifier qu'il y a bien au moins un produit affiché
-        Assert.IsTrue(productDivs.Count > 0, "Aucun produit trouvé pour la marque sélectionnée.");
-    }
-
+    private const string BaseUrl = "http://localhost:7074/products";
     
+    
+
+    [Test]
+    public async Task ProductPage_Loading()
+    {
+        await Page.GotoAsync(BaseUrl);
+        
+        //Attendre qu'elle se charge
+        var h3Locator = Page.Locator("h3");
+        await h3Locator.WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Visible });
+        
+        var h3Text = await h3Locator.InnerTextAsync();
+        Assert.That(h3Text.Trim(),Is.EqualTo("Products"));
+    }
+
+    [Test]
+    public async Task Products_Filter_By_Brand_Apple_Should_Work()
+    {
+        await Page.GotoAsync(BaseUrl);
+        
+        await Page.SelectOptionAsync("#selectbrand", "Apple");
+        
+        await Task.Delay(100); //unique manière de ne pas trier la liste complète des produits et d'attendre que le trie se fasse.
+
+        var selected = await Page.Locator("#selectbrand").InputValueAsync();
+        Assert.That(selected, Is.EqualTo("Apple"));
+
+        var productDivs = await Page.Locator("#divProducts .divProduct").AllAsync();
+        Assert.That(productDivs.Count, Is.GreaterThan(0));
+
+        foreach (var div in productDivs)
+        {
+            var brandText = await div.Locator("h5:nth-of-type(1)").InnerTextAsync();
+            Assert.That(brandText.Contains("Apple"));
+        }
+    }
+    
+    
+
+    [Test]
+    public async Task Products_Filter_By_ProductType_Tablette_Should_Work()
+    {
+        await Page.GotoAsync(BaseUrl);
+    
+        await Page.SelectOptionAsync("#selectproductType", "Tablette");
+    
+        await Task.Delay(100); // attendre que le filtre soit appliqué
+
+        var selected = await Page.Locator("#selectproductType").InputValueAsync();
+        Assert.That(selected, Is.EqualTo("Tablette"));
+
+        var productDivs = await Page.Locator("#divProducts .divProduct").AllAsync();
+        Assert.That(productDivs.Count, Is.GreaterThan(0));
+
+        foreach (var div in productDivs)
+        {
+            var typeText = await div.Locator("h5:nth-of-type(2)").InnerTextAsync();
+            Assert.That(typeText.Contains("Tablette"));
+        }
+    }
+
+    [Test]
+    public async Task Products_Filter_By_SearchTerm_St_Should_Work()
+    {
+        await Page.GotoAsync(BaseUrl);
+
+        var searchInput = Page.Locator("#searchinput");
+        await searchInput.FillAsync("st");
+
+        await Task.Delay(600); 
+
+        var productDivs = await Page.Locator("#divProducts .divProduct").AllAsync();
+        Assert.That(productDivs.Count, Is.GreaterThan(0));
+
+        foreach (var div in productDivs)
+        {
+            var nameText = await div.Locator("h4").InnerTextAsync();
+            Assert.That(nameText.Contains("st", StringComparison.OrdinalIgnoreCase));
+        }
+    }
+    [Test]
+    public async Task Products_Filter_By_SearchTerm_NoMatch_Should_ReturnNothing()
+    {
+        await Page.GotoAsync(BaseUrl);
+
+        var searchInput = Page.Locator("#searchinput");
+        await searchInput.FillAsync("zzzzzz");
+
+        await Task.Delay(600); 
+
+        var productDivs = await Page.Locator("#divProducts .divProduct").AllAsync();
+
+        Assert.That(productDivs.Count, Is.EqualTo(0));
+    }
+    [Test]
+    public async Task AddProductButton_NavigatesToCreatePage()
+    {
+        await Page.GotoAsync(BaseUrl);
+        
+        await Page.Locator("#addProduct").ClickAsync();
+
+        await Page.WaitForURLAsync("**/product/create");
+
+        Assert.That(Page.Url, Does.EndWith("/product/create"));
+    }
+    [Test]
+    public async Task ClickingProduct_NavigatesToProductDetail()
+    {
+        await Page.GotoAsync(BaseUrl);
+
+        var firstProduct = Page.Locator("#divProducts .divProduct").First;
+        await firstProduct.ClickAsync();
+
+        await Page.WaitForURLAsync(new Regex(@"/product/\d+$"));
+
+        Assert.That(Page.Url, Does.Match(@".*/product/\d+$"));
+    }
+
+
+
+
+
 
 }
