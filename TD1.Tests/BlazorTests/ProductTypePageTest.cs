@@ -7,39 +7,35 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Playwright;
 
-
 namespace BlazorE2ETests;
 
-[Parallelizable(ParallelScope.Self)]
-[TestFixture]
-public class BrandsPageTest :  PageTest
+public class ProductTypePageTest :  PageTest
 {
-    private const string BaseUrl = "http://localhost:7074/brands";
+    private const string BaseUrl =  "http://localhost:7074/productTypes";
 
     [Test]
-    public async Task BrandPage_Loading()
+    public async Task ProductTypePage_Loading()
     {
         await Page.GotoAsync(BaseUrl);
         
-        //Attendre que la page charge
+        //attendre que la page charge
         var h3Locator = Page.Locator("h3");
         await h3Locator.WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Visible });
 
         var h3Text = await h3Locator.InnerTextAsync();
-        Assert.That(h3Text.Trim(), Is.EqualTo("Brands"));
-
+        Assert.That(h3Text.Trim(), Is.EqualTo("Product Types"));
     }
     [Test]
     public async Task BrandInUpdateInputWhenSelected()
     {
         await Page.GotoAsync(BaseUrl);
 
-        await Page.SelectOptionAsync("#ItemSelector", "Starlabs");
+        await Page.SelectOptionAsync("#ItemSelector", "Tablette");
         await Task.Delay(100);
 
-        var brandInput = Page.Locator("[data-testid='NomMarque']");
+        var brandInput = Page.Locator("[data-testid='NomTypeProduit']");
         var brandValue = await brandInput.InputValueAsync();
 
-        Assert.That(brandValue, Is.EqualTo("Starlabs"));
+        Assert.That(brandValue, Is.EqualTo("Tablette"));
     }
 }

@@ -22,7 +22,7 @@ else
 {
     <div id="content">
         <div id="divSelect">
-            <select @onchange="OnSelectChanged" value="@selectedItem?.GetName()">
+            <select @onchange="OnSelectChanged" value="@selectedItem?.GetName()" id="ItemSelector">
                 @foreach (var entity in Items)
                 {
                     <option value="@entity.GetName()">@entity.GetName()</option>
@@ -30,6 +30,7 @@ else
             </select>
         </div>
         <div id="divForm">
+            <h4>Update @Title : </h4>
             @if (selectedItem != null)
             {
                 <EditForm Model="selectedItem" OnValidSubmit="SubmitForm">
@@ -38,18 +39,20 @@ else
                     {
                         <div class="form-group">
                             <label>@prop.Name</label>
-                            
+
                             @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
                             {
                                 <input type="number"
                                        value="@prop.GetValue(selectedItem)"
-                                       @onchange="e => prop.SetValue(selectedItem, Convert.ToInt32(e.Value))" />
+                                       data-testid="@prop.Name"
+                                       @onchange="e => prop.SetValue(selectedItem, Convert.ToInt32(e.Value))"/>
                             }
                             else
                             {
                                 <input type="text"
                                        value="@prop.GetValue(selectedItem)"
-                                       @onchange="e => prop.SetValue(selectedItem, e.Value?.ToString())" />
+                                       data-testid="@prop.Name"
+                                       @onchange="e => prop.SetValue(selectedItem, e.Value?.ToString())"/>
                             }
                         </div>
                     }
@@ -61,7 +64,7 @@ else
             }
         </div>
         <div id="adddiv">
-            <h3>Add a @Title</h3>
+            <h4>Add a @Title : </h4>
             <EditForm Model="ItemToAdd.CurrentEntity" OnValidSubmit="SubmitAddForm">
                 @foreach (var prop in typeof(TItem).GetProperties()
                               .Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
