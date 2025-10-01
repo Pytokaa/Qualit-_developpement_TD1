@@ -120,24 +120,15 @@ public class ProductControllerMockTest
     public void ShouldNotDeleteProductBecauseProductDoesNotExist()
     {
         // Given : Un produit enregistré
-        Product productInDb = new()
-        {
-            IdProduit = 30,
-            NomProduit = "Chaise",
-            Description = "Une superbe chaise",
-            NomPhoto = "Une superbe chaise bleu",
-            UriPhoto = "https://ikea.fr/chaise.jpg"
-        };
-        
         _produitManager
-            .Setup(manager => manager.GetByIdAsync(productInDb.IdProduit))
+            .Setup(manager => manager.GetByIdAsync(_defaultProduct1.IdProduit))
             .ReturnsAsync((Product)null);
         
         // When : On souhaite supprimer un produit depuis l'API
-        IActionResult action = _productController.DeleteProduit(productInDb.IdProduit).GetAwaiter().GetResult();
+        IActionResult action = _productController.DeleteProduit(_defaultProduct1.IdProduit).GetAwaiter().GetResult();
         
         // Then : Le produit a bien été supprimé et le code HTTP est NO_CONTENT (204)
-        _produitManager.Verify(manager => manager.GetByIdAsync(productInDb.IdProduit), Times.Once);
+        _produitManager.Verify(manager => manager.GetByIdAsync(_defaultProduct1.IdProduit), Times.Once);
 
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
@@ -177,6 +168,7 @@ public class ProductControllerMockTest
         Assert.IsTrue(products.Value.Count() == 1, "Le nombre de produit doit etre 1");
         Assert.IsTrue(products.Value.All(p => p.NomMarque == "Ikea"));
         Assert.IsTrue(products.Value.All(p => p.NomProduit.Contains("ch", StringComparison.OrdinalIgnoreCase)));
+        _produitManager.Verify(manager => manager.FilterAsync("ch", "Ikea", null), Times.Once);
     }
     
     [TestMethod]
@@ -201,14 +193,7 @@ public class ProductControllerMockTest
     public void ShouldCreateProduct()
     {
         // Given : Un produit a enregistré
-        Product productToInsert = new()
-        {
-            IdProduit = 30,
-            NomProduit = "Chaise",
-            Description = "Une superbe chaise",
-            NomPhoto = "Une superbe chaise bleu",
-            UriPhoto = "https://ikea.fr/chaise.jpg"
-        };
+        Product productToInsert = _defaultProduct1;
         ProduitDetailDTO productToInsertDTO = _mapper.Map<ProduitDetailDTO>(productToInsert);
 
         _produitManager
@@ -228,24 +213,11 @@ public class ProductControllerMockTest
     public void ShouldUpdateProduct()
     {
         // Given : Un produit à mettre à jour
-        Product productToEdit = new()
-        {
-            IdProduit = 20,
-            NomProduit = "Bureau",
-            Description = "Un super bureau",
-            NomPhoto = "Un super bureau bleu",
-            UriPhoto = "https://ikea.fr/bureau.jpg"
-        };
+        Product productToEdit = _defaultProduct1;
         
         // Une fois enregistré, on modifie certaines propriétés 
-        Product updatedProduct = new()
-        {
-            IdProduit = 20,
-            NomProduit = "Lit",
-            Description = "Un super lit",
-            NomPhoto = "Un super bureau bleu",
-            UriPhoto = "https://ikea.fr/bureau.jpg"
-        };
+        Product updatedProduct = _defaultProduct1;
+        updatedProduct.NomProduit = "Table";
         ProduitDetailDTO updatedProduitDTO = _mapper.Map<ProduitDetailDTO>(updatedProduct);
 
         _produitManager

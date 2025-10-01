@@ -86,6 +86,7 @@ public class ProductControllerTest
         };
         _defaultProduct3 = new Product
         {
+            IdProduit = 30,
             NomProduit = "Tabouret par defaut",
             Description = "Un tabouret de test",
             NomPhoto = "table-test.jpg",
@@ -188,14 +189,10 @@ public class ProductControllerTest
         // Then : tests sur le type de action et sur le produit inséré en base de données 
         var createdResult = action.Result as CreatedAtActionResult;
         Assert.IsNotNull(createdResult);
-
         var returnedDto = createdResult.Value as ProduitDetailDTO;
         Assert.IsNotNull(returnedDto);
         
-        //recuperation de l'id a l'aide du retour et non de la class en elle meme à cause des DTO (donc non présent sur les autres class)
         int generatedId = (int)returnedDto.IdProduit;
-
-
         var productInDb = _context.Produits.Find(generatedId);
         Assert.IsNotNull(productInDb);
         Assert.IsNotNull(action);
@@ -231,16 +228,16 @@ public class ProductControllerTest
     {
         // Given : ajout d'un produit dans la base de données
         
-        _context.Produits.Add(_defaultProduct1);
+        _context.Produits.Add(_defaultProduct3);
         _context.SaveChanges();
-        ProduitDetailDTO productToUpdate = _mapper.Map<ProduitDetailDTO>(_defaultProduct1);
-        int productToUpdateId = _defaultProduct1.IdProduit;
+        ProduitDetailDTO updatedProduct = _mapper.Map<ProduitDetailDTO>(_defaultProduct3);
+        int differentId = 0;
         // changement de certaines propriétés
-        _defaultProduct1.NomProduit = "Produit modifié";
-        _defaultProduct1.Description = "Description modifiée";
+        updatedProduct.NomProduit = "Produit modifié";
+        updatedProduct.Description = "Description modifiée";
 
         // When : Utiliser un ID différent dans l'URL
-        IActionResult action = _productController.PutProduit(0, productToUpdate).GetAwaiter().GetResult();
+        IActionResult action = _productController.PutProduit(differentId, updatedProduct).GetAwaiter().GetResult();
         
         // Then
         Assert.IsNotNull(action);

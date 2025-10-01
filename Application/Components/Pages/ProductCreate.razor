@@ -64,22 +64,22 @@ else
     </form>*/
     
     <EditForm Model="ProductState.CurrentEntity" OnValidSubmit="SaveProduct">
-        @foreach (var prop in typeof(Product).GetProperties().Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
+        @foreach (var product in typeof(Product).GetProperties().Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
         {
             <div>
-                <label>@prop.Name</label>
+                <label>@product.Name</label>
                             
-                @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
+                @if (product.PropertyType == typeof(int) || product.PropertyType == typeof(int?))
                 {
                     <input type="number"
-                           value="@prop.GetValue(ProductState.CurrentEntity)"
-                           @onchange="e => prop.SetValue(ProductState.CurrentEntity, Convert.ToInt32(e.Value))" />
+                           value="@product.GetValue(ProductState.CurrentEntity)"
+                           @onchange="e => product.SetValue(ProductState.CurrentEntity, Convert.ToInt32(e.Value))" />
                 }
                 else
                 {
                     <input type="text"
-                           value="@prop.GetValue(ProductState.CurrentEntity)"
-                           @onchange="e => prop.SetValue(ProductState.CurrentEntity, e.Value?.ToString())" />
+                           value="@product.GetValue(ProductState.CurrentEntity)"
+                           @onchange="e => product.SetValue(ProductState.CurrentEntity, e.Value?.ToString())" />
                 }
             </div>
             
@@ -123,7 +123,8 @@ else
         {
             var response = await _ProductWsService.AddAsync(ProductState.CurrentEntity);
             if (response != null)
-            { 
+            {
+                ProductState.CurrentEntity = new Product();
                 NavManager.NavigateTo("/products");
             }
         }
