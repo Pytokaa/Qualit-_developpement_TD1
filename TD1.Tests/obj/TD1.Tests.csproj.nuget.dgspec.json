@@ -157,9 +157,37 @@
               "target": "Package",
               "version": "[17.14.1, )"
             },
+            "Microsoft.Playwright": {
+              "target": "Package",
+              "version": "[1.55.0, )"
+            },
+            "Microsoft.Playwright.NUnit": {
+              "target": "Package",
+              "version": "[1.55.0, )"
+            },
             "Moq": {
               "target": "Package",
               "version": "[4.20.72, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.35.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.35.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[141.0.7390.5400, )"
+            },
+            "Selenium.WebDriver.GeckoDriver": {
+              "target": "Package",
+              "version": "[0.36.0, )"
+            },
+            "Selenium.WebDriver.MSEdgeDriver": {
+              "target": "Package",
+              "version": "[140.0.3485.66, )"
             }
           },
           "imports": [

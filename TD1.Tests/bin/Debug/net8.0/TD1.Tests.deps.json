@@ -13,7 +13,14 @@
           "MSTest.TestAdapter": "3.10.4",
           "MSTest.TestFramework": "3.10.4",
           "Microsoft.NET.Test.Sdk": "17.14.1",
+          "Microsoft.Playwright": "1.55.0",
+          "Microsoft.Playwright.NUnit": "1.55.0",
           "Moq": "4.20.72",
+          "Selenium.Support": "4.35.0",
+          "Selenium.WebDriver": "4.35.0",
+          "Selenium.WebDriver.ChromeDriver": "141.0.7390.5400",
+          "Selenium.WebDriver.GeckoDriver": "0.36.0",
+          "Selenium.WebDriver.MSEdgeDriver": "140.0.3485.66",
           "Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions": "14.0.0.0"
         },
         "runtime": {
@@ -70,6 +77,14 @@
           "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
             "assemblyVersion": "2.23.0.29",
             "fileVersion": "2.23.0.29"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
           }
         }
       },
@@ -227,11 +242,52 @@
           "Microsoft.TestPlatform.TestHost": "17.14.1"
         }
       },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.OpenApi/1.6.14": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
             "assemblyVersion": "1.6.14.0",
             "fileVersion": "1.6.14.0"
+          }
+        }
+      },
+      "Microsoft.Playwright/1.55.0": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
+          "System.ComponentModel.Annotations": "5.0.0",
+          "System.Text.Json": "6.0.10"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Playwright.dll": {
+            "assemblyVersion": "1.55.0.0",
+            "fileVersion": "1.55.0.0"
+          }
+        }
+      },
+      "Microsoft.Playwright.NUnit/1.55.0": {
+        "dependencies": {
+          "Microsoft.NET.Test.Sdk": "17.14.1",
+          "Microsoft.Playwright": "1.55.0",
+          "Microsoft.Playwright.TestAdapter": "1.55.0",
+          "NUnit": "3.13.2",
+          "NUnit3TestAdapter": "4.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Playwright.NUnit.dll": {
+            "assemblyVersion": "1.55.0.0",
+            "fileVersion": "1.55.0.0"
+          }
+        }
+      },
+      "Microsoft.Playwright.TestAdapter/1.55.0": {
+        "dependencies": {
+          "Microsoft.Playwright": "1.55.0",
+          "Microsoft.TestPlatform.ObjectModel": "17.14.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Playwright.TestAdapter.dll": {
+            "assemblyVersion": "1.55.0.0",
+            "fileVersion": "1.55.0.0"
           }
         }
       },
@@ -821,6 +877,11 @@
           }
         }
       },
+      "NETStandard.Library/2.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -871,6 +932,57 @@
           }
         }
       },
+      "NUnit/3.13.2": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/nunit.framework.dll": {
+            "assemblyVersion": "3.13.2.0",
+            "fileVersion": "3.13.2.0"
+          }
+        }
+      },
+      "NUnit3TestAdapter/4.0.0": {},
+      "Selenium.Support/4.35.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.35.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.35.0": {
+        "runtime": {
+          "lib/net8.0/WebDriver.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux/native/selenium-manager": {
+            "rid": "linux",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/selenium-manager": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win/native/selenium-manager.exe": {
+            "rid": "win",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Selenium.WebDriver.ChromeDriver/141.0.7390.5400": {},
+      "Selenium.WebDriver.GeckoDriver/0.36.0": {},
+      "Selenium.WebDriver.MSEdgeDriver/140.0.3485.66": {},
       "Swashbuckle.AspNetCore/6.6.2": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -910,11 +1022,24 @@
         }
       },
       "System.Collections.Immutable/8.0.0": {},
+      "System.ComponentModel.Annotations/5.0.0": {},
       "System.Diagnostics.DiagnosticSource/5.0.0": {},
       "System.Diagnostics.EventLog/6.0.0": {},
       "System.Reflection.Metadata/8.0.0": {
         "dependencies": {
           "System.Collections.Immutable": "8.0.0"
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Text.Encodings.Web/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "System.Text.Json/6.0.10": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "6.0.0"
         }
       },
       "API/1.0.0": {
@@ -983,6 +1108,13 @@
       "sha512": "sha512-nWArUZTdU7iqZLycLKWe0TDms48KKGE6pONH2terYNa8REXiqixrMOkf1sk5DHGMaUTqONU2YkS4SAXBhLStgw==",
       "path": "microsoft.applicationinsights/2.23.0",
       "hashPath": "microsoft.applicationinsights.2.23.0.nupkg.sha512"
+    },
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
+      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/17.14.1": {
       "type": "package",
@@ -1117,12 +1249,40 @@
       "path": "microsoft.net.test.sdk/17.14.1",
       "hashPath": "microsoft.net.test.sdk.17.14.1.nupkg.sha512"
     },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
     "Microsoft.OpenApi/1.6.14": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-tTaBT8qjk3xINfESyOPE2rIellPvB7qpVqiWiyA/lACVvz+xOGiXhFUfohcx82NLbi5avzLW0lx+s6oAqQijfw==",
       "path": "microsoft.openapi/1.6.14",
       "hashPath": "microsoft.openapi.1.6.14.nupkg.sha512"
+    },
+    "Microsoft.Playwright/1.55.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iPVHeRI5EZB1gK43MC/qnINvGUV3pYh/PJn5wNmeaiZ4ARlFAfK3azf46c7/kx/lmVaknZ5rSNT1F8SZgSaWSQ==",
+      "path": "microsoft.playwright/1.55.0",
+      "hashPath": "microsoft.playwright.1.55.0.nupkg.sha512"
+    },
+    "Microsoft.Playwright.NUnit/1.55.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aZuo6ZkzzyNJI1IGTFsPcRDm5gE9D17jyB21gpJ2AbSmkmRKzsK7QoBHF2zVsY2VgUYlzcIuhvLOlWMoFq9L0A==",
+      "path": "microsoft.playwright.nunit/1.55.0",
+      "hashPath": "microsoft.playwright.nunit.1.55.0.nupkg.sha512"
+    },
+    "Microsoft.Playwright.TestAdapter/1.55.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iXK0fvP95i+M3JMj8aDK2sZ2z7bK8CG8L9V1utlkRgE82dDqtoiWUPJUk4n4cWyTUw7iTWy7GXqXPUQmIEYd9Q==",
+      "path": "microsoft.playwright.testadapter/1.55.0",
+      "hashPath": "microsoft.playwright.testadapter.1.55.0.nupkg.sha512"
     },
     "Microsoft.Testing.Extensions.Telemetry/1.8.4": {
       "type": "package",
@@ -1208,6 +1368,13 @@
       "path": "mstest.testframework/3.10.4",
       "hashPath": "mstest.testframework.3.10.4.nupkg.sha512"
     },
+    "NETStandard.Library/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
+      "path": "netstandard.library/2.0.0",
+      "hashPath": "netstandard.library.2.0.0.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,
@@ -1235,6 +1402,55 @@
       "sha512": "sha512-Rnjvoq9xqsGKopadfIZ/UDRRpYLxvVYhoA9jlZ8rOmw3jCW0n71+UVg8tOjjMwPo0p9Y5bjOEU6UC1oioR3urQ==",
       "path": "npgsql.entityframeworkcore.postgresql.design/1.0.0",
       "hashPath": "npgsql.entityframeworkcore.postgresql.design.1.0.0.nupkg.sha512"
+    },
+    "NUnit/3.13.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u+fz/lXyR4vlamySNAEMrXvh+GhAQiB6/aVZtU5WjivR5zF26Ui0tfteDtWqT90k9D8y6g8rFKYQC97Z7d195w==",
+      "path": "nunit/3.13.2",
+      "hashPath": "nunit.3.13.2.nupkg.sha512"
+    },
+    "NUnit3TestAdapter/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5gCkytgQWL93M5s9Rnl4CfSUhn95VsuMVLYjmZe8K7dNRF7kzrBMPsBTyLNCga5qLW7RM/o591J+HVrV1QMaVQ==",
+      "path": "nunit3testadapter/4.0.0",
+      "hashPath": "nunit3testadapter.4.0.0.nupkg.sha512"
+    },
+    "Selenium.Support/4.35.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K6DiLdDQNDSWI/zh14bk9vRjW8vEX2mhMI2Cq8bD72FM5rOnLhQwZABJHrWCZ3U1wb7KFFd7iQeUhvpyHVt2AA==",
+      "path": "selenium.support/4.35.0",
+      "hashPath": "selenium.support.4.35.0.nupkg.sha512"
+    },
+    "Selenium.WebDriver/4.35.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C9OrObS2KLyUQDJNRY883JAc4n5q58pBYmY954hf+lGMQQcsz4Ias2mk91lHkLXFX+2qMttya4df9lGP1SLiGQ==",
+      "path": "selenium.webdriver/4.35.0",
+      "hashPath": "selenium.webdriver.4.35.0.nupkg.sha512"
+    },
+    "Selenium.WebDriver.ChromeDriver/141.0.7390.5400": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Yax9Z5NB7Fw7VKiqo7wdeULGdbMHr4euapgZgAWuStJSsP/8JKjbUzKwv4zvk3mszPvBx3esvngVjCF7hiFDjQ==",
+      "path": "selenium.webdriver.chromedriver/141.0.7390.5400",
+      "hashPath": "selenium.webdriver.chromedriver.141.0.7390.5400.nupkg.sha512"
+    },
+    "Selenium.WebDriver.GeckoDriver/0.36.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jUdrPcwkVt8OJon4iWv6pNTPIAdViJYB9cbd4ct0Bt2RzPzynQiN8bBUfOA1iSxTppI9SH8L1eMfg5NRijlBsw==",
+      "path": "selenium.webdriver.geckodriver/0.36.0",
+      "hashPath": "selenium.webdriver.geckodriver.0.36.0.nupkg.sha512"
+    },
+    "Selenium.WebDriver.MSEdgeDriver/140.0.3485.66": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wDrJCb2dlXbaksjXys9ckcK86jZiyzoC5+lcYkQd4p9JNusonq+5jWmXQkWFQWmanBiJukS0ytClpsltS27cjQ==",
+      "path": "selenium.webdriver.msedgedriver/140.0.3485.66",
+      "hashPath": "selenium.webdriver.msedgedriver.140.0.3485.66.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.6.2": {
       "type": "package",
@@ -1271,6 +1487,13 @@
       "path": "system.collections.immutable/8.0.0",
       "hashPath": "system.collections.immutable.8.0.0.nupkg.sha512"
     },
+    "System.ComponentModel.Annotations/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+      "path": "system.componentmodel.annotations/5.0.0",
+      "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
+    },
     "System.Diagnostics.DiagnosticSource/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1291,6 +1514,27 @@
       "sha512": "sha512-ptvgrFh7PvWI8bcVqG5rsA/weWM09EnthFHR5SCnS6IN+P4mj6rE1lBDC4U8HL9/57htKAqy4KQ3bBj84cfYyQ==",
       "path": "system.reflection.metadata/8.0.0",
       "hashPath": "system.reflection.metadata.8.0.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Vg8eB5Tawm1IFqj4TVK1czJX89rhFxJo9ELqc/Eiq0eXy13RK00eubyU6TJE6y+GQXjyV5gSfiewDUZjQgSE0w==",
+      "path": "system.text.encodings.web/6.0.0",
+      "hashPath": "system.text.encodings.web.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/6.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NSB0kDipxn2ychp88NXWfFRFlmi1bst/xynOutbnpEfRCT9JZkZ7KOmF/I/hNKo2dILiMGnqblm+j1sggdLB9g==",
+      "path": "system.text.json/6.0.10",
+      "hashPath": "system.text.json.6.0.10.nupkg.sha512"
     },
     "API/1.0.0": {
       "type": "project",
