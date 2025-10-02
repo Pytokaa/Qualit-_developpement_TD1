@@ -10,4 +10,5 @@ public class Marque : IEntity
     
     public int? GetId() =>  IdMarque;
     public string? GetName() =>  NomMarque;
+    public Marque(){}
 }

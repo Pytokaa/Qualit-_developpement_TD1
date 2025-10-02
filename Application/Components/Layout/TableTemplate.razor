@@ -2,8 +2,9 @@
 @using Application.Attributes
 @using Application.Models.StateService
 @using Application.Services
+@using Application.ViewModel
 @inject NavigationManager NavManager
-@typeparam TItem where TItem : class, Application.Models.IEntity
+@typeparam TItem where TItem : class, Application.Models.IEntity, new()
 <link href="css/tableTemplate.css" rel="stylesheet" />
 
 
@@ -13,7 +14,7 @@
 
 <h3>@Title</h3>
 
-@if (Items == null)
+@if (_ViewModel.IsLoading)
 {
     <p>Loading...</p>
 }
@@ -22,8 +23,8 @@ else
 {
     <div id="content">
         <div id="divSelect">
-            <select @onchange="OnSelectChanged" value="@selectedItem?.GetName()" id="ItemSelector">
-                @foreach (var entity in Items)
+            <select @onchange="e => _ViewModel.OnSelectorChange(_ViewModel.Items.FirstOrDefault(i => i.GetName() == e.Value?.ToString()))" value="@_ViewModel.CurrentEntity?.GetName()" id="ItemSelector">
+                @foreach (var entity in _ViewModel.Items)
                 {
                     <option value="@entity.GetName()">@entity.GetName()</option>
                 }
@@ -31,9 +32,9 @@ else
         </div>
         <div id="divForm">
             <h4>Update @Title : </h4>
-            @if (selectedItem != null)
+            @if (_ViewModel.CurrentEntity != null)
             {
-                <EditForm Model="selectedItem" OnValidSubmit="SubmitForm">
+                <EditForm Model="@_ViewModel.CurrentEntity" OnValidSubmit="@_ViewModel.SubmitUpdateAsync">
                     @foreach (var prop in typeof(TItem).GetProperties()
                                   .Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
                     {
@@ -43,29 +44,29 @@ else
                             @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
                             {
                                 <input type="number"
-                                       value="@prop.GetValue(selectedItem)"
+                                       value="@prop.GetValue(_ViewModel.CurrentEntity)"
                                        data-testid="@prop.Name"
-                                       @onchange="e => prop.SetValue(selectedItem, Convert.ToInt32(e.Value))"/>
+                                       @onchange="e => prop.SetValue(_ViewModel.CurrentEntity, Convert.ToInt32(e.Value))"/>
                             }
                             else
                             {
                                 <input type="text"
-                                       value="@prop.GetValue(selectedItem)"
+                                       value="@prop.GetValue(_ViewModel.CurrentEntity)"
                                        data-testid="@prop.Name"
-                                       @onchange="e => prop.SetValue(selectedItem, e.Value?.ToString())"/>
+                                       @onchange="e => prop.SetValue(_ViewModel.CurrentEntity, e.Value?.ToString())"/>
                             }
                         </div>
                     }
                     <button type="submit">Update</button>
                 </EditForm>
-                <div id="deleteItemdiv" @onclick="DeleteSubmit">
+                <div id="deleteItemdiv" @onclick="@_ViewModel.SubmitDeleteAsync">
                     Delete
                 </div>
             }
         </div>
         <div id="adddiv">
             <h4>Add a @Title : </h4>
-            <EditForm Model="ItemToAdd.CurrentEntity" OnValidSubmit="SubmitAddForm">
+            <EditForm Model="@_ViewModel._ItemToAdd.CurrentEntity" OnValidSubmit="@_ViewModel.SubmitAddAsync">
                 @foreach (var prop in typeof(TItem).GetProperties()
                               .Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
                 {
@@ -75,14 +76,14 @@ else
                         @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
                         {
                             <input type="number"
-                                   value="@prop.GetValue(ItemToAdd.CurrentEntity)"
-                                   @onchange="e => prop.SetValue(ItemToAdd.CurrentEntity, Convert.ToInt32(e.Value))"/>
+                                   value="@prop.GetValue(_ViewModel._ItemToAdd.CurrentEntity)"
+                                   @onchange="e => prop.SetValue(_ViewModel._ItemToAdd.CurrentEntity, Convert.ToInt32(e.Value))"/>
                         }
                         else
                         {
                             <input type="text"
-                                   value="@prop.GetValue(ItemToAdd.CurrentEntity)"
-                                   @onchange="e => prop.SetValue(ItemToAdd.CurrentEntity, e.Value?.ToString())"/>
+                                   value="@prop.GetValue(_ViewModel._ItemToAdd.CurrentEntity)"
+                                   @onchange="e => prop.SetValue(_ViewModel._ItemToAdd.CurrentEntity, e.Value?.ToString())"/>
                         }
                     </div>
                 }
@@ -95,47 +96,15 @@ else
 
 @code {
     [Parameter] public string Title { get; set; } = string.Empty;
-    public List<TItem>? Items { get; set; }
-    public TItem? selectedItem { get; set; }
-    [Parameter] public IStateService<TItem> ItemToAdd { get; set; }
-    [Parameter] public IService<TItem> _WsService { get; set; }
-    private async Task OnSelectChanged(ChangeEventArgs e)
-    {
-        var selectedName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(selectedName))
-        {
-            selectedItem = Items?.FirstOrDefault(i => i.GetName() == selectedName);
-        }
-    }
+    [Parameter] public BaseEntityViewModel<TItem> _ViewModel { get; set; }
+    
     protected override async Task OnInitializedAsync()
     {
-        Items = await _WsService.GetAllAsync() ?? new List<TItem>();
-        if (Items.Any())
+        _ViewModel.IsLoading = true;
+        try
         {
-            selectedItem = Items.First(); 
+            await _ViewModel.LoadAsync();
         }
-    }
-
-    private async Task SubmitAddForm()
-    {
-        if (ItemToAdd?.CurrentEntity == null) return;
-
-        await _WsService.AddAsync(ItemToAdd.CurrentEntity);
-
-        NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
-    }
-    private async Task SubmitForm()
-    {
-        if (selectedItem != null)
-            await _WsService.UpdateAsync(selectedItem);
-    }
-    private async Task DeleteSubmit()
-    {
-        if (selectedItem != null)
-        {
-            await _WsService.DeleteAsync((int)selectedItem.GetId());
-            NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
-        }
-        
+        catch (Exception ex) { }
     }
 }

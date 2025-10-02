@@ -1,15 +1,10 @@
 @page "/productTypes"
 @using Application.Models
-@using Application.Models.StateService
-@using Application.Services
-@inject IStateService<TypeProduit> _productTypeToAdd
-@inject IService<TypeProduit> _producttypeWsService
-
-
+@using Application.ViewModel
+@inject BaseEntityViewModel<TypeProduit> _ProductTypeViewModel
 <PageTitle>Product Types</PageTitle>
 
 <TableTemplate TItem="TypeProduit"
                Title="Product Types"
-               ItemToAdd="_productTypeToAdd"
-               _WsService="_producttypeWsService"/>
+               _ViewModel="_ProductTypeViewModel"/>
 

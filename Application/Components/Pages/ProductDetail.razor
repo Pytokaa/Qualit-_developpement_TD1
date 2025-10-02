@@ -3,9 +3,10 @@
 @using Application.Attributes
 @using Application.Models
 @using Application.Services
-@inject ProductWSService _ProductWsService
-@inject BrandWSService _BrandWsService
-@inject ProductTypeWSService _ProductTypeWsService
+@using Application.ViewModel
+@inject BaseEntityViewModel<Marque> _BrandViewModel
+@inject BaseEntityViewModel<TypeProduit> _ProductTypeViewModel
+@inject ProductViewModel _ProductViewModel
 @inject NavigationManager NavManager
 
 
@@ -18,14 +19,14 @@
 
 <h3>Details of product </h3>
 
-@if (product == null)
+@if (_ProductViewModel._currentEditingProduct == null)
 {
     <p>Loading…</p>
 }
 else
 {
     <div id="addDiv">
-        <EditForm Model="product" OnValidSubmit="UpdateProduct">
+        <EditForm Model="_ProductViewModel._currentEditingProduct" OnValidSubmit="UpdateProduct">
             @foreach (var prop in typeof(Product).GetProperties().Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
             {
                 <div>
@@ -34,37 +35,37 @@ else
                     @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
                     {
                         <input type="number"
-                               value="@prop.GetValue(product)"
-                               @onchange="e => prop.SetValue(product, Convert.ToInt32(e.Value))" />
+                               value="@prop.GetValue(_ProductViewModel._currentEditingProduct)"
+                               @onchange="e => prop.SetValue(_ProductViewModel._currentEditingProduct, Convert.ToInt32(e.Value))" />
                     }
                     else
                     {
                         <input type="text"
-                               value="@prop.GetValue(product)"
-                               @onchange="e => prop.SetValue(product, e.Value?.ToString())" />
+                               value="@prop.GetValue(_ProductViewModel._currentEditingProduct)"
+                               @onchange="e => prop.SetValue(_ProductViewModel._currentEditingProduct, e.Value?.ToString())" />
                     }
                 </div>
             }
             <h4>Image : </h4>
-            @if (!string.IsNullOrWhiteSpace(product?.UriPhoto))
+            @if (!string.IsNullOrWhiteSpace(_ProductViewModel._currentEditingProduct?.UriPhoto))
             {
-                <img src="@product.UriPhoto" alt="@product.NomProduit"/>
+                <img src="@_ProductViewModel._currentEditingProduct.UriPhoto" alt="@_ProductViewModel._currentEditingProduct.NomProduit"/>
             }
             else
             {
                 <p>No image available</p>
             }
-            <select @bind="product.IdMarque">
+            <select @bind="_ProductViewModel._currentEditingProduct.IdMarque">
                 <option value="">-- Select brand --</option>
-                @foreach (var brand in brands)
+                @foreach (var brand in _BrandViewModel.Items)
                 {
                     <option value="@brand.IdMarque">@brand.NomMarque</option>
                 }
             </select>
 
-            <select @bind="product.IdTypeProduit">
+            <select @bind="_ProductViewModel._currentEditingProduct.IdTypeProduit">
                 <option value="">-- Select product type --</option>
-                @foreach (var type in productTypes)
+                @foreach (var type in _ProductTypeViewModel.Items)
                 {
                     <option value="@type.IdTypeProduit">@type.NomTypeProduit</option>
                 }
@@ -80,26 +81,22 @@ else
 
 @code {
     [Parameter] public int Id { get; set; }
-
-    private Product? product;
-    private List<Marque>? brands;
-    private List<TypeProduit>? productTypes;
-
+    
     protected override async Task OnInitializedAsync()
     {
-        product = await _ProductWsService.GetByIdAsync(Id);
-        brands = await _BrandWsService.GetAllAsync();
-        productTypes = await _ProductTypeWsService.GetAllAsync();
+        await _BrandViewModel.LoadAsync();
+        await _ProductTypeViewModel.LoadAsync();
+        await _ProductViewModel.SetCurrentEditingProduct(Id);
     }
 
     private async Task UpdateProduct()
     {
-        await _ProductWsService.UpdateAsync(product);
+        await _ProductViewModel.UpdateCurrentEditingProduct();
     }
 
     private async Task DeleteProduct()
     {
-        await _ProductWsService.DeleteAsync(product.IdProduit);
+        await _ProductViewModel.DeleteCurrentEditingProduct();
         NavManager.NavigateTo("/products");
     }
 }

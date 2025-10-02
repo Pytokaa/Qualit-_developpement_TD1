@@ -1,17 +1,15 @@
 @using Application.Models
-@using Application.Models.StateService
-@using Application.Services
+@using Application.ViewModel
 @page "/brands"
-@inject IStateService<Marque> _brandToAdd
-@inject IService<Marque> _brandWsService
+@inject BaseEntityViewModel<Marque> _BrandViewModel
+
 
 
 <PageTitle>Brands</PageTitle>
 
 <TableTemplate TItem="Marque"
                Title="Brands"
-               ItemToAdd="_brandToAdd"
-               _WsService="_brandWsService"/>
+               _ViewModel="_BrandViewModel"/>
 
 
 

@@ -3,12 +3,13 @@
 @using Application.Models
 @using Application.Models.StateService
 @using Application.Services
+@using Application.ViewModel
 @page "/product/create"
-@inject ProductWSService _ProductWsService
-@inject BrandWSService _BrandWsService
-@inject ProductTypeWSService _ProductTypeWsService
 @inject IStateService<Product> ProductState
 @inject NavigationManager NavManager
+@inject BaseEntityViewModel<Marque> _BrandViewModel
+@inject BaseEntityViewModel<TypeProduit> _ProductTypeViewModel
+@inject ProductViewModel _ProductViewModel
 
 
 <link href="css/productCreate.css" rel="stylesheet" />
@@ -20,50 +21,13 @@
 
 
 
-@if (_brands.Count == 0 || _productTypes.Count == 0)
+@if (_BrandViewModel.Items.Count == 0 || _ProductTypeViewModel.Items.Count == 0)
 {
     <p>Loading...</p>
 }
 else
 {
-    /*<form @onsubmit="SaveProduct">
-        <input type="text" @bind="ProductState.CurrentEntity.NomProduit" placeholder="Product name" />
-
-        
-        
-        
-        <select @bind="ProductState.CurrentEntity.IdMarque">
-            <option value="">-- Select brand --</option>
-            @foreach (var brand in _brands)
-            {
-                <option value="@brand.IdMarque">@brand.NomMarque</option>
-            }
-        </select>
-
-        <select @bind="ProductState.CurrentEntity.IdTypeProduit">
-            <option value="">-- Select product type --</option>
-            @foreach (var type in _productTypes)
-            {
-                <option value="@type.IdTypeProduit">@type.NomTypeProduit</option>
-            }
-        </select>
-
-        <textarea @bind="ProductState.CurrentEntity.Description" placeholder="Description"></textarea>
-
-        <input type="text" @bind="ProductState.CurrentEntity.NomPhoto" placeholder="Photo name" />
-        <input type="text" @bind="ProductState.CurrentEntity.UriPhoto" placeholder="Photo URI" />
-        @if (!string.IsNullOrWhiteSpace(ProductState.CurrentEntity.UriPhoto))
-        {
-            <div style="margin-top:1rem;">
-                <p>Preview:</p>
-                <img src="@ProductState.CurrentEntity.UriPhoto" alt="Preview" style="max-width:200px; max-height:200px; object-fit:cover; border:1px solid #ccc;" />
-            </div>
-        }
-
-        <button type="submit">Save</button>
-    </form>*/
-    
-    <EditForm Model="ProductState.CurrentEntity" OnValidSubmit="SaveProduct">
+    <EditForm Model="@_ProductViewModel._productToAdd.CurrentEntity" OnValidSubmit="SaveProduct">
         @foreach (var product in typeof(Product).GetProperties().Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
         {
             <div>
@@ -72,46 +36,42 @@ else
                 @if (product.PropertyType == typeof(int) || product.PropertyType == typeof(int?))
                 {
                     <input type="number"
-                           value="@product.GetValue(ProductState.CurrentEntity)"
-                           @onchange="e => product.SetValue(ProductState.CurrentEntity, Convert.ToInt32(e.Value))" />
+                           value="@_ProductViewModel._productToAdd.CurrentEntity"
+                           @onchange="e => product.SetValue(_ProductViewModel._productToAdd.CurrentEntity, Convert.ToInt32(e.Value))" />
                 }
                 else
                 {
                     <input type="text"
-                           value="@product.GetValue(ProductState.CurrentEntity)"
-                           @onchange="e => product.SetValue(ProductState.CurrentEntity, e.Value?.ToString())" />
+                           value="@product.GetValue(_ProductViewModel._productToAdd.CurrentEntity)"
+                           @onchange="e => product.SetValue(_ProductViewModel._productToAdd.CurrentEntity, e.Value?.ToString())" />
                 }
             </div>
             
         }
-        <select @bind="ProductState.CurrentEntity.IdMarque">
+        <select @bind="_ProductViewModel._productToAdd.CurrentEntity.IdMarque">
             <option value="">-- Select brand --</option>
-            @foreach (var brand in _brands)
+            @foreach (var brand in _BrandViewModel.Items)
             {
                 <option value="@brand.IdMarque">@brand.NomMarque</option>
             }
         </select>
 
-        <select @bind="ProductState.CurrentEntity.IdTypeProduit">
+        <select @bind="_ProductViewModel._productToAdd.CurrentEntity.IdTypeProduit">
             <option value="">-- Select product type --</option>
-            @foreach (var type in _productTypes)
+            @foreach (var type in _ProductTypeViewModel.Items)
             {
                 <option value="@type.IdTypeProduit">@type.NomTypeProduit</option>
             }
         </select>
         <button type="submit">Add</button>
     </EditForm>
-
 }
-
 @code{
-    private List<Marque>? _brands = new();
-    private List<TypeProduit>? _productTypes = new();
     private IBrowserFile selectedFile;
     protected override async Task OnInitializedAsync()
     {
-        _brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
-        _productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
+        await _BrandViewModel.LoadAsync();
+        await _ProductTypeViewModel.LoadAsync();
         if (ProductState.CurrentEntity == null)
         {
             ProductState.CurrentEntity = new Product();
@@ -119,45 +79,15 @@ else
     }
     private async Task SaveProduct()
     {
-        try
+        var (succes, error) = await _ProductViewModel.AddProductAsync();
+        if (succes)
         {
-            var response = await _ProductWsService.AddAsync(ProductState.CurrentEntity);
-            if (response != null)
-            {
-                ProductState.CurrentEntity = new Product();
-                NavManager.NavigateTo("/products");
-            }
+            NavManager.NavigateTo("/products");
         }
-        catch (Exception ex)
+        else
         {
-            Console.WriteLine($"Erreur : {ex.Message}");
+            Console.WriteLine($"Erreur : {error}");
         }
     }
-    /*
-    private async Task OnFileSelected(InputFileChangeEventArgs e)
-    {
-        var file = e.File;
-
-        if (file != null)
-        {
-            var folderPath = Path.Combine(Environment.CurrentDirectory, "images");
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-
-            var uniqueFileName = $"{Guid.NewGuid()}_{file.Name}";
-            var filePath = Path.Combine(folderPath, uniqueFileName);
-
-            using var stream = File.Create(filePath);
-            await file.OpenReadStream().CopyToAsync(stream);
-
-            ProductState.CurrentEntity.UriPhoto = $"images/{uniqueFileName}";
-            ProductState.CurrentEntity.NomPhoto = file.Name;
-            
-            Console.WriteLine(File.Exists(filePath));
-
-            StateHasChanged();
-        }
-    }*/
+    
 }

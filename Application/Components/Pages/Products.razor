@@ -3,9 +3,9 @@
 @using Application.ViewModel
 @page "/products"
 @inject ProductViewModel _ProductViewModel
-@inject ProductWSService _ProductWsService
-@inject BrandWSService _BrandWsService
-@inject ProductTypeWSService _ProductTypeWsService
+@inject BaseEntityViewModel<Marque> _BrandViewModel
+@inject BaseEntityViewModel<TypeProduit> _ProductTypeViewModel
+@inject NavigationManager Navigation
 
 
 <link href="css/productsTable.css" rel="stylesheet" />
@@ -17,16 +17,16 @@
 <div id="products-controls">
     <div id="filter-and-search">
         <label for="searchinput">Search for a product:</label>
-        <input type="text" id="searchinput" @oninput="OnSearchInput" @bind="searchTerm" placeholder="Type product name..." />
+        <input type="text" id="searchinput" @oninput="@(async e => await _ProductViewModel.OnSearchInputAsync(e.Value?.ToString() ?? ""))" value="@_ProductViewModel.SearchName" placeholder="Type product name..." />
 
         <div id="filters">
             <div>
                 <label for="selectbrand">Select Brand:</label>
-                <select name="selectbrand" id="selectbrand" @onchange="OnBrandChange" value="@selectedBrand">
+                <select name="selectbrand" id="selectbrand" @onchange="@(async e => { _ProductViewModel.SearchBrand = e.Value?.ToString(); await _ProductViewModel.ApplyFiltersAsync(); })" value="@_ProductViewModel.SearchBrand">
                     <option value="">Select a brand</option>
-                    @if (brands != null)
+                    @if (_BrandViewModel.Items != null)
                     {
-                        @foreach (var brandName in brands)
+                        @foreach (var brandName in _BrandViewModel.Items)
                         {
                             <option value="@brandName.NomMarque">@brandName.NomMarque</option>
                         }
@@ -36,11 +36,11 @@
 
             <div>
                 <label for="selectproductType">Select Product Type:</label>
-                <select name="selectproductType" id="selectproductType" @onchange="OnProductTypeChange" value="@selectedProductType">
+                <select name="selectproductType" id="selectproductType" @onchange="@(async e => { _ProductViewModel.SearchType = e.Value?.ToString(); await _ProductViewModel.ApplyFiltersAsync(); })" value="@_ProductViewModel.SearchType">
                     <option value="">Select a product type</option>
-                    @if (productTypes != null)
+                    @if (_ProductTypeViewModel.Items != null)
                     {
-                        @foreach (var producttype in productTypes)
+                        @foreach (var producttype in _ProductTypeViewModel.Items)
                         {
                             <option value="@producttype.NomTypeProduit">@producttype.NomTypeProduit</option>
                         }
@@ -86,59 +86,15 @@ else
 }
 
 @code {
-    private List<Marque>? brands;
-    private List<TypeProduit> productTypes;
-    private string selectedBrand = "";
-    private string selectedProductType = "";
-    private string searchTerm = "";
-    private CancellationTokenSource? searchCts;
-
-    [Inject] NavigationManager Navigation { get; set; }
-
-    private async Task OnBrandChange(ChangeEventArgs e)
-    {
-        selectedBrand = e.Value?.ToString() ?? "";
-        await ApplyFilters();
-    }
-
-    private async Task OnProductTypeChange(ChangeEventArgs e)
-    {
-        selectedProductType = e.Value?.ToString() ?? "";
-        await ApplyFilters();
-    }
-
-    private async Task OnSearchInput(ChangeEventArgs e)
-    {
-        searchTerm = e.Value?.ToString() ?? "";
-        searchCts?.Cancel();
-        searchCts = new CancellationTokenSource();
-        var token = searchCts.Token;
-
-        try
-        {
-            await Task.Delay(500, token);
-            await ApplyFilters();
-        }
-        catch (TaskCanceledException) { }
-
-        StateHasChanged();
-    }
-
-    private async Task ApplyFilters()
-    {
-        string? name = string.IsNullOrEmpty(searchTerm) ? null : searchTerm;
-        string? brand = string.IsNullOrEmpty(selectedBrand) ? null : selectedBrand;
-        string? productType = string.IsNullOrEmpty(selectedProductType) ? null : selectedProductType;
-
-        //products = await _ProductWsService.GetProductByFilter(name, brand, productType) ?? new List<Product>();
-    }
-
     protected override async Task OnInitializedAsync()
     {
+        _ProductViewModel.OnChange += StateHasChanged;
         _ProductViewModel.IsLoading = true;
         try
         {
             await _ProductViewModel.LoadProductAsync();
+            await _BrandViewModel.LoadAsync();
+            await _ProductTypeViewModel.LoadAsync();
         }
         catch (Exception ex)
         {
@@ -148,24 +104,10 @@ else
         {
             _ProductViewModel.IsLoading = false;
         }
-        brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
-        productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
     }
-
-    private void NavigateToPage(string uri)
-    {
-        Navigation.NavigateTo(uri);
-    }
-
-    private void NavigateToProduct(int id)
-    {
-        Navigation.NavigateTo($"/product/{id}");
-    }
-
-    private string GetPhoto(string? uri)
-    {
-        return string.IsNullOrWhiteSpace(uri)
-            ? "_content/YourApp/images/empty-square.png"
-            : uri;
-    }
+    private void NavigateToPage(string uri) => Navigation.NavigateTo(uri);
+    private void NavigateToProduct(int id) => Navigation.NavigateTo($"/product/{id}");
+    private string GetPhoto(string? uri) => string.IsNullOrWhiteSpace(uri)
+        ? "_content/YourApp/images/empty-square.png"
+        : uri;
 }
