@@ -3,6 +3,7 @@ using Application.Components.Pages;
 using Application.Models;
 using Application.Models.StateService;
 using Application.Services;
+using Application.Shared;
 using Microsoft.AspNetCore.Components;
 
 namespace Application.ViewModel;
@@ -13,15 +14,17 @@ public class ProductViewModel : CrudViewModel<Product>
     public IStateService<Product> _productToAdd;
     
     public string? SearchName { get; set; }
+    private readonly NotificationService _notificationService;
     public string? SearchBrand { get; set; }
     public string? SearchType { get; set; }
     private CancellationTokenSource searchCts;
 
-    public ProductViewModel(IService<Product> service, IStateService<Product> productToAdd, ProductWSService webService)
+    public ProductViewModel(IService<Product> service, IStateService<Product> productToAdd, ProductWSService webService, NotificationService notificationService)
         : base(service)
     {
         _webService = webService;
         _productToAdd = productToAdd;
+        _notificationService = notificationService;
     }
     
     public Product? CurrentEditingProduct { get; set; }
@@ -54,7 +57,7 @@ public class ProductViewModel : CrudViewModel<Product>
 
         try
         {
-            var data = await _webService.GetAllAsync();
+            var data = await _webService.GetProductByFilter(SearchName, SearchBrand, SearchType);
             Items = data?.ToList() ?? new List<Product>();
         }
         catch (Exception ex)
@@ -77,6 +80,11 @@ public class ProductViewModel : CrudViewModel<Product>
         if (_productToAdd.CurrentEntity != null)
         {
             var result = await AddAsync(_productToAdd.CurrentEntity);
+            _notificationService.Show(
+                result.Success ? "Product Added" : "Error while creating the product", 
+                result.Success
+            );
+            
             if (result.Success)
             {
                 _productToAdd.CurrentEntity = new Product();
@@ -89,7 +97,11 @@ public class ProductViewModel : CrudViewModel<Product>
     {
         if (CurrentEditingProduct != null)
         {
-            await UpdateAsync(CurrentEditingProduct);
+            var result = await UpdateAsync(CurrentEditingProduct);
+            _notificationService.Show(
+                result.Success ? "Product Updated" : "Failed to update product", 
+                result.Success
+            );
         }
     }
 
@@ -97,7 +109,12 @@ public class ProductViewModel : CrudViewModel<Product>
     {
         if (CurrentEditingProduct != null)
         {
-            await DeleteAsync(CurrentEditingProduct.IdProduit);
+            var result = await DeleteAsync(CurrentEditingProduct.IdProduit);
+            
+            _notificationService.Show(
+                result.Success ? "Product deleted" : "Error while deleting the product", 
+                result.Success
+            );
         }
     }
     public async Task OnSearchInputAsync(string value)

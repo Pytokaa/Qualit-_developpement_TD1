@@ -11,17 +11,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/ViewModel/CrudViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/ViewModel/ICrudViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Components/Layout/NotificationToast.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Shared/NotificationService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Components/Pages/ProductDetail.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductDetail.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/Products.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ViewModel/BaseEntityViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ViewModel/BaseEntityViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/ViewModel/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ViewModel/ProductViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +260,7 @@
       <workItem from="1759408715165" duration="3320000" />
       <workItem from="1759417832264" duration="233000" />
       <workItem from="1759419961812" duration="7635000" />
-      <workItem from="1759438533143" duration="2977000" />
+      <workItem from="1759438533143" duration="5907000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -494,7 +502,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759427566486</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Heritage avec les viewModels">
+      <option name="closed" value="true" />
+      <created>1759441581331</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1759441581331</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +553,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Ajout des Manager et controller de marque et typeProduit + tests unitaires de marque" />
     <MESSAGE value="Début des tests de la class TypeProduitController" />
     <MESSAGE value="Ajout des tests de methodes par Nom" />
     <MESSAGE value="Creation du projet front. Début des tests mock et des DTO" />
@@ -562,7 +577,8 @@
     <MESSAGE value="Readme" />
     <MESSAGE value="début du MVVM sur la page produit" />
     <MESSAGE value="MVVM complet sur le site" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVVM complet sur le site" />
+    <MESSAGE value="Heritage avec les viewModels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Heritage avec les viewModels" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

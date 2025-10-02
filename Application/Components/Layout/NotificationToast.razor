@@ -1,0 +1,86 @@
+@using Application.Services
+@using Application.Shared
+@inject NotificationService NotificationService
+@implements IDisposable
+
+@if (_showNotification)
+{
+    <div class="notification @(_isSuccess ? "success" : "error")">
+        @_message
+    </div>
+}
+
+<style>
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        animation: slideIn 0.3s ease-out;
+        z-index: 9999;
+        font-size: 14px;
+    }
+
+    @@keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .notification.success {
+        background-color: #d4edda;
+        color: #155724;
+        border-left: 4px solid #28a745;
+    }
+
+    .notification.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border-left: 4px solid #dc3545;
+    }
+</style>
+
+@code {
+    private bool _showNotification = false;
+    private string _message = "";
+    private bool _isSuccess = true;
+    private System.Threading.Timer? _timer;
+
+    protected override void OnInitialized()
+    {
+        NotificationService.OnNotification += ShowNotification;
+    }
+
+    private void ShowNotification(string message, bool isSuccess)
+    {
+        _message = message;
+        _isSuccess = isSuccess;
+        _showNotification = true;
+
+        StateHasChanged();
+
+        // reset timer si déjà actif
+        _timer?.Dispose();
+        _timer = new System.Threading.Timer(_ =>
+            {
+                _showNotification = false;
+                InvokeAsync(StateHasChanged);
+            },
+            null,
+            3000, // 3s d'affichage
+            Timeout.Infinite);
+    }
+
+    public void Dispose()
+    {
+        NotificationService.OnNotification -= ShowNotification;
+        _timer?.Dispose();
+    }
+}
