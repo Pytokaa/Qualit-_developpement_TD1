@@ -11,11 +11,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/API/Models/Repository/IFiltrableRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TD1.Tests/BlazorTests/NavigatorTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/Repository/GenericManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Repository/GenericManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/Repository/IDataRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Repository/IDataRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/Repository/ProduitManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Repository/ProduitManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Components/Layout/TableTemplate.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Layout/TableTemplate.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/BlazorTests/BrandsPageTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/BlazorTests/BrandsPageTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Components/Pages/ProductDetail.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Components/Pages/ProductDetail.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/wwwroot/css/productCreate.css" beforeDir="false" afterPath="$PROJECT_DIR$/Application/wwwroot/css/productCreate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.Tests/BlazorTests/ProductsPageTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/BlazorTests/ProductsPageTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
@@ -27,6 +35,7 @@
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TD1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +260,8 @@
       <workItem from="1759159692814" duration="651000" />
       <workItem from="1759168802575" duration="4380000" />
       <workItem from="1759315817202" duration="9628000" />
-      <workItem from="1759337726675" duration="6217000" />
+      <workItem from="1759337726675" duration="6579000" />
+      <workItem from="1759389706550" duration="7203000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -453,19 +463,32 @@
       <option name="project" value="LOCAL" />
       <updated>1759348609725</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Ajout des tests unitaires pour les pages marque et type produit">
+      <option name="closed" value="true" />
+      <created>1759350405217</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1759350405217</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnitTestsCoverage.Settings">
-    <option name="coveragePercentColumnWidth" value="150" />
+    <option name="coveragePercentColumnWidth" value="131" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="502" />
+    <option name="symbolColumnWidth" value="434" />
     <coverage-tree-state>
-      <expand />
+      <expand>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 59% 746/1815" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+      </expand>
       <select />
     </coverage-tree-state>
   </component>
@@ -491,7 +514,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Structure des données et ajouts des dépendances" />
     <MESSAGE value="workspace" />
     <MESSAGE value="test de push" />
     <MESSAGE value="Avancement des tests unitaires et documentation des méthodes controller" />
@@ -516,7 +538,8 @@
     <MESSAGE value="Amélioration de controllerstests" />
     <MESSAGE value="push qui ne mange pas de pain" />
     <MESSAGE value="Test E2E de la page products" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test E2E de la page products" />
+    <MESSAGE value="Ajout des tests unitaires pour les pages marque et type produit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des tests unitaires pour les pages marque et type produit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

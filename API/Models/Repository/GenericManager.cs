@@ -63,10 +63,5 @@ public abstract class GenericManager<T> : IDataRepository<T> where T : class, IE
         _context.Set<T>().Remove(entity);
         await _context.SaveChangesAsync();
     }
-
-    //fonction uniquement utilisée dans produitmanager
-    public virtual async Task<ActionResult<IEnumerable<T>>> FilterAsync(string name, string brand, string productType)
-    {
-        throw new NotImplementedException();
-    }
+    
 }

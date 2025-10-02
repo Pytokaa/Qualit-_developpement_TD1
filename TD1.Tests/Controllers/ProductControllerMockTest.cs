@@ -22,7 +22,7 @@ namespace TD1.Tests.Controllers;
 public class ProductControllerMockTest
 {
     private readonly ProductController _productController;
-    private readonly Mock<IDataRepository<Product>>  _produitManager;
+    private readonly Mock<IFiltrableRepository<Product>>  _produitManager;
     private readonly IMapper _mapper;
     private Product _defaultProduct1, _defaultProduct2;
     
@@ -34,7 +34,7 @@ public class ProductControllerMockTest
         });
         IMapper mapper = config.CreateMapper();
         _mapper = mapper;
-        _produitManager = new Mock<IDataRepository<Product>>();
+        _produitManager = new Mock<IFiltrableRepository<Product>>();
         _productController = new ProductController(_produitManager.Object, mapper);
     }
 

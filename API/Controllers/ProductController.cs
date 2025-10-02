@@ -13,9 +13,9 @@ namespace TD1.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly IDataRepository<Product> _productManager;
+    private readonly IFiltrableRepository<Product> _productManager;
 
-    public ProductController(IDataRepository<Product> manager, IMapper mapper)
+    public ProductController(IFiltrableRepository<Product> manager, IMapper mapper)
     {
         _productManager = manager;
         _mapper = mapper;

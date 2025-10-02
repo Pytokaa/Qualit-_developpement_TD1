@@ -36,9 +36,17 @@ form textarea {
     resize: vertical;
 }
 
+/* Container pour les boutons */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
 form button {
-    width: 40%;
-    align-self: flex-end;
+    flex: 1;
+    max-width: 200px;
     padding: 0.6rem 1rem;
     background-color: #007bff;
     color: white;
@@ -55,14 +63,28 @@ form button:hover {
     transform: translateY(-2px);
 }
 
-/* Responsive : sur petits écrans le formulaire prend 90% de la largeur */
+/* Style spécifique bouton supprimer */
+#deleteButton {
+    background-color: #dc3545;
+}
+
+#deleteButton:hover {
+    background-color: #a71d2a;
+}
+
+/* Responsive : sur petits écrans */
 @media (max-width: 600px) {
     form {
         width: 90%;
         padding: 1rem;
     }
 
+    .form-buttons {
+        flex-direction: column;
+    }
+
     form button {
         width: 100%;
+        max-width: none;
     }
 }

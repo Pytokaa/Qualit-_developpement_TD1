@@ -47,11 +47,13 @@ public class ProduitManager(ProduitDbContext context) : IDataRepository<Product>
 }*/
 
 
-public class ProductManager : GenericManager<Product>
+public class ProductManager : GenericManager<Product>, IFiltrableRepository<Product>
 {
     public ProductManager(AppDbContext context) : base(context){}
+    
+    
 
-    public async override Task<ActionResult<IEnumerable<Product>>>FilterAsync(string? name=null, string? brand = null, string? productType = null)
+    public async Task<ActionResult<IEnumerable<Product>>>FilterAsync(string? name=null, string? brand = null, string? productType = null)
     {
         var query = _context.Produits.IncludeNavigationPropertiesIfNeeded().AsQueryable();
         if (!string.IsNullOrEmpty(name))

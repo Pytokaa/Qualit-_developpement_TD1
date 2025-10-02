@@ -132,9 +132,7 @@ public class ProductsPageTests : PageTest
         Assert.That(Page.Url, Does.Match(@".*/product/\d+$"));
     }
 
-
-
-
+    
 
 
 }

@@ -6,6 +6,7 @@
 @inject ProductWSService _ProductWsService
 @inject BrandWSService _BrandWsService
 @inject ProductTypeWSService _ProductTypeWsService
+@inject NavigationManager NavManager
 
 
 
@@ -68,11 +69,12 @@ else
                     <option value="@type.IdTypeProduit">@type.NomTypeProduit</option>
                 }
             </select>
-            <button type="submit">Update</button>
+            <div class="form-buttons">
+                <button @onclick="DeleteProduct" id="deleteButton">Supprimer</button>
+                <button type="submit">Update</button>
+            </div>
         </EditForm>
-        <div id="imagediv">
-            
-        </div>
+        
     </div>
 }
 
@@ -93,5 +95,11 @@ else
     private async Task UpdateProduct()
     {
         await _ProductWsService.UpdateAsync(product);
+    }
+
+    private async Task DeleteProduct()
+    {
+        await _ProductWsService.DeleteAsync(product.IdProduit);
+        NavManager.NavigateTo("/products");
     }
 }
