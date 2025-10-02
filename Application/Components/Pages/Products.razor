@@ -1,9 +1,12 @@
 @using Application.Models
 @using Application.Services
+@using Application.ViewModel
 @page "/products"
+@inject ProductViewModel _ProductViewModel
 @inject ProductWSService _ProductWsService
 @inject BrandWSService _BrandWsService
 @inject ProductTypeWSService _ProductTypeWsService
+
 
 <link href="css/productsTable.css" rel="stylesheet" />
 <link href="css/Loader.css" rel="stylesheet" />
@@ -52,19 +55,19 @@
     </div>
 </div>
 
-@if (products == null)
+@if (_ProductViewModel.IsLoading)
 {
     <div class="loader"></div>
 }
-else if (!products.Any())
+else if (!_ProductViewModel.products.Any())
 {
     <p>There is no product</p>
 }
 else
 {
-    <h4>@products.Count correspond to your selection : </h4>
+    <h4>@_ProductViewModel.products.Count() correspond to your selection : </h4>
     <div id="divProducts">
-        @foreach (var product in products)
+        @foreach (var product in _ProductViewModel.products)
         {
             <div class="divProduct div-info-produit" @onclick="() => NavigateToProduct(product.IdProduit)">
                 <div class="product-content">
@@ -83,7 +86,6 @@ else
 }
 
 @code {
-    private List<Product>? products;
     private List<Marque>? brands;
     private List<TypeProduit> productTypes;
     private string selectedBrand = "";
@@ -128,12 +130,24 @@ else
         string? brand = string.IsNullOrEmpty(selectedBrand) ? null : selectedBrand;
         string? productType = string.IsNullOrEmpty(selectedProductType) ? null : selectedProductType;
 
-        products = await _ProductWsService.GetProductByFilter(name, brand, productType) ?? new List<Product>();
+        //products = await _ProductWsService.GetProductByFilter(name, brand, productType) ?? new List<Product>();
     }
 
     protected override async Task OnInitializedAsync()
     {
-        products = await _ProductWsService.GetAllAsync() ?? new List<Product>();
+        _ProductViewModel.IsLoading = true;
+        try
+        {
+            await _ProductViewModel.LoadProductAsync();
+        }
+        catch (Exception ex)
+        {
+            _ProductViewModel.ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            _ProductViewModel.IsLoading = false;
+        }
         brands = await _BrandWsService.GetAllAsync() ?? new List<Marque>();
         productTypes = await _ProductTypeWsService.GetAllAsync() ?? new List<TypeProduit>();
     }
