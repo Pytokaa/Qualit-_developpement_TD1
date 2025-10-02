@@ -19,14 +19,14 @@
 
 <h3>Details of product </h3>
 
-@if (_ProductViewModel._currentEditingProduct == null)
+@if (_ProductViewModel.CurrentEditingProduct == null)
 {
     <p>Loading…</p>
 }
 else
 {
     <div id="addDiv">
-        <EditForm Model="_ProductViewModel._currentEditingProduct" OnValidSubmit="UpdateProduct">
+        <EditForm Model="_ProductViewModel.CurrentEditingProduct" OnValidSubmit="UpdateProduct">
             @foreach (var prop in typeof(Product).GetProperties().Where(p => !Attribute.IsDefined(p, typeof(IgnoreInTemplateAttribute))))
             {
                 <div>
@@ -35,27 +35,27 @@ else
                     @if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
                     {
                         <input type="number"
-                               value="@prop.GetValue(_ProductViewModel._currentEditingProduct)"
-                               @onchange="e => prop.SetValue(_ProductViewModel._currentEditingProduct, Convert.ToInt32(e.Value))" />
+                               value="@prop.GetValue(_ProductViewModel.CurrentEditingProduct)"
+                               @onchange="e => prop.SetValue(_ProductViewModel.CurrentEditingProduct, Convert.ToInt32(e.Value))" />
                     }
                     else
                     {
                         <input type="text"
-                               value="@prop.GetValue(_ProductViewModel._currentEditingProduct)"
-                               @onchange="e => prop.SetValue(_ProductViewModel._currentEditingProduct, e.Value?.ToString())" />
+                               value="@prop.GetValue(_ProductViewModel.CurrentEditingProduct)"
+                               @onchange="e => prop.SetValue(_ProductViewModel.CurrentEditingProduct, e.Value?.ToString())" />
                     }
                 </div>
             }
             <h4>Image : </h4>
-            @if (!string.IsNullOrWhiteSpace(_ProductViewModel._currentEditingProduct?.UriPhoto))
+            @if (!string.IsNullOrWhiteSpace(_ProductViewModel.CurrentEditingProduct?.UriPhoto))
             {
-                <img src="@_ProductViewModel._currentEditingProduct.UriPhoto" alt="@_ProductViewModel._currentEditingProduct.NomProduit"/>
+                <img src="@_ProductViewModel.CurrentEditingProduct.UriPhoto" alt="@_ProductViewModel.CurrentEditingProduct.NomProduit"/>
             }
             else
             {
                 <p>No image available</p>
             }
-            <select @bind="_ProductViewModel._currentEditingProduct.IdMarque">
+            <select @bind="_ProductViewModel.CurrentEditingProduct.IdMarque">
                 <option value="">-- Select brand --</option>
                 @foreach (var brand in _BrandViewModel.Items)
                 {
@@ -63,7 +63,7 @@ else
                 }
             </select>
 
-            <select @bind="_ProductViewModel._currentEditingProduct.IdTypeProduit">
+            <select @bind="_ProductViewModel.CurrentEditingProduct.IdTypeProduit">
                 <option value="">-- Select product type --</option>
                 @foreach (var type in _ProductTypeViewModel.Items)
                 {

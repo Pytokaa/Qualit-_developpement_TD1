@@ -4,72 +4,49 @@ using Application.Services;
 
 namespace Application.ViewModel;
 
-public class BaseEntityViewModel<T> where T: class, IEntity, new()
+public class BaseEntityViewModel<T> : CrudViewModel<T> where T: class, IEntity, new()
 {
-    protected readonly IService<T> _service;
-    public IStateService<T> _ItemToAdd;
-    public List<T> Items { get; private set; } = new List<T>();
-    public T? CurrentEntity { get; set; }
-    public bool IsLoading { get; set; }
+   public IStateService<T> _ItemToAdd { get; set; }
+   
+   public T? CurrentEntity { get; set; }
 
-    public BaseEntityViewModel(IService<T> service, IStateService<T> ItemToAdd)
-    {
-        _service = service;
-        _ItemToAdd = ItemToAdd;
-    }
+   public BaseEntityViewModel(IService<T> service, IStateService<T> itemToAdd) : base(service)
+   {
+      _ItemToAdd = itemToAdd;
+   }
 
-    public async Task LoadAsync()
-    {
-        Items = (await _service.GetAllAsync())?.ToList() ??  new List<T>();
-        CurrentEntity = Items.FirstOrDefault();
-        IsLoading = false;
-    }
+   public override async Task LoadAsync()
+   {
+      await base.LoadAsync();
+      CurrentEntity = Items.FirstOrDefault();
+   }
 
-    public async Task AddAsync()
-    {
-        if (_ItemToAdd.CurrentEntity != null)
-        {
-            await _service.AddAsync(_ItemToAdd.CurrentEntity);
-        }
+   public void OnSelectorChange(T selectedEntity)
+   {
+      CurrentEntity = selectedEntity;
+      NotifyStateChanged();
+   }
 
-        _ItemToAdd.CurrentEntity = new T();
-    }
-
-    public async Task UpdateAsync()
-    {
-        if (CurrentEntity != null)
-        {
-            await _service.UpdateAsync(CurrentEntity);
-        }
-    }
-
-    public async Task DeleteAsync()
-    {
-        if (CurrentEntity != null)
-        {
-            await _service.DeleteAsync((int)CurrentEntity.GetId());
-        }
-    }
-
-    public async Task OnSelectorChange(T selectedEntity)
-    {
-        CurrentEntity = selectedEntity;
-    }
-    public async Task SubmitAddAsync()
-    {
-        await AddAsync();
-        await LoadAsync(); 
-    }
-
-    public async Task SubmitUpdateAsync()
-    {
-        await UpdateAsync();
-        await LoadAsync(); 
-    }
-
-    public async Task SubmitDeleteAsync()
-    {
-        await DeleteAsync();
-        await LoadAsync(); 
-    }
+   public async Task SubmitAddAsync()
+   {
+      if (_ItemToAdd.CurrentEntity != null)
+      {
+         await AddAsync(_ItemToAdd.CurrentEntity);
+         _ItemToAdd.CurrentEntity = new T();
+      }
+   }
+   public async Task SubmitUpdateAsync()
+   {
+      if (CurrentEntity != null)
+      {
+         await UpdateAsync(CurrentEntity);
+      }
+   }
+   public async Task SubmitDeleteAsync()
+   {
+      if (CurrentEntity != null)
+      {
+         await DeleteAsync((int)CurrentEntity.GetId());
+      }
+   }
 }

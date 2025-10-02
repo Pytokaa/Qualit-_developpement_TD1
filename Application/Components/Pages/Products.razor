@@ -22,7 +22,7 @@
         <div id="filters">
             <div>
                 <label for="selectbrand">Select Brand:</label>
-                <select name="selectbrand" id="selectbrand" @onchange="@(async e => { _ProductViewModel.SearchBrand = e.Value?.ToString(); await _ProductViewModel.ApplyFiltersAsync(); })" value="@_ProductViewModel.SearchBrand">
+                <select name="selectbrand" id="selectbrand" @onchange="@(async e => { _ProductViewModel.SearchBrand = e.Value?.ToString(); await _ProductViewModel.ApplyFilterAsync(); })" value="@_ProductViewModel.SearchBrand">
                     <option value="">Select a brand</option>
                     @if (_BrandViewModel.Items != null)
                     {
@@ -36,7 +36,7 @@
 
             <div>
                 <label for="selectproductType">Select Product Type:</label>
-                <select name="selectproductType" id="selectproductType" @onchange="@(async e => { _ProductViewModel.SearchType = e.Value?.ToString(); await _ProductViewModel.ApplyFiltersAsync(); })" value="@_ProductViewModel.SearchType">
+                <select name="selectproductType" id="selectproductType" @onchange="@(async e => { _ProductViewModel.SearchType = e.Value?.ToString(); await _ProductViewModel.ApplyFilterAsync(); })" value="@_ProductViewModel.SearchType">
                     <option value="">Select a product type</option>
                     @if (_ProductTypeViewModel.Items != null)
                     {
@@ -59,15 +59,15 @@
 {
     <div class="loader"></div>
 }
-else if (!_ProductViewModel.products.Any())
+else if (!_ProductViewModel.Items.Any())
 {
     <p>There is no product</p>
 }
 else
 {
-    <h4>@_ProductViewModel.products.Count() correspond to your selection : </h4>
+    <h4>@_ProductViewModel.Items.Count() correspond to your selection : </h4>
     <div id="divProducts">
-        @foreach (var product in _ProductViewModel.products)
+        @foreach (var product in _ProductViewModel.Items)
         {
             <div class="divProduct div-info-produit" @onclick="() => NavigateToProduct(product.IdProduit)">
                 <div class="product-content">
@@ -92,13 +92,13 @@ else
         _ProductViewModel.IsLoading = true;
         try
         {
-            await _ProductViewModel.LoadProductAsync();
+            await _ProductViewModel.LoadAsync();
             await _BrandViewModel.LoadAsync();
             await _ProductTypeViewModel.LoadAsync();
         }
         catch (Exception ex)
         {
-            _ProductViewModel.ErrorMessage = ex.Message;
+            Console.WriteLine(ex);
         }
         finally
         {
