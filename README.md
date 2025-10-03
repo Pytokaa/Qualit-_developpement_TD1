@@ -8,6 +8,7 @@ Version de Dotnet : **8.0.412**
 
 Les dépendances à installer afin de pouvoir lancer le projet sont les suivantes : 
 
+
 #### Dépendances Backend (API)
 - AutoMapper — **12.0.1**
 - AutoMapper.Extensions.Microsoft.DependencyInjection — **12.0.1**
@@ -38,6 +39,14 @@ Les dépendances à installer afin de pouvoir lancer le projet sont les suivante
 - Microsoft.AspNetCore.Components.WebAssembly.DevServer — **8.0.18**
 - Microsoft.NET.ILLink.Tasks — **8.0.18**
 - Microsoft.NET.Sdk.WebAssembly.Pack — **8.0.18**
+
+Afin de les installer il faut se placer à la racine de la solution et executer la commande **dotnet restore**
+
+
+
+**Lancement de l'application**
+
+Lors du lancement du projet, un avertissement va apparaitre. Cliquer sur "Continue Anyway"
 
 ---
 

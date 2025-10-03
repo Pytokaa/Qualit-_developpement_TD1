@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P7GgHfv4lhg=",
+  "dgSpecHash": "tfWa9XqNOi8=",
   "success": true,
-  "projectFilePath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/TD1.Tests/TD1.Tests.csproj",
+  "projectFilePath": "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/TD1.Tests/TD1.Tests.csproj",
   "expectedPackageFiles": [
     "/home/elioth/.nuget/packages/anglesharp/1.2.0/anglesharp.1.2.0.nupkg.sha512",
     "/home/elioth/.nuget/packages/anglesharp.css/1.0.0-beta.154/anglesharp.css.1.0.0-beta.154.nupkg.sha512",
