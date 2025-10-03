@@ -97,6 +97,7 @@ public class MarqueControllerMockTest
     [TestMethod]
     public void ShouldCreateProduct()
     {
+        //Given
         _brandManager
             .Setup(manager => manager.AddAsync(_defaultBrand1));
         
@@ -180,17 +181,18 @@ public class MarqueControllerMockTest
     public void ShouldNotDeleteBrandBecauseItDoesNotExist()
     {
         //Given
+        int nonExistentId = 30;
         _brandManager
-            .Setup(manager => manager.GetByIdAsync(30))
+            .Setup(manager => manager.GetByIdAsync(nonExistentId))
             .ReturnsAsync(new ActionResult<Marque>((Marque)null));
         
         //When
-        var action = _brandController.DeleteMarque(30).GetAwaiter().GetResult();
+        var action = _brandController.DeleteMarque(nonExistentId).GetAwaiter().GetResult();
         
         //Then
         Assert.IsNotNull(action);
         Assert.IsInstanceOfType(action, typeof(NotFoundResult));
-        _brandManager.Verify(manager => manager.GetByIdAsync(30), Times.Once);
+        _brandManager.Verify(manager => manager.GetByIdAsync(nonExistentId), Times.Once);
     }
 
     [TestMethod]

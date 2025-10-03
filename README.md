@@ -8,23 +8,38 @@ Questions :
    respecte-t-il pas ?**
 
 
-    Réspectés : 
+    Single Responsibility : 
 
-    Single responsibility :  Chaque élément possède une seule utilité. 
-    Le controller, lui, sert à faire la jonction entre les requêtes HTTP.
-    Le manager lui va s'occuper de la partie logique de l'application. 
-    Le repository se charge de faire la jonction entre la base de données et les objects EntityFramework. 
-
-    Dependency inversion :  la logique de l'api est définie par l'interface IDataRepository. 
-    Le constructeur du controller implémente un IdataRepository<Entity> et non un ProductManager concret, ainsi il peut utiliser les méthods définies dans ce derniers
-    sans dépendre de son fonctionnement. La logique d'un manageur peut être modifiée sans impacter le controller.
-    Nous retrouvons un fonctionnement similaire avec les DTO, l'utilisation de AutoMapper permet de passer facilement entre un objet et son DTO sans dépendre de ses propriétés.
-
-    Open/close principle :  Il existe une version abstract générique de la logique du manager. Il est donc facile d'ajouter des extensions en ajoutant un nouveau manager qui herite 
-    du générique, mais aussi d'ajouter de nouvelles fonctionnalités comme avec le Filtre pour les produits. 
+    La première règle SOLID est partiellement respectée dans ce projet. En effet, la plus grande partie des class possèdent un but propre. Que ca soit la communication, logique, accès aux données etc.. 
+    Cependant, le générique manager mélange par moment l'accès aux données et la logique (sont but inital). Le productController lui aussi regroupe beaucoup de fonctionnalités differentes et enfreint cette première règle. 
 
 
-    Non réspectés : 
+
+    Open/Close : 
+
+    La structure de l'application permet d'ajouter facilement des éléments au projet sans avoir besoin de modifier ce dernier. L'héritage entre les class permet de créer de nouvelles catégories/fonctionnalités et d'implémenter le code déjà existant sans le modifier. 
+    Exemples avec l'ajout d'une class Client: 
+
+        - Après avoir écrit sa class EntityFrameworks et réalisé la migration il est possible de créer un manager client en heritant du GenericManager puis d'écrire le controller. 
+        
+        - Du coté application on peut faire hériter notre WSService du GenericWSService. Même chose pour le ViewModel avec un héritage de CrudViewModel. Si on veut ajouter des fonctions spécifiques à ces clients (connexion etc...) il est tout a fait possible de créer de nouveaux éléments d'application comme il est déjà le cas avec produit. (Dont les détails seront précisés plus bas dans ce document) 
+        Aucun code n'est modifié durant ce processus -> tout est ajouté. 
+
+    
+    Liskov Substitute : 
+
+    Ce principe est partiellement respecté dans le projet. Coté back toutes les class manager héritent de IDataRepository et implémentent grace à GenericManager les methods dans le contrat. Ainsi partout ou est appelé un IDataRepository<T>, les class qui en héritent peuvent forcément être utitisé comme tel sans que le comportement attendu soit cassé. 
+    Exceptions :    
+        - GetById peut renvoyer null -> rupture du contrat
+        - GetByName (dont je reparlerai en détails plus bas) se doit d'avoir les type de class spécifié afin de fonctionner. Si quelqu'un effectue un GetByString avec un IDataRepository<RandomEntity> le resultat sera forcément une erreur. 
+
+
+
+    Interface segregation : 
+    
+    Cette règle est également partiellement respecté durant ce projet. Le IDataRepository par exemple force certaines class à implementer des fonctions dont elles n'ont pas l'interet (ex : marque et type produit n'ont pas besoin de getByName). 
+    Cependant, certaines interfaces permettent 
+    
 
     
     

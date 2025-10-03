@@ -112,7 +112,7 @@ public class MarqueControllerTest
         Assert.IsInstanceOfType(brands.Value, typeof(IEnumerable<Marque>));
 
         var brandList = (brands.Value as IEnumerable<Marque>)?.ToList();
-        Assert.IsTrue(brandList?.Count >= 2, "Au moins 2 marques doivent etre dans la abse de données");
+        Assert.IsTrue(brandList?.Count >= 2, "Au moins 2 marques doivent etre Retournées");
     }
 
     [TestMethod]

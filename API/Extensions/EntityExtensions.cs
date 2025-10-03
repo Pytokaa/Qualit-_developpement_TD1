@@ -9,7 +9,6 @@ public static class EntityExtensions
 {
     public static IQueryable<T> IncludeNavigationPropertiesIfNeeded<T>(this IQueryable<T> query) where T : class
     {
-        // Seulement si l'entité implémente IEntityWithNavigation
         if (typeof(IEntityWithNavigation).IsAssignableFrom(typeof(T)))
         {
             var navigationProperties = typeof(T)

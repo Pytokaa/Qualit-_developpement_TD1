@@ -46,14 +46,14 @@ else
                                 <input type="number"
                                        value="@prop.GetValue(_ViewModel.CurrentEntity)"
                                        data-testid="@prop.Name"
-                                       @onchange="e => prop.SetValue(_ViewModel.CurrentEntity, Convert.ToInt32(e.Value))"/>
+                                       @onchange="e => prop.SetValue(_ViewModel.CurrentEntity, Convert.ToInt32(e.Value))" required/>
                             }
                             else
                             {
                                 <input type="text"
                                        value="@prop.GetValue(_ViewModel.CurrentEntity)"
                                        data-testid="@prop.Name"
-                                       @onchange="e => prop.SetValue(_ViewModel.CurrentEntity, e.Value?.ToString())"/>
+                                       @onchange="e => prop.SetValue(_ViewModel.CurrentEntity, e.Value?.ToString())" required/>
                             }
                         </div>
                     }

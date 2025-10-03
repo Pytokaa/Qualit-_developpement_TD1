@@ -143,7 +143,7 @@ public class MarqueController :  ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> DeleteMarque(int id) //y'a un truc qui va pas ici, a revoir
+    public async Task<IActionResult> DeleteMarque(int id) 
     {
         ActionResult<Marque?> brandToDelete = await _brandManager.GetByIdAsync(id);
         if (brandToDelete.Value == null)

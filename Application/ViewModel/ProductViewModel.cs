@@ -36,8 +36,7 @@ public class ProductViewModel : CrudViewModel<Product>
         NotifyStateChanged();
         try
         {
-            var data = await _webService.GetAllAsync();
-            Items = data?.ToList() ?? new List<Product>();
+            await base.LoadAsync();
         }
         catch (Exception ex)
         {
