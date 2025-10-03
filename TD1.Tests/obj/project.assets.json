@@ -5742,11 +5742,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/TD1.Tests/TD1.Tests.csproj",
+      "projectUniqueName": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/TD1.Tests/TD1.Tests.csproj",
       "projectName": "TD1.Tests",
-      "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/TD1.Tests/TD1.Tests.csproj",
+      "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/TD1.Tests/TD1.Tests.csproj",
       "packagesPath": "/home/elioth/.nuget/packages/",
-      "outputPath": "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/TD1.Tests/obj/",
+      "outputPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/TD1.Tests/obj/",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "configFilePaths": [
@@ -5762,11 +5762,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/API/API.csproj": {
-              "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/API/API.csproj"
+            "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/API/API.csproj": {
+              "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/API/API.csproj"
             },
-            "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/Application/Application.csproj": {
-              "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/EvalQualité/TD1/Application/Application.csproj"
+            "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/Application/Application.csproj": {
+              "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/Application/Application.csproj"
             }
           }
         }
