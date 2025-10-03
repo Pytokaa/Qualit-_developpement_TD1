@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OTIUCCrannA=",
+  "dgSpecHash": "sw6PyAEH7/I=",
   "success": true,
-  "projectFilePath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/API/API.csproj",
+  "projectFilePath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/API/API.csproj",
   "expectedPackageFiles": [
     "/home/elioth/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/elioth/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

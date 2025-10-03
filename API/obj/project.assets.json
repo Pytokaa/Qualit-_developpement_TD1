@@ -2974,11 +2974,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/API/API.csproj",
+      "projectUniqueName": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/API/API.csproj",
       "projectName": "API",
-      "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/API/API.csproj",
+      "projectPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/API/API.csproj",
       "packagesPath": "/home/elioth/.nuget/packages/",
-      "outputPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1/API/obj/",
+      "outputPath": "/home/elioth/Documents/Cours/Année 3/S5/Qualité de dev/TD1/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/elioth/.nuget/NuGet/NuGet.Config"
