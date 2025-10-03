@@ -10,191 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TD1.Tests/BlazorTests/UnitTests/BrandsPageTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TD1.Tests/BlazorTests/UnitTests/ProductsPageTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/API/bin/Debug/net8.0/API.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/API/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/GenericWSService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/GenericWSService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/ProductWSService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/ProductWSService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Shared/NotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Shared/NotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/TD1.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/TD1.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/.msCoverageSourceRootsMapping_TD1.Tests" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/.msCoverageSourceRootsMapping_TD1.Tests" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.CoreUtilities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.CoreUtilities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.Utilities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.Utilities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.MSBuild.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.MSBuild.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.Telemetry.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.Telemetry.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.VSTestBridge.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Extensions.VSTestBridge.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Platform.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.Testing.Platform.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/cs/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/de/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/es/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/fr/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/it/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ja/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ko/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pl/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/pt-BR/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/ru/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/testhost.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/testhost.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/tr/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Extensions.Telemetry.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Extensions.Telemetry.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Platform.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.Testing.Platform.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/TD1.Tests.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/ref/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/Debug/net8.0/refint/TD1.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/TD1.Tests.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TD1.Tests/obj/rider.project.restore.info" afterDir="false" />
-    </list>
+    <list default="true" id="1187426f-91ce-4019-b513-a59d6be557d8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -271,7 +87,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/TD1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/elioth/Documents/Cours/Année 3/S5/Qualité_de_dev/Rendu/TD1&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -424,7 +240,11 @@
       <workItem from="1759408715165" duration="3320000" />
       <workItem from="1759417832264" duration="233000" />
       <workItem from="1759419961812" duration="7635000" />
-      <workItem from="1759438533143" duration="26848000" />
+      <workItem from="1759438533143" duration="27611000" />
+      <workItem from="1759466591956" duration="1108000" />
+      <workItem from="1759472311484" duration="1334000" />
+      <workItem from="1759474382800" duration="1956000" />
+      <workItem from="1759497509638" duration="734000" />
     </task>
     <task id="LOCAL-00001" summary="Structure des données et ajouts des dépendances">
       <option name="closed" value="true" />
@@ -698,7 +518,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759461972692</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="test unit">
+      <option name="closed" value="true" />
+      <created>1759466567169</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1759466567169</updated>
+    </task>
+    <task id="LOCAL-00036" summary="update">
+      <option name="closed" value="true" />
+      <created>1759497529814</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1759497529814</updated>
+    </task>
+    <task id="LOCAL-00037" summary="update2">
+      <option name="closed" value="true" />
+      <created>1759497579894</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1759497579894</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,9 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Mapping des DTO et début des tests impliquants ces derniers" />
-    <MESSAGE value="Correction de getallProduct" />
-    <MESSAGE value="début de l'implementation des tests mock pour marque" />
     <MESSAGE value="Fin des tests mock de marque et début pour type Produit" />
     <MESSAGE value="Ajout de methods de test mock" />
     <MESSAGE value="Ajout de manager generic" />
@@ -766,7 +607,10 @@
     <MESSAGE value="notification lors de l'ajout, modification et suppression" />
     <MESSAGE value="ptit push pour remonter le moral" />
     <MESSAGE value="ReadMe" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReadMe" />
+    <MESSAGE value="test unit" />
+    <MESSAGE value="update" />
+    <MESSAGE value="update2" />
+    <option name="LAST_COMMIT_MESSAGE" value="update2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
