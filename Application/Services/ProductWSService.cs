@@ -7,7 +7,7 @@
     {
         public ProductWSService(HttpClient httpClient) : base(httpClient){}
 
-        public async Task<List<Product>?> GetProductByFilter(string? name = null, string? brandName = null, string? productTypeName = null)
+        public virtual async Task<List<Product>?> GetProductByFilter(string? name = null, string? brandName = null, string? productTypeName = null)
         {
             var queryParams = new List<string>();
         

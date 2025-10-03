@@ -2,7 +2,42 @@
 
 **Projet réalisée par ROB Elioth**
 
-La base de données du projet est hébergée sur le serveur OVH de Mr Luc Damas
+La base de données du projet est hébergée sur le serveur OVH de Mr Luc Damas, il n'y a donc pas de configuration à effectuer, tout est géré dans le code. 
+
+Version de Dotnet : **8.0.412**
+
+Les dépendances à installer afin de pouvoir lancer le projet sont les suivantes : 
+
+#### Dépendances Backend (API)
+- AutoMapper — **12.0.1**
+- AutoMapper.Extensions.Microsoft.DependencyInjection — **12.0.1**
+- Microsoft.EntityFrameworkCore.InMemory — **8.0.20**
+- Microsoft.EntityFrameworkCore.Tools — **8.0.4**
+- Npgsql.EntityFrameworkCore.PostgreSQL — **8.0.4**
+- Npgsql.EntityFrameworkCore.PostgreSQL.Design — **1.0.0**
+- Swashbuckle.AspNetCore — **6.6.2**
+
+####  Dépendances Tests
+- bUnit — **1.40.0**
+- JetBrains.Annotations — **2025.2.2**
+- Microsoft.NET.Test.Sdk — **18.0.0**
+- Microsoft.Playwright — **1.55.0**
+- Microsoft.Playwright.NUnit — **1.55.0**
+- Moq — **4.20.72**
+- MSTest.TestAdapter — **3.11.0**
+- MSTest.TestFramework — **3.11.0**
+- Selenium.Support — **4.35.0**
+- Selenium.WebDriver — **4.35.0**
+- Selenium.WebDriver.ChromeDriver — **141.0.7390.5400**
+- Selenium.WebDriver.GeckoDriver — **0.36.0**
+- Selenium.WebDriver.MSEdgeDriver — **140.0.3485.66**
+
+
+#### Dépendances Frontend (Blazor WebAssembly)
+- Microsoft.AspNetCore.Components.WebAssembly — **8.0.18**
+- Microsoft.AspNetCore.Components.WebAssembly.DevServer — **8.0.18**
+- Microsoft.NET.ILLink.Tasks — **8.0.18**
+- Microsoft.NET.Sdk.WebAssembly.Pack — **8.0.18**
 
 ---
 

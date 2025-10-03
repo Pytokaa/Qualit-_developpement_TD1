@@ -11,16 +11,16 @@ public abstract class GenericWSService<T> : IService<T> where T : class,  IEntit
     {
         _httpClient = httpClient;
     }
-    public async Task<List<T>?> GetAllAsync()
+    public virtual async Task<List<T>?> GetAllAsync()
     {
         return await _httpClient.GetFromJsonAsync<List<T>>($"{typeof(T).Name}");
     }
-    public async Task<T?> GetByIdAsync(int id)
+    public virtual async Task<T?> GetByIdAsync(int id)
     {
         return await _httpClient.GetFromJsonAsync<T?>($"{typeof(T).Name}/id/{id}");
     }
 
-    public async Task<T?> AddAsync(T entity)
+    public virtual async Task<T?> AddAsync(T entity)
     {
         var response = await _httpClient.PostAsJsonAsync($"{typeof(T).Name}", entity);
         if (!response.IsSuccessStatusCode)
@@ -31,17 +31,17 @@ public abstract class GenericWSService<T> : IService<T> where T : class,  IEntit
         
     }
 
-    public async Task UpdateAsync( T updatedEntity)
+    public virtual async Task UpdateAsync( T updatedEntity)
     {
         await _httpClient.PutAsJsonAsync<T>($"{typeof(T).Name}/id/{updatedEntity.GetId()}", updatedEntity);
     }
 
-    public async Task DeleteAsync(int id)
+    public virtual async Task DeleteAsync(int id)
     {
         await _httpClient.DeleteAsync($"{typeof(T).Name}/id/{id}");
     }
 
-    public async Task<T?> GetByNameAsync(string name)
+    public virtual  async Task<T?> GetByNameAsync(string name)
     {
         return await _httpClient.GetFromJsonAsync<T>($"{typeof(T).Name}/name/{name}");
     }
